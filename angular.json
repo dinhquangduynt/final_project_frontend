@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "electronic-components"
+    }
+  },
+  "defaultProject": "electronic-components",
+  "cli": {
+    "analytics": "c8eb8be0-a841-44c4-b1ed-fb67f9c8e143"
+  }
 }
