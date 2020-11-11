@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  isShowMenu = false;
+  listItem = ['1', '2', '3', '4']
   constructor(
     private router: Router,
     ) { }
@@ -20,7 +22,11 @@ export class HeaderComponent implements OnInit {
   }
 
   login(){
-    console.log('loss');
-    this.router.navigate(['/signin']);
+    // console.log('loss');
+    // this.router.navigate(['/signin']);
+
+  }
+  onClickMenu(){
+    this.isShowMenu = !this.isShowMenu;
   }
 }

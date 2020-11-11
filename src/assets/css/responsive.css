@@ -1,6 +1,6 @@
 /*=============== Large(LG) Device ===============*/
-@media (min-width: 992px) and (max-width: 1199px) {
-    .header-sticky.sticky .col-lg-8 {
+@media(min-width: 992px) and (max-width: 1199px) {
+    .header-sticky .col-lg-8 {
           margin-left: -107px;
         }
     .single-latest-blog {
@@ -333,7 +333,7 @@ display: none;
     }
     .trendig-product .owl-dots {
         display: none;
-    }    
+    }
     .section-ttitle h2 {
           font-size: 26px;
         }
@@ -354,7 +354,7 @@ display: none;
     .tab-menu {
       flex-direction: column;
       margin-right: 0;
-    }    
+    }
         .banner-box {
           flex: 0 0 100%;
         }
@@ -517,7 +517,7 @@ display: none;
     }
     .mt-sm-45 {
         margin-top: 45px;
-    }    
+    }
 
     .mt-sm-40 {
         margin-top: 40px;
@@ -617,7 +617,7 @@ display: none;
       display: block;
       overflow-x: auto;
       width: 100%;
-    }    
+    }
 }
 
 /*=============== Some Specific issues ===============*/
@@ -633,13 +633,13 @@ display: none;
       display: block;
       padding-right: 0;
 
-    }  
+    }
     .hot-product2 .actions-primary {
       margin-bottom: 20px;
     }
     #list-view .hot-product2 .actions-primary {
       margin-bottom: 0;
-    }    
+    }
 }
 
 /*=============== Mobile Device ===============*/
@@ -659,7 +659,7 @@ display: none;
         }
         .blog-img {
           width: 100%;
-        }  
+        }
     .owl-nav div {
         display: none;
     }
