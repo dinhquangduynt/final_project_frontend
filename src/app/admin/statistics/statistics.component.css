@@ -1,0 +1,27 @@
+.div-chart{
+    border: 1px solid rgb(211, 204, 204);
+}
+.div-chart h4{
+    background-color: blue;
+    padding: 10px 5px;
+    border: 1px solid blue;
+    color: White;
+}
+.div-chart h4 i{
+    margin-right: 10px;
+}
+.chart{
+    margin: 20px 20px;
+}
+.container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.row{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

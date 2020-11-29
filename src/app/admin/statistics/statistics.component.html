@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="div-chart">
+                <h4><i class="fa fa-bar-chart-o"></i>Thống kê tháng</h4>
+                <div class="chart-wrapper chart">
+                    <canvas baseChart 
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [colors] = "barChartColors"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType">
+                  </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="div-chart">
+                <h4><i class="fa fa-bar-chart-o"></i>Thống kê Quý</h4>
+                <div class="chart-wrapper chart">
+                    <canvas baseChart 
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [colors] = "barChartColors"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType">
+                  </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

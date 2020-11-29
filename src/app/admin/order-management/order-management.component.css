@@ -1,0 +1,41 @@
+.container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+h3{
+    padding-top: 10px;
+}
+.table-container{
+    padding-bottom: 30px;
+}
+thead{
+    background-color: rgb(248,248,248);
+    border-radius: 2px;
+    color: rgb(157, 155, 155);
+}
+tbody{
+    color: rgb(157, 155, 155);
+}
+.table > tbody > tr > td{
+    border: none!important;
+    border-bottom: 1px solid rgb(248,248,248) !important;
+}
+.fa{
+    margin-right: 6px;
+}
+td a{
+    text-decoration: none;
+}
+td ul{
+    margin-bottom: 0px !important;
+    padding-left: initial;
+}
+td ul li{
+    display: inline-block;
+    padding-right: 5px;
+    list-style-type: none;
+}
