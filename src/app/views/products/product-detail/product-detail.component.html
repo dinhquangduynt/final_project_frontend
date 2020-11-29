@@ -198,7 +198,7 @@
                 <!-- Thumbnail Description Start -->
                 <div class="col-lg-7">
                     <div class="thubnail-desc fix">
-                        <h3 class="product-header">Faded Short Sleeves T-shirt</h3>
+                        <h3 class="product-header">{{detail.name}}</h3>
                         <div class="rating-summary fix mtb-10">
                             <div class="rating">
                                 <i class="fa fa-star"></i>
@@ -214,15 +214,15 @@
                         </div>
                         <div class="pro-price mtb-30">
                             <p class="d-flex align-items-center">
-                                <span class="prev-price">16.51</span>
-                                <span class="price">$15.19</span>
+                                <!-- <span class="prev-price">16.51</span> -->
+                                <span class="price">${{detail.price}}</span>
                                 <span class="saving-price">save 8%</span>
                             </p>
                         </div>
                         <p class="mb-20 pro-desc-details">
-                            Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!
+                            {{detail.description}}
                         </p>
-                        <div class="product-size mb-20 clearfix">
+                        <!-- <div class="product-size mb-20 clearfix">
                             <label>Size</label>
                             <select
                                 class
@@ -258,8 +258,8 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="color clearfix mb-20">
+                        </div> -->
+                        <!-- <div class="color clearfix mb-20">
                             <label>color</label>
                             <ul class="color-list">
                                 <li>
@@ -275,7 +275,7 @@
                                     ></a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <div class="box-quantity d-flex hot-product2">
                             <form action="#">
                                 <input
@@ -295,7 +295,7 @@
                                         + Add To Cart
                                     </a>
                                 </div>
-                                <div class="actions-secondary">
+                                <!-- <div class="actions-secondary">
                                     <a
                                         href="compare.html"
                                         title
@@ -312,7 +312,7 @@
                                         <i class="lnr lnr-heart"></i>
                                         <span>Add to WishList</span>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="pro-ref mt-20">
@@ -405,7 +405,7 @@
                         class="tab-pane fade active show"
                     >
                         <p>
-                            Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!
+                            {{detail.content}}
                         </p>
                     </div>
                     <div

@@ -247,7 +247,7 @@
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
                                     <li  *ngFor = 'let cate of listCate'>
-                                        <a routerLink ="/">{{cate.name}}</a>
+                                        <a [routerLink] = "['/'+cate.id+'/products']">{{cate.name}}</a>
                                     </li>
                                 </ul>
                                 <!-- Home Version Dropdown End -->
