@@ -2,7 +2,7 @@
   <div class="container_left">
     <h3 class="left">Products</h3>
     <form class="form1">
-      <button class="btn btn-add" data-toggle="modal" data-target="#modalAdd" ><i class="fa fa-check"></i>Thêm sản
+      <button class="btn btn-add" data-toggle="modal" data-target="#modalEdit" (click)="addNew()"><i class="fa fa-check"></i>Thêm sản
         phẩm</button>
       <div class="right">
         <input type="search" class="search" placeholder="Tìm kiếm danh mục">
@@ -27,15 +27,15 @@
         <tbody>
           <tr *ngFor = "let product of listProduct ; let i = index">
             <th scope="row">{{i+1}}</th>
-            <td>{{product.name}}</td>
-            <td><img src="../../../assets/img/products/1.jpg" alt=""></td>
+            <td style="width: 200px;">{{product.name}}</td>
+            <td><img src="http://192.168.1.6:8880/uploads/{{product.images}}" alt=""></td>
             <td>{{product.quantity}}</td>
             <td>{{product.price}}</td>
             <td>
               <ul>
                 <li><a type="button" class="btn-edit" (click)="detailProduct(product.id)"><i
                       class="fa fa-w fa-info"></i>xem chi tiết</a></li>
-                <li><a type="button" class="btn-edit" data-toggle="modal" data-target="#modalEdit"><i
+                <li><a type="button" class="btn-edit" data-toggle="modal" data-target="#modalEdit" (click)="detailProduct(product.id)"><i
                       class="fa fa-w fa-edit"></i>Chỉnh sửa</a></li>
                 <li><a type="button" class="btn-delete"(click)="deleteProduct(product.id)"><i
                       class="fa fa-th-list"></i>Xóa</a></li>
@@ -47,96 +47,9 @@
       </table>
     </div>
   </div>
-  <div class="container-right">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLongTitle">Thêm sản phẩm</h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form novalidate>
-            <div class="form-group">
-              <label>Tên sản phẩm</label>
-              <input type="text" class="form-control">
-            </div>
-            <div class="form-group">
-              <label>Hình ảnh</label>
-              <input type="file" class="form-control" multiple>
-            </div>
-            <div class="form-group">
-              <label>Số lượng</label>
-              <input type="number" class="form-control">
-            </div>
-            <div class="form-group">
-              <label>Nội dung</label>
-              <ckeditor [editor]="Editor"></ckeditor>
-            </div>
-            <div class="form-group">
-              <label>Giá mới</label>
-              <input type="number" class="form-control">
-            </div>
-            <div class="form-group">
-              <label>Giá cũ</label>
-              <input type="number" class="form-control">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary">Thêm</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
 </div>
-<!-- <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLongTitle">Thêm sản phẩm</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form novalidate>
-          <div class="form-group">
-            <label>Tên sản phẩm</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Hình ảnh</label>
-            <input type="file" class="form-control" multiple>
-          </div>
-          <div class="form-group">
-            <label>Số lượng</label>
-            <input type="number" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Nội dung</label>
-            <ckeditor [editor]="Editor"></ckeditor>
-          </div>
-          <div class="form-group">
-            <label>Giá mới</label>
-            <input type="number" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Giá cũ</label>
-            <input type="number" class="form-control">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary">Thêm</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+
 <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -151,23 +64,23 @@
         <form novalidate>
           <div class="form-group">
             <label>Tên sản phẩm</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control"  name="name" [(ngModel)]="dataProduct.name">
           </div>
           <div class="form-group">
             <label>Hình ảnh</label>
-            <input type="file" class="form-control" multiple>
+            <input type="file" class="form-control"  #fileInput multiple (change)="onChangeFile()">
           </div>
           <div class="form-group">
             <label>Số lượng</label>
-            <input type="number" class="form-control">
+            <input type="number" class="form-control" [(ngModel)]="dataProduct.quantity" name="quantity">
           </div>
           <div class="form-group">
             <label>Nội dung</label>
-            <ckeditor [editor]="Editor"></ckeditor>
+            <ckeditor [editor]="Editor" [(ngModel)]="dataProduct.content" name="content"></ckeditor>
           </div>
           <div class="form-group">
             <label>Giá mới</label>
-            <input type="number" class="form-control">
+            <input type="number" class="form-control" [(ngModel)]="dataProduct.price" name="price">
           </div>
           <div class="form-group">
             <label>Giá cũ</label>
@@ -177,7 +90,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary">Thêm</button>
+        <button type="button" class="btn btn-primary" (click)="save()">Thêm</button>
       </div>
     </div>
   </div>
