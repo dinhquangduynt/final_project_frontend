@@ -14,7 +14,7 @@ export class ProductsService {
     return this.httpClient.get(this.config.urlProduct.concat('/getAll'));
   }
 
-  getByProductId(productId){
+  getByProductId(productId: string){
     return this.httpClient.get(this.config.urlProduct.concat('/getById/') + productId)
   }
 
@@ -38,15 +38,5 @@ export class ProductsService {
       formData.append('files', file);
     }
     return this.httpClient.put(this.config.urlProduct.concat('/update'), formData)
-  }
-
-  add(data, files) {
-    const formData = new FormData();
-    console.log(data);
-    formData.append('json', JSON.stringify(data));
-    for (const file of files) {
-      formData.append('files', file);
-    }
-    return this.httpClient.put(this.config.urlProduct.concat('/update'), formData);
   }
 }

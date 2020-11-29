@@ -5,7 +5,7 @@
       <button class="btn btn-add" data-toggle="modal" data-target="#modalEdit" (click)="addNew()"><i class="fa fa-check"></i>Thêm sản
         phẩm</button>
       <div class="right">
-        <input type="search" class="search" placeholder="Tìm kiếm danh mục">
+        <input type="search" class="search" placeholder="Tìm kiếm sản phẩm">
         <label for="">filter by: </label>
         <select name="" id="">
           <option value="">all</option>
@@ -33,12 +33,12 @@
             <td>{{product.price}}</td>
             <td>
               <ul>
-                <li><a type="button" class="btn-edit" (click)="detailProduct(product.id)"><i
-                      class="fa fa-w fa-info"></i>xem chi tiết</a></li>
+                <li><a type="button" class="btn-infor" (click)="detailProduct(product.id)"><i
+                      class="fa fa-w fa-info"></i></a></li>
                 <li><a type="button" class="btn-edit" data-toggle="modal" data-target="#modalEdit" (click)="detailProduct(product.id)"><i
-                      class="fa fa-w fa-edit"></i>Chỉnh sửa</a></li>
+                      class="fa fa-w fa-edit"></i></a></li>
                 <li><a type="button" class="btn-delete"(click)="deleteProduct(product.id)"><i
-                      class="fa fa-th-list"></i>Xóa</a></li>
+                      class="fa fa-trash-o"></i></a></li>
                 <!-- <li><a href="" type="button" class="btn-list"><i class="fa fa-th-list"></i></a></li> -->
               </ul>
             </td>
@@ -67,6 +67,14 @@
             <input type="text" class="form-control"  name="name" [(ngModel)]="dataProduct.name">
           </div>
           <div class="form-group">
+            <label>Tên khác</label>
+            <input type="text" class="form-control"  name="alias" [(ngModel)]="dataProduct.alias">
+          </div>
+          <div class="form-group">
+            <label>Mô tả</label>
+            <input type="text" class="form-control"  name="description" [(ngModel)]="dataProduct.description">
+          </div>
+          <div class="form-group">
             <label>Hình ảnh</label>
             <input type="file" class="form-control"  #fileInput multiple (change)="onChangeFile()">
           </div>
@@ -75,16 +83,16 @@
             <input type="number" class="form-control" [(ngModel)]="dataProduct.quantity" name="quantity">
           </div>
           <div class="form-group">
+            <label>Bảo hành(tháng)</label>
+            <input type="number" class="form-control" [(ngModel)]="dataProduct.warranty" name="warranty">
+          </div>
+          <div class="form-group">
             <label>Nội dung</label>
             <ckeditor [editor]="Editor" [(ngModel)]="dataProduct.content" name="content"></ckeditor>
           </div>
           <div class="form-group">
             <label>Giá mới</label>
             <input type="number" class="form-control" [(ngModel)]="dataProduct.price" name="price">
-          </div>
-          <div class="form-group">
-            <label>Giá cũ</label>
-            <input type="number" class="form-control">
           </div>
         </form>
       </div>

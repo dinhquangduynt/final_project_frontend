@@ -37,12 +37,12 @@ export class ProductsComponent implements OnInit {
   };
   files = [];
   isEdit = false;
+  productId:any;
   constructor(private productService: ProductsService) { }
 
   ngOnInit(): void {
     this.getData();
   }
-
   getData() {
     this.productService.getAll().subscribe(
       (res: any) => {
@@ -52,10 +52,9 @@ export class ProductsComponent implements OnInit {
       }
     )
   }
-  detailProduct(productId) {
+  detailProduct(productId: any) {
     this.productService.getByProductId(productId).subscribe(
       (res: any) => {
-        console.log(res.data)
         this.dataProduct = res.data;
       },
       error => {
@@ -63,10 +62,11 @@ export class ProductsComponent implements OnInit {
       }
     )
   }
-  deleteProduct(productId) {
+  deleteProduct(productId: string) {
     this.productService.deleteProduct(productId).subscribe(
       (res: any) => {
-        return this.listProduct;
+        alert("thành công");
+        return this.listProduct;      
       },
       error => {
         console.log(error)
@@ -77,14 +77,14 @@ export class ProductsComponent implements OnInit {
     if(this.isEdit){
       this.productService.updateProduct(this.dataProduct, this.files).subscribe(res => {
         this.getData();
-        $('.modal').modal('hide');
+        $('#modalEdit').modal('hide');
       }, err => {
 
       })
     } else {
       this.productService.addProduct(this.dataProduct, this.files).subscribe(res => {
         this.getData();
-        $('.modal').modal('hide');
+        $('#modalEdit').modal('hide');
       }, err => {
 
       })

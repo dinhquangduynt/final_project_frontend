@@ -43,21 +43,32 @@ tbody{
 tr{
     border: none;
 }
-.btn-list{
+.btn-edit{
     border: 1px solid rgb(6, 107, 230);
     border-radius: 3px;
     padding: 3px;
     background-color: rgb(6, 107, 230);
     color: white;
 }
-.btn-edit{
+/* .btn-edit{
+    border: 1px solid rgb(93, 255, 90);
+    border-radius: 3px;
+    padding: 3px;
+    background-color: rgb(93, 255, 90);
+    color: white;
+} */
+.btn-infor{
     border: 1px solid rgb(93, 255, 90);
     border-radius: 3px;
     padding: 3px;
     background-color: rgb(93, 255, 90);
     color: white;
 }
-.btn-list:hover{
+ul li .btn-infor:hover{
+    border: green;
+    background-color: green;
+}
+.btn-edit:hover{
     border: rgb(6, 6, 189);
     background-color: rgb(6, 6, 189);
 }
@@ -65,10 +76,10 @@ ul li .btn-delete:hover{
     border: red;
     background-color: red;
 }
-ul li .btn-edit:hover{
+/* ul li .btn-edit:hover{
     border: green;
     background-color: green;
-}
+} */
 .btn-delete{
     border: 1px solid rgb(255, 95, 50);
     border-radius: 3px;
