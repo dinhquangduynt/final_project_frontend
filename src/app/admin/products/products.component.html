@@ -2,7 +2,7 @@
   <div class="container_left">
     <h3 class="left">Products</h3>
     <form class="form1">
-      <button class="btn btn-add" data-toggle="modal" data-target="#modalAdd" ><i class="fa fa-check"></i>Thêm sản
+      <button class="btn btn-add" data-toggle="modal" data-target="#modalAdd" (click)="addNew()"><i class="fa fa-check"></i>Thêm sản
         phẩm</button>
       <div class="right">
         <input type="search" class="search" placeholder="Tìm kiếm danh mục">
@@ -35,7 +35,7 @@
               <ul>
                 <li><a type="button" class="btn-edit" (click)="detailProduct(product.id)"><i
                       class="fa fa-w fa-info"></i>xem chi tiết</a></li>
-                <li><a type="button" class="btn-edit" data-toggle="modal" data-target="#modalEdit"><i
+                <li><a type="button" class="btn-edit" data-toggle="modal" data-target="#modalEdit" (click)="detailProduct(product.id)"><i
                       class="fa fa-w fa-edit"></i>Chỉnh sửa</a></li>
                 <li><a type="button" class="btn-delete"(click)="deleteProduct(product.id)"><i
                       class="fa fa-th-list"></i>Xóa</a></li>
@@ -60,23 +60,23 @@
           <form novalidate>
             <div class="form-group">
               <label>Tên sản phẩm</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" name="name" [(ngModel)]="dataProduct.name">
             </div>
             <div class="form-group">
               <label>Hình ảnh</label>
-              <input type="file" class="form-control" multiple>
+              <input type="file" class="form-control" multiple name="files" [(ngModel)] = "files">
             </div>
             <div class="form-group">
               <label>Số lượng</label>
-              <input type="number" class="form-control">
+              <input type="number" class="form-control" name="quantity" [(ngModel)] = "dataProduct.quantity" >
             </div>
             <div class="form-group">
               <label>Nội dung</label>
-              <ckeditor [editor]="Editor"></ckeditor>
+              <ckeditor [editor]="Editor" name="content" [(ngModel)] = "dataProduct.content"></ckeditor>
             </div>
             <div class="form-group">
               <label>Giá mới</label>
-              <input type="number" class="form-control">
+              <input type="number" class="form-control" name="price" [(ngModel)] = "dataProduct.price">
             </div>
             <div class="form-group">
               <label>Giá cũ</label>
@@ -86,7 +86,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary">Thêm</button>
+          <button type="button" class="btn btn-primary" (click) = "save()">Thêm</button>
         </div>
       </div>
     </div>
@@ -151,15 +151,15 @@
         <form novalidate>
           <div class="form-group">
             <label>Tên sản phẩm</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control"  name="name" [(ngModel)]="dataProduct.name">
           </div>
           <div class="form-group">
             <label>Hình ảnh</label>
-            <input type="file" class="form-control" multiple>
+            <input type="file" class="form-control"  #fileInput multiple (change)="onChangeFile()">
           </div>
           <div class="form-group">
             <label>Số lượng</label>
-            <input type="number" class="form-control">
+            <input type="number" class="form-control" [(ngModel)]="dataProduct.quantity" name="quantity">
           </div>
           <div class="form-group">
             <label>Nội dung</label>
@@ -167,7 +167,7 @@
           </div>
           <div class="form-group">
             <label>Giá mới</label>
-            <input type="number" class="form-control">
+            <input type="number" class="form-control" [(ngModel)]="dataProduct.price" name="price">
           </div>
           <div class="form-group">
             <label>Giá cũ</label>
@@ -177,7 +177,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary">Thêm</button>
+        <button type="button" class="btn btn-primary" (click)="save()">Thêm</button>
       </div>
     </div>
   </div>

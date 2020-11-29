@@ -11,21 +11,30 @@ export class ProductsService {
 
   private config = new Configure();
   getAll(){
-    return this.httpClient.get(this.config.urlProduct.concat("/getAll"));
+    return this.httpClient.get(this.config.urlProduct.concat('/getAll'));
   }
 
   getByProductId(productId){
-    return this.httpClient.get(this.config.urlProduct.concat("/getById/") + productId)
+    return this.httpClient.get(this.config.urlProduct.concat('/getById/') + productId)
   }
 
   deleteProduct(productId : string){
-    return this.httpClient.delete(this.config.urlProduct.concat("/delete/") +productId);
+    return this.httpClient.delete(this.config.urlProduct.concat('/delete/') +productId);
   }
   addProduct(product: any){
-    return this.httpClient.post(this.config.urlProduct.concat("/add"), product);
+    return this.httpClient.post(this.config.urlProduct.concat('/add'), product);
   }
 
   updateProduct(product: any){
-    return this.httpClient.put(this.config.urlProduct.concat("/update"), product)
+    return this.httpClient.put(this.config.urlProduct.concat('/update'), product)
   }
-} 
+
+  add(data, files) {
+    const formData = new FormData();
+    formData.append('json', data);
+    for (const file of files) {
+      formData.append('files', file);
+    }
+    return this.httpClient.put(this.config.urlProduct.concat('/update'), formData);
+  }
+}
