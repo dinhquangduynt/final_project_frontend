@@ -11,7 +11,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 const routes: Routes = [{ path: '', component: AdminComponent,
   children : [
     { path: 'home', component: HomeComponent},
-    { path: 'products', component: ProductsComponent},
+    { path: 'product', component: ProductsComponent},
     { path: 'statistics', component: StatisticsComponent},
     { path: 'order', component: OrderManagementComponent},
     { path: 'cateProducts', component: CateProductsComponent}

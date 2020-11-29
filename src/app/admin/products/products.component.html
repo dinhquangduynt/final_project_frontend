@@ -2,7 +2,7 @@
   <div class="container_left">
     <h3 class="left">Products</h3>
     <form class="form1">
-      <button class="btn btn-add" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-check"></i>Thêm sản
+      <button class="btn btn-add" data-toggle="modal" data-target="#modalAdd" ><i class="fa fa-check"></i>Thêm sản
         phẩm</button>
       <div class="right">
         <input type="search" class="search" placeholder="Tìm kiếm danh mục">
@@ -12,7 +12,6 @@
         </select>
       </div>
     </form>
-
     <div class="table">
       <table class="">
         <thead class="thead">
@@ -26,49 +25,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Arduino</td>
+          <tr *ngFor = "let product of listProduct ; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{product.name}}</td>
             <td><img src="../../../assets/img/products/1.jpg" alt=""></td>
-            <td>10</td>
-            <td>300$</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price}}</td>
             <td>
               <ul>
+                <li><a type="button" class="btn-edit" (click)="detailProduct(product.id)"><i
+                      class="fa fa-w fa-info"></i>xem chi tiết</a></li>
                 <li><a type="button" class="btn-edit" data-toggle="modal" data-target="#modalEdit"><i
                       class="fa fa-w fa-edit"></i>Chỉnh sửa</a></li>
-                <li><a type="button" class="btn-delete" data-toggle="modal" data-target="#modalDelete"><i
-                      class="fa fa-th-list"></i>Xóa</a></li>
-                <!-- <li><a href="" type="button" class="btn-list"><i class="fa fa-th-list"></i></a></li> -->
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Arduino</td>
-            <td><img src="../../../assets/img/products/1.jpg" alt=""></td>
-            <td>10</td>
-            <td>300$</td>
-            <td>
-              <ul>
-                <li><a type="button" class="btn-edit" data-toggle="modal" data-target="#modalEdit"><i
-                      class="fa fa-w fa-edit"></i>Chỉnh sửa</a></li>
-                <li><a type="button" class="btn-delete" data-toggle="modal" data-target="#modalDelete"><i
-                      class="fa fa-th-list"></i>Xóa</a></li>
-                <!-- <li><a href="" type="button" class="btn-list"><i class="fa fa-th-list"></i></a></li> -->
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Arduino</td>
-            <td><img src="../../../assets/img/products/1.jpg" alt=""></td>
-            <td>10</td>
-            <td>300$</td>
-            <td>
-              <ul>
-                <li><a type="button" class="btn-edit" data-toggle="modal" data-target="#modalEdit"><i
-                      class="fa fa-w fa-edit"></i>Chỉnh sửa</a></li>
-                <li><a type="button" class="btn-delete" data-toggle="modal" data-target="#modalDelete"><i
+                <li><a type="button" class="btn-delete"(click)="deleteProduct(product.id)"><i
                       class="fa fa-th-list"></i>Xóa</a></li>
                 <!-- <li><a href="" type="button" class="btn-list"><i class="fa fa-th-list"></i></a></li> -->
               </ul>
@@ -228,7 +197,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-        <button type="button" class="btn btn-primary">Xóa</button>
+        <button type="button" class="btn btn-primary" >Xóa</button>
       </div>
     </div>
   </div>

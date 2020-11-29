@@ -37,8 +37,8 @@ section{
 .main-container::-webkit-scrollbar {
     width: 7px !important;
     height: 7px !important;
-  }
+}
 .main-container::-webkit-scrollbar-thumb {
     background-color: blue !important;
     border-radius: 0.25rem;
-  }
+}

@@ -246,20 +246,8 @@
                                 </a>
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
-                                    <li>
-                                        <a routerLink ="/products">Arduino</a>
-                                    </li>
-                                    <li>
-                                        <a routerLink ="/products">Arduino 1</a>
-                                    </li>
-                                    <li>
-                                        <a routerLink ="/products">Arduino 2</a>
-                                    </li>
-                                    <li>
-                                        <a routerLink ="/products">Arduino 3</a>
-                                    </li>
-                                    <li>
-                                        <a routerLink ="/products">Arduino 4</a>
+                                    <li  *ngFor = 'let cate of listCate'>
+                                        <a routerLink ="/">{{cate.name}}</a>
                                     </li>
                                 </ul>
                                 <!-- Home Version Dropdown End -->

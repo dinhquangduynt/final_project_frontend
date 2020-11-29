@@ -24,7 +24,7 @@ select{
     box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .container{
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
 }
 thead{
@@ -147,4 +147,8 @@ table{
 
 .form-control{
     height: inherit !important;
+}
+.container-right{
+    display: none;
+    transition: 2s;
 }
