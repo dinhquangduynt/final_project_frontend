@@ -15,29 +15,28 @@ export class ProductsComponent implements OnInit {
   public Editor = ClassicEditor;
   listProduct;
   dataProduct = {
-
-
     alias: '',
-categoryId: '',
-content: '',
-createBy: '',
-create_date: '',
-description: '',
-homeFlg: '',
-hotFlg: '',
-id: '',
-images: '',
-name: '',
-price: '',
-quantity: '',
-rating: '',
-status: '',
-updateBy: '',
-update_date: '',
-viewCount: '',
-warranty: ''
+    categoryId: '',
+    content: '',
+    createBy: '',
+    create_date: '',
+    description: '',
+    homeFlg: '',
+    hotFlg: '',
+    id: '',
+    images: '',
+    name: '',
+    price: '',
+    quantity: '',
+    rating: '',
+    status: '',
+    updateBy: '',
+    update_date: '',
+    viewCount: '',
+    warranty: ''
   };
   files = [];
+  isEdit = false;
   constructor(private productService: ProductsService) { }
 
   ngOnInit(): void {
@@ -51,54 +50,80 @@ warranty: ''
       },
       error => {
       }
-    ),
-    $(document).ready(function () {
-      $(".btn-add").on("click", function(){
-        $(".container-right").css({
-          display:'block'
-        });
-        $(".container").css({
-          display:'flex'
-        })
-      })
-    })
+    )
   }
-  detailProduct(productId){
+  detailProduct(productId) {
     this.productService.getByProductId(productId).subscribe(
-      (res: any)=>{
+      (res: any) => {
         console.log(res.data)
         this.dataProduct = res.data;
       },
-      error =>{
+      error => {
         console.log(error)
       }
     )
   }
-  deleteProduct(productId){
+  deleteProduct(productId) {
     this.productService.deleteProduct(productId).subscribe(
-      (res: any)=>{
+      (res: any) => {
         return this.listProduct;
       },
-      error =>{
+      error => {
         console.log(error)
       }
     )
   }
-  save(){
-    this.productService.add(this.dataProduct,this.files).subscribe(res =>{
-      this.getData();
-    })
+  save() {
+    if(this.isEdit){
+      this.productService.updateProduct(this.dataProduct, this.files).subscribe(res => {
+        this.getData();
+        $('.modal').modal('hide');
+      }, err => {
+
+      })
+    } else {
+      this.productService.addProduct(this.dataProduct, this.files).subscribe(res => {
+        this.getData();
+        $('.modal').modal('hide');
+      }, err => {
+
+      })
+    }
+
   }
 
-  addNew(){
-
+  addNew() {
+    this.isEdit = false;
+    this.resetData();
   }
 
   onChangeFile() {
-    for(const file of this.fileInput.nativeElement.files ){
+    for (const file of this.fileInput.nativeElement.files) {
       this.files.push(file);
     }
   }
 
-
+  resetData(){
+    this.dataProduct = {
+      alias: '',
+      categoryId: '1',
+      content: '',
+      createBy: '',
+      create_date: '',
+      description: '',
+      homeFlg: '',
+      hotFlg: '',
+      id: '',
+      images: '',
+      name: '',
+      price: '',
+      quantity: '',
+      rating: '',
+      status: '',
+      updateBy: '',
+      update_date: '',
+      viewCount: '',
+      warranty: ''
+    };
+  }
 }

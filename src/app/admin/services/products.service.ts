@@ -21,17 +21,29 @@ export class ProductsService {
   deleteProduct(productId : string){
     return this.httpClient.delete(this.config.urlProduct.concat('/delete/') +productId);
   }
-  addProduct(product: any){
-    return this.httpClient.post(this.config.urlProduct.concat('/add'), product);
+  addProduct(data, files){
+    const formData = new FormData();
+    console.log(data);
+    formData.append('json', JSON.stringify(data));
+    for (const file of files) {
+      formData.append('files', file);
+    }
+    return this.httpClient.post(this.config.urlProduct.concat('/add'), formData);
   }
 
-  updateProduct(product: any){
-    return this.httpClient.put(this.config.urlProduct.concat('/update'), product)
+  updateProduct(data, files){
+    const formData = new FormData();
+    formData.append('json', JSON.stringify(data));
+    for (const file of files) {
+      formData.append('files', file);
+    }
+    return this.httpClient.put(this.config.urlProduct.concat('/update'), formData)
   }
 
   add(data, files) {
     const formData = new FormData();
-    formData.append('json', data);
+    console.log(data);
+    formData.append('json', JSON.stringify(data));
     for (const file of files) {
       formData.append('files', file);
     }
