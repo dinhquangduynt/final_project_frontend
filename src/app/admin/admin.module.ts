@@ -13,7 +13,7 @@ import { NgbCarouselModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { CateProductsComponent } from './cate-products/cate-products.component';  
+import { CateProductsComponent } from './cate-products/cate-products.component'; 
 
 
 @NgModule({
