@@ -17,7 +17,9 @@ export class ProductsService {
   getByProductId(productId: string){
     return this.httpClient.get(this.config.urlProduct.concat('/getById/') + productId)
   }
-
+  getByCateId(cateId: string){
+    return this.httpClient.get(this.config.urlProduct.concat('/getByCateId/') + cateId)
+  }
   deleteProduct(productId : string){
     return this.httpClient.delete(this.config.urlProduct.concat('/delete/') +productId);
   }

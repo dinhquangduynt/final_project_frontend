@@ -3,7 +3,7 @@
         <h2>Danh mục sản phẩm</h2>
     </div>
     <div class="div2">
-        <a href="" type="button" class="btn-add" data-toggle="modal" data-target="#modalAdd">
+        <a href="" type="button" class="btn-add" data-toggle="modal" data-target="#modalAdd" (click)="addnew()">
             <i class="fa fa-check"></i>
             Thêm danh mục
         </a>
@@ -27,11 +27,11 @@
                 <td>{{cate.name}}</td>
                 <td><img src="{{cate.image}}" alt=""></td>
                 <td>{{cate.description}}</td>
-                <td><a [routerLinkActive]="['router-link-active']" [routerLink]="['/admin/' + cate.id + '/products']" type="button" class="btn-list"><i class="fa fa-th-list"></i>Xem</a></td>
+                <td><a [routerLinkActive]="['router-link-active']" [routerLink]="['/admin/' + cate.id + '/product']" type="button" class="btn-list"><i class="fa fa-th-list"></i>Xem</a></td>
                 <td>
                     <ul>
-                        <li><a  type="button" class="btn-edit" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-w fa-edit"></i></a></li>
-                        <li><a  type="button" class="btn-delete" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash-o"></i></a></li>
+                        <li><a  type="button" class="btn-edit" data-toggle="modal" data-target="#modalEdit" (click)="detail(cate.id)"><i class="fa fa-w fa-edit"></i></a></li>
+                        <li><a  type="button" class="btn-delete" data-toggle="modal" data-target="#modalDelete" (click)="delete(cate.id)"><i class="fa fa-trash-o"></i></a></li>
                     </ul>
                 </td>
               </tr>
@@ -88,7 +88,7 @@
           <form novalidate>
               <div class="form-group">
                 <label>Tên danh mục</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="name" [(ngModel)]="dataCate.name">
               </div> 
               <div class="form-group">
                 <label>Tên khác</label>
@@ -125,7 +125,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-        <button type="button" class="btn btn-primary">Xóa</button>
+        <button type="button" class="btn btn-primary" >Xóa</button>
       </div>
     </div>
   </div>

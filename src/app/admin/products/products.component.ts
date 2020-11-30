@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { error } from 'protractor';
 import { ProductsService } from '../services/products.service';
+import { ActivatedRoute } from '@angular/router';
 declare var jQuery: any;
 declare var $: any;
 
@@ -14,6 +15,8 @@ export class ProductsComponent implements OnInit {
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   public Editor = ClassicEditor;
   listProduct;
+  cateId: any;
+  params:any;
   dataProduct = {
     alias: '',
     categoryId: '',
@@ -38,19 +41,34 @@ export class ProductsComponent implements OnInit {
   files = [];
   isEdit = false;
   productId:any;
-  constructor(private productService: ProductsService) { }
+  constructor(private activatedRoute: ActivatedRoute, private productService: ProductsService) { }
 
   ngOnInit(): void {
-    this.getData();
+    this.getByCateId();
+  }
+  getByCateId(){
+    this.params = this.activatedRoute.params.subscribe(params => {
+      this.cateId = params['cateId'];
+      this.productService.getByCateId(this.cateId).subscribe(
+        (res: any) => {
+          this.listProduct = res.data;
+        },
+        error => {
+        }
+      )
+    })
   }
   getData() {
-    this.productService.getAll().subscribe(
-      (res: any) => {
-        this.listProduct = res.data;
-      },
-      error => {
-      }
-    )
+    this.params = this.activatedRoute.params.subscribe(params => {
+      this.cateId = params['cateId'];
+      this.productService.getAll().subscribe(
+        (res: any) => {
+          this.listProduct = res.data;
+        },
+        error => {
+        }
+      )
+    })
   }
   detailProduct(productId: any) {
     this.productService.getByProductId(productId).subscribe(

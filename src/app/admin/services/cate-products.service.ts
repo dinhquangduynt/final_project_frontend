@@ -14,10 +14,10 @@ export class CateProductsService {
     return this.httpClient.get(this.config.urlCateProduct.concat('/getAll'))
   }
   getById(cateId: string){
-    return this.httpClient.get(this.config.urlCateProduct.concat('/getById') + cateId)
+    return this.httpClient.get(this.config.urlCateProduct.concat('/getById/') + cateId)
   }
   delete(cateId: string){
-    return this.httpClient.delete(this.config.urlCateProduct.concat('/delete') + cateId)
+    return this.httpClient.delete(this.config.urlCateProduct.concat('/delete/') + cateId)
   }
   update(data: any, files){
     const formData = new FormData();
