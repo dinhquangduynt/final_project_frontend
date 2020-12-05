@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-product-detail',
@@ -8,6 +9,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
+  public Editor = ClassicEditor;
   detail ={
     createBy: "",
     updateBy: "",
@@ -16,7 +18,8 @@ export class ProductDetailComponent implements OnInit {
     alias: "",
     categoryId:"",
     images: "",
-    price: "",
+    newPrice: "",
+    oldPrice: '',
     warranty: "",
     description: "",
     content: "",
@@ -38,7 +41,6 @@ export class ProductDetailComponent implements OnInit {
     this.productId = Number(this.activatedRoute.snapshot.paramMap.get('productId'));
     this.productService.getProductById(this.productId).subscribe(
       (res: any) => {
-        console.log(res.data)
         this.detail = res.data;
       },
       error => {

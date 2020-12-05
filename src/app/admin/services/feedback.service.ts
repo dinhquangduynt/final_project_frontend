@@ -17,7 +17,9 @@ export class FeedbackService {
     return this.httpClient.get(this.config.urlFeedback.concat('/getById/') + feedbackId)
   }
   addFeedBack(data:any){
-    return this.httpClient.post(this.config.urlFeedback.concat('/add'), data)
+    const formData = new FormData();
+    formData.append('json', JSON.stringify(data));
+    return this.httpClient.post(this.config.urlFeedback.concat('/add'), formData)
   }
   delete(feedbackId:any){
     return this.httpClient.delete(this.config.urlFeedback.concat('/delete/') +feedbackId)

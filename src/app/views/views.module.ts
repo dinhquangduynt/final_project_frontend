@@ -14,6 +14,7 @@ import { CartComponent } from './cart/cart.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     CommonModule,
     ViewsRoutingModule,
     FormsModule,
+    CKEditorModule
   ]
 })
 export class ViewsModule { }

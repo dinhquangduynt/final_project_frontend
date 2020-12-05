@@ -1,5 +1,33 @@
 @import '../../../styles.css';
 
-.h-single-product {
-  width: 226px; margin-right: 10px;
+.single-product-custom {
+  width: 210px !important; 
+  margin-right: 15px !important;
+}
+.pro-img-custom a img{
+  height: fit-content !important;
+}
+.post-title-custom {
+  height: 40px !important;
+  padding-bottom: 0 !important;
+}
+.post-title-custom h2{
+  height: 100% !important;
+  font-weight: 0 !important;
+}
+.hot-deal-active-custom {
+  margin-top: 0 !important;
+  height: 230px !important;
+}
+.h-single-product-custom {
+  width: 223px !important; 
+  margin-right: 15px !important;
+  display: flex;
+}
+.h-single-product-custom .single-product{
+  margin-right: 21px;
+}
+.h-single-product-custom .single-product .pro-img a img{
+  width: 205px;
+  height: 205px;
 }

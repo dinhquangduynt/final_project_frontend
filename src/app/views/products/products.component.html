@@ -662,7 +662,7 @@
                                             <a [routerLink] ="['/'+product.id+'/product-detail']">
                                                 <img
                                                     class="primary-img"
-                                                    src="../../../assets/img/products/1.jpg"
+                                                    src="../../../assets/images/{{product.images}}"
                                                     alt="single-product"
                                                 >
                                                 <img
@@ -690,7 +690,7 @@
                                                     <a [routerLink] ="['/'+product.id+'/product-detail']">{{product.name}}</a>
                                                 </h4>
                                                 <p>
-                                                    <span class="price">${{product.price}}</span>
+                                                    <span class="price">{{product.newPrice | currency : 'VND'}} VND</span>
                                                     <!-- <del class="prev-price">$</del> -->
                                                 </p>
                                                 <!-- <div class="label-product l_sale">
@@ -749,7 +749,7 @@
                                             <a [routerLink] ="['/'+product.id+'/product-detail']">
                                                 <img
                                                     class="primary-img"
-                                                    src="../../../assets/img/products/23.jpg"
+                                                    src="../../../assets/images/{{product.images}}"
                                                     alt="single-product"
                                                 >
                                                 <img
@@ -779,7 +779,7 @@
                                                 <a [routerLink] ="['/'+product.id+'/product-detail']">{{product.name}}</a>
                                             </h4>
                                             <p>
-                                                <span class="price">${{product.price}}</span>
+                                                <span class="price">{{product.newPrice | currency : 'VND'}} VND</span>
                                             </p>
                                             <p>
                                                 {{product.description}}

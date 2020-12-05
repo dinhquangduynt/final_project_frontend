@@ -29,7 +29,8 @@ export class ProductsComponent implements OnInit {
     id: '',
     images: '',
     name: '',
-    price: '',
+    newPrice: '',
+    oldPrice:'',
     quantity: '',
     rating: '',
     status: '',
@@ -58,18 +59,6 @@ export class ProductsComponent implements OnInit {
       )
     })
   }
-  getData() {
-    this.params = this.activatedRoute.params.subscribe(params => {
-      this.cateId = params['cateId'];
-      this.productService.getAll().subscribe(
-        (res: any) => {
-          this.listProduct = res.data;
-        },
-        error => {
-        }
-      )
-    })
-  }
   detailProduct(productId: any) {
     this.productService.getByProductId(productId).subscribe(
       (res: any) => {
@@ -84,7 +73,8 @@ export class ProductsComponent implements OnInit {
     this.productService.deleteProduct(productId).subscribe(
       (res: any) => {
         alert("thành công");
-        return this.listProduct;      
+        // return this.listProduct;
+        this.getByCateId();      
       },
       error => {
         console.log(error)
@@ -94,14 +84,14 @@ export class ProductsComponent implements OnInit {
   save() {
     if(this.isEdit){
       this.productService.updateProduct(this.dataProduct, this.files).subscribe(res => {
-        this.getData();
+        this.getByCateId()
         $('#modalEdit').modal('hide');
       }, err => {
 
       })
     } else {
       this.productService.addProduct(this.dataProduct, this.files).subscribe(res => {
-        this.getData();
+        this.getByCateId()
         $('#modalEdit').modal('hide');
       }, err => {
 
@@ -134,7 +124,8 @@ export class ProductsComponent implements OnInit {
       id: '',
       images: '',
       name: '',
-      price: '',
+      newPrice: '',
+      oldPrice: '',
       quantity: '',
       rating: '',
       status: '',

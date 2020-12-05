@@ -20,6 +20,7 @@
             <th scope="col">Tên sản phẩm</th>
             <th scope="col">Hình ảnh</th>
             <th scope="col">Số lượng</th>
+            <th>Thời gian bảo hành</th>
             <th>Giá mới</th>
             <th>Thao tác</th>
           </tr>
@@ -28,9 +29,10 @@
           <tr *ngFor = "let product of listProduct ; let i = index">
             <th scope="row">{{i+1}}</th>
             <td style="width: 200px;">{{product.name}}</td>
-            <td><img src="http://192.168.1.6:8880/uploads/{{product.images}}" alt=""></td>
+            <td><img src="../../../assets/images/{{product.images}}" alt=""></td>
             <td>{{product.quantity}}</td>
-            <td>{{product.price}}</td>
+            <td>{{product.warranty}} Tháng</td>
+            <td>{{product.newPrice | currency : 'VND'}}</td>
             <td>
               <ul>
                 <li><a type="button" class="btn-infor" (click)="detailProduct(product.id)"><i
@@ -92,7 +94,11 @@
           </div>
           <div class="form-group">
             <label>Giá mới</label>
-            <input type="number" class="form-control" [(ngModel)]="dataProduct.price" name="price">
+            <input type="number" class="form-control" [(ngModel)]="dataProduct.newPrice" name="newPrice">
+          </div>
+          <div class="form-group">
+            <label>Giá cũ</label>
+            <input type="number" class="form-control" [(ngModel)]="dataProduct.oldPrice" name="oldPrice">
           </div>
         </form>
       </div>
