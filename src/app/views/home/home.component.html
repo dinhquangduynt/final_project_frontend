@@ -1,7 +1,134 @@
-<div class="hot-deal-products off-white-bg pb-90 pb-sm-50">
+<div>
+  <div class="slider_box">
+    <div class="slider-wrapper theme-default">
+        <!-- Slider Background  Image Start-->
+        <div id="slider" class="nivoSlider">
+            <a href="shop.html"><img src="../../../assets/img/slider/5.jpg" data-thumb="img/slider/5.jpg" alt="" title="#htmlcaption"></a>
+            <a href="shop.html"><img src="../../../assets/img/slider/6.jpg" data-thumb="img/slider/6.jpg" alt="" title="#htmlcaption2"></a>
+        </div>
+        <!-- Slider Background  Image Start-->
+    </div>
+  </div>
+  <div class="hot-deal-products off-white-bg pb-90 pb-sm-50">
+      <div class="container">
+          <div class="post-title pb-30">
+              <h2>Có thể bạn thích</h2>
+          </div>
+          <!-- Product Title End -->
+          <!-- Hot Deal Product Activation Start -->
+          <div class="hot-deal-active owl-carousel owl-loaded owl-drag">
+              <div class="main-product-tab-area">
+                  <!-- Tab Contetn Start -->
+                  <div class="tab-content">
+                      <!-- #fshion End Here -->
+                      <div
+                          id="kids"
+                          class="tab-pane fade show active"
+                      >
+                          <div class="row">
+                              <div class="col-lg-12 order-1 order-lg-2">
+                                  <!-- Arrivals Product Activation Start Here -->
+                                  <div class="electronics-pro-active2 owl-carousel owl-loaded owl-drag">
+                                      <div class="owl-stage-outer">
+                                          <div
+                                              class="owl-stage"
+                                              style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1416px;"
+                                          >
+                                          <ng-container *ngFor="let item of listProductHot" >
+                                              <div
+                                                  class="owl-item active"
+                                                  style="width: 226px; margin-right: 7px;"
+                                              >
+                                                  <!-- <div class="double-product"> -->
+                                                      <!-- Single Product Start -->
+                                                      <div class="single-product">
+                                                          <!-- Product Image Start -->
+                                                          <div class="pro-img">
+                                                              <a  [routerLink] = "['/product-detail/'+item.id]">
+                                                                  <img
+                                                                      class="primary-img"
+                                                                      src="../../../assets/images/{{item?.images[0]?.fileName}}"
+                                                                      alt="single-product"
+                                                                  >
+                                                                  <img
+                                                                      class="secondary-img"
+                                                                      src="../../../assets/images/{{item?.images[0]?.fileName}}"
+                                                                      alt="single-product"
+                                                                  >
+                                                              </a>
+                                                              <a
+                                                                  href="#"
+                                                                  class="quick_view"
+                                                                  data-toggle="modal"
+                                                                  data-target="#myModal"
+                                                                  title
+                                                                  data-original-title="Quick View"
+                                                              >
+                                                                  <i class="lnr lnr-magnifier"></i>
+                                                              </a>
+                                                          </div>
+                                                          <!-- Product Image End -->
+                                                          <!-- Product Content Start -->
+                                                          <div class="pro-content">
+                                                              <div class="pro-info">
+                                                                  <h4>
+                                                                      <a >{{item.name}}</a>
+                                                                  </h4>
+                                                                  <p>
+                                                                      <span class="price">{{item.newPrice | currency:'VND'}}</span>
+                                                                      <del class="prev-price">{{item.oldPrice | currency: 'VND'}}</del>
+                                                                  </p>
+                                                                  <!-- <div class="label-product l_sale">
+                                                                      20
+                                                                      <span class="symbol-percent">%</span>
+                                                                  </div> -->
+                                                              </div>
+                                                              <div class="pro-actions">
+                                                                  <div class="actions-primary">
+                                                                      <a
+
+                                                                          title
+                                                                          data-original-title="Thêm vào giỏ hàng"
+                                                                      >
+                                                                          + Thêm vào giỏ hàng
+                                                                      </a>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <!-- Single Product End -->
+                                                      <!-- </div> -->
+                                                    </div>
+                                                  </ng-container>
+
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- Arrivals Product Activation End Here -->
+                              </div>
+                          </div>
+                      </div>
+
+
+
+                  </div>
+                  <!-- Tab Content End -->
+              </div>
+          </div>
+
+          <div class="hot-deal-active owl-carousel owl-loaded owl-drag">
+
+          </div>
+
+      </div>
+  </div>
+
+  <!-- hot deal -->
+
+  <div class="hot-deal-products off-white-bg pb-90 pb-sm-50">
     <div class="container">
-        <div class="post-title pb-30">
-            <h2>Có thể bạn thích</h2>
+        <div class="post-title  pb-30">
+            <h2>Sản phẩm hot</h2>
         </div>
         <!-- Product Title End -->
         <!-- Hot Deal Product Activation Start -->
@@ -21,12 +148,12 @@
                                     <div class="owl-stage-outer">
                                         <div
                                             class="owl-stage"
-                                            style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1416px;"
+                                            style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1400px;"
                                         >
                                         <ng-container *ngFor="let item of listProductHot" >
                                             <div
                                                 class="owl-item active"
-                                                style="width: 226px; margin-right: 7px;"
+                                                style="width: 226px; margin-right: 10px;"
                                             >
                                                 <!-- <div class="double-product"> -->
                                                     <!-- Single Product Start -->
@@ -78,12 +205,15 @@
 
                                                                         title
                                                                         data-original-title="Thêm vào giỏ hàng"
+
                                                                     >
                                                                         + Thêm vào giỏ hàng
                                                                     </a>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <!-- Product Content End -->
+                                                        <span class="sticker-new">hot</span>
                                                     </div>
                                                     <!-- Single Product End -->
                                                     <!-- </div> -->
@@ -103,6 +233,7 @@
                 </div>
                 <!-- Tab Content End -->
             </div>
+
         </div>
 
         <div class="hot-deal-active owl-carousel owl-loaded owl-drag">
@@ -110,265 +241,147 @@
         </div>
 
     </div>
-</div>
-
-
-<!-- hot deal -->
-
-<div class="hot-deal-products off-white-bg pb-90 pb-sm-50">
-  <div class="container">
-      <div class="post-title  pb-30">
-          <h2>Sản phẩm hot</h2>
-      </div>
-      <!-- Product Title End -->
-      <!-- Hot Deal Product Activation Start -->
-      <div class="hot-deal-active owl-carousel owl-loaded owl-drag">
-          <div class="main-product-tab-area">
-              <!-- Tab Contetn Start -->
-              <div class="tab-content">
-                  <!-- #fshion End Here -->
-                  <div
-                      id="kids"
-                      class="tab-pane fade show active"
-                  >
-                      <div class="row">
-                          <div class="col-lg-12 order-1 order-lg-2">
-                              <!-- Arrivals Product Activation Start Here -->
-                              <div class="electronics-pro-active2 owl-carousel owl-loaded owl-drag">
-                                  <div class="owl-stage-outer">
-                                      <div
-                                          class="owl-stage"
-                                          style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1400px;"
-                                      >
-                                      <ng-container *ngFor="let item of listProductHot" >
-                                          <div
-                                              class="owl-item active"
-                                              style="width: 226px; margin-right: 10px;"
-                                          >
-                                              <!-- <div class="double-product"> -->
-                                                  <!-- Single Product Start -->
-                                                  <div class="single-product">
-                                                      <!-- Product Image Start -->
-                                                      <div class="pro-img">
-                                                          <a  [routerLink] = "['/product-detail/'+item.id]">
-                                                              <img
-                                                                  class="primary-img"
-                                                                  src="../../../assets/images/{{item?.images[0]?.fileName}}"
-                                                                  alt="single-product"
-                                                              >
-                                                              <img
-                                                                  class="secondary-img"
-                                                                  src="../../../assets/images/{{item?.images[0]?.fileName}}"
-                                                                  alt="single-product"
-                                                              >
-                                                          </a>
-                                                          <a
-                                                              href="#"
-                                                              class="quick_view"
-                                                              data-toggle="modal"
-                                                              data-target="#myModal"
-                                                              title
-                                                              data-original-title="Quick View"
-                                                          >
-                                                              <i class="lnr lnr-magnifier"></i>
-                                                          </a>
-                                                      </div>
-                                                      <!-- Product Image End -->
-                                                      <!-- Product Content Start -->
-                                                      <div class="pro-content">
-                                                          <div class="pro-info">
-                                                              <h4>
-                                                                  <a >{{item.name}}</a>
-                                                              </h4>
-                                                              <p>
-                                                                  <span class="price">{{item.newPrice | currency:'VND'}}</span>
-                                                                  <del class="prev-price">{{item.oldPrice | currency: 'VND'}}</del>
-                                                              </p>
-                                                              <!-- <div class="label-product l_sale">
-                                                                  20
-                                                                  <span class="symbol-percent">%</span>
-                                                              </div> -->
-                                                          </div>
-                                                          <div class="pro-actions">
-                                                              <div class="actions-primary">
-                                                                  <a
-
-                                                                      title
-                                                                      data-original-title="Thêm vào giỏ hàng"
-
-                                                                  >
-                                                                      + Thêm vào giỏ hàng
-                                                                  </a>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                      <!-- Product Content End -->
-                                                      <span class="sticker-new">hot</span>
-                                                  </div>
-                                                  <!-- Single Product End -->
-                                                  <!-- </div> -->
-                                                </div>
-                                              </ng-container>
-
-                                      </div>
-                                  </div>
-                              </div>
-                              <!-- Arrivals Product Activation End Here -->
-                          </div>
-                      </div>
-                  </div>
-
-
-
-              </div>
-              <!-- Tab Content End -->
-          </div>
-
-      </div>
-
-      <div class="hot-deal-active owl-carousel owl-loaded owl-drag">
-
-      </div>
-
   </div>
-</div>
 
-<!-- sản phẩm mới -->
+  <!-- sản phẩm mới -->
 
-<div class="arrivals-product pb-85 pb-sm-45">
-  <div class="container">
+  <div class="arrivals-product pb-85 pb-sm-45">
+    <div class="container">
 
-    <div class="main-product-tab-area">
-      <div class="tab-menu mb-25">
-        <div class="section-ttitle">
-            <h2>New Arrivals</h2>
-       </div>
-        <!-- Nav tabs -->
-        <!-- <ul class="nav tabs-area" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#fshion">Fashion</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#beauty">Beauty</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#electronics">Sport/Outdoor</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#kids">Living</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#beauty">Food</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#kids">Baby/Kids</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#electronics">Electronics </a>
-            </li>
-        </ul>                        -->
+      <div class="main-product-tab-area">
+        <div class="tab-menu mb-25">
+          <div class="section-ttitle">
+              <h2>New Arrivals</h2>
+         </div>
+          <!-- Nav tabs -->
+          <!-- <ul class="nav tabs-area" role="tablist">
+              <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#fshion">Fashion</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#beauty">Beauty</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#electronics">Sport/Outdoor</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#kids">Living</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#beauty">Food</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#kids">Baby/Kids</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#electronics">Electronics </a>
+              </li>
+          </ul>                        -->
+
+      </div>
+
+      <!-- Tab Contetn Start -->
+      <div class="tab-content">
+        <!-- #fshion End Here -->
+        <div
+            id="kids"
+            class="tab-pane fade show active"
+        >
+            <div class="row">
+                <div class="col-lg-12 order-1 order-lg-2">
+                    <!-- Arrivals Product Activation Start Here -->
+                    <div class="electronics-pro-active2 owl-carousel owl-loaded owl-drag">
+                        <div class="owl-stage-outer">
+                            <div
+                                class="owl-stage"
+                                style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1400px;"
+                            >
+                            <ng-container *ngFor="let item of listProductHot" >
+                                <div
+                                    class="owl-item active"
+                                    style="width: 383.333px; margin-right: 10px;"
+                                >
+                                    <!-- <div class="double-product"> -->
+                                        <!-- Single Product Start -->
+                                        <div class="single-product">
+                                            <!-- Product Image Start -->
+                                            <div class="pro-img">
+                                                <a  [routerLink] = "['/product-detail/'+item.id]">
+                                                    <img
+                                                        class="primary-img"
+                                                        src="../../../assets/images/{{item?.images[0]?.fileName}}"
+                                                        alt="single-product"
+                                                    >
+                                                    <img
+                                                        class="secondary-img"
+                                                        src="../../../assets/images/{{item?.images[0]?.fileName}}"
+                                                        alt="single-product"
+                                                    >
+                                                </a>
+                                                <a
+                                                    href="#"
+                                                    class="quick_view"
+                                                    data-toggle="modal"
+                                                    data-target="#myModal"
+                                                    title
+                                                    data-original-title="Quick View"
+                                                >
+                                                    <i class="lnr lnr-magnifier"></i>
+                                                </a>
+                                            </div>
+                                            <!-- Product Image End -->
+                                            <!-- Product Content Start -->
+                                            <div class="pro-content">
+                                                <div class="pro-info">
+                                                    <h4>
+                                                        <a >{{item.name}}</a>
+                                                    </h4>
+                                                    <p>
+                                                        <span class="price">{{item.newPrice | currency:'VND'}}</span>
+                                                        <del class="prev-price">{{item.oldPrice | currency: 'VND'}}</del>
+                                                    </p>
+                                                    <!-- <div class="label-product l_sale">
+                                                        20
+                                                        <span class="symbol-percent">%</span>
+                                                    </div> -->
+                                                </div>
+                                                <div class="pro-actions">
+                                                    <div class="actions-primary">
+                                                        <a
+
+                                                            title
+                                                            data-original-title="Thêm vào giỏ hàng"
+
+                                                        >
+                                                            + Thêm vào giỏ hàng
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Product Content End -->
+                                            <span class="sticker-new">new</span>
+                                        </div>
+                                        <!-- Single Product End -->
+                                        <!-- </div> -->
+                                      </div>
+                                    </ng-container>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Arrivals Product Activation End Here -->
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- Tab Content End -->
 
     </div>
 
-    <!-- Tab Contetn Start -->
-    <div class="tab-content">
-      <!-- #fshion End Here -->
-      <div
-          id="kids"
-          class="tab-pane fade show active"
-      >
-          <div class="row">
-              <div class="col-lg-12 order-1 order-lg-2">
-                  <!-- Arrivals Product Activation Start Here -->
-                  <div class="electronics-pro-active2 owl-carousel owl-loaded owl-drag">
-                      <div class="owl-stage-outer">
-                          <div
-                              class="owl-stage"
-                              style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1400px;"
-                          >
-                          <ng-container *ngFor="let item of listProductHot" >
-                              <div
-                                  class="owl-item active"
-                                  style="width: 383.333px; margin-right: 10px;"
-                              >
-                                  <!-- <div class="double-product"> -->
-                                      <!-- Single Product Start -->
-                                      <div class="single-product">
-                                          <!-- Product Image Start -->
-                                          <div class="pro-img">
-                                              <a  [routerLink] = "['/product-detail/'+item.id]">
-                                                  <img
-                                                      class="primary-img"
-                                                      src="../../../assets/images/{{item?.images[0]?.fileName}}"
-                                                      alt="single-product"
-                                                  >
-                                                  <img
-                                                      class="secondary-img"
-                                                      src="../../../assets/images/{{item?.images[0]?.fileName}}"
-                                                      alt="single-product"
-                                                  >
-                                              </a>
-                                              <a
-                                                  href="#"
-                                                  class="quick_view"
-                                                  data-toggle="modal"
-                                                  data-target="#myModal"
-                                                  title
-                                                  data-original-title="Quick View"
-                                              >
-                                                  <i class="lnr lnr-magnifier"></i>
-                                              </a>
-                                          </div>
-                                          <!-- Product Image End -->
-                                          <!-- Product Content Start -->
-                                          <div class="pro-content">
-                                              <div class="pro-info">
-                                                  <h4>
-                                                      <a >{{item.name}}</a>
-                                                  </h4>
-                                                  <p>
-                                                      <span class="price">{{item.newPrice | currency:'VND'}}</span>
-                                                      <del class="prev-price">{{item.oldPrice | currency: 'VND'}}</del>
-                                                  </p>
-                                                  <!-- <div class="label-product l_sale">
-                                                      20
-                                                      <span class="symbol-percent">%</span>
-                                                  </div> -->
-                                              </div>
-                                              <div class="pro-actions">
-                                                  <div class="actions-primary">
-                                                      <a
-
-                                                          title
-                                                          data-original-title="Thêm vào giỏ hàng"
-
-                                                      >
-                                                          + Thêm vào giỏ hàng
-                                                      </a>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <!-- Product Content End -->
-                                          <span class="sticker-new">new</span>
-                                      </div>
-                                      <!-- Single Product End -->
-                                      <!-- </div> -->
-                                    </div>
-                                  </ng-container>
-
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Arrivals Product Activation End Here -->
-              </div>
-          </div>
-      </div>
-
-
-
   </div>
-  <!-- Tab Content End -->
-
   </div>
 
 </div>
