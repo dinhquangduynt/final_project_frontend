@@ -24,36 +24,36 @@ export class CateProductsComponent implements OnInit {
     create_date: '',
     update_date: ''
   }
-  
+
   constructor(private cateService: CateProductsService) { }
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   ngOnInit(): void {
     this.getAll();
   }
-  getAll(){
+  getAll() {
     this.cateService.getAll().subscribe(
-      (res:any)=>{
-        this.listCate = res.data
+      (res: any) => {
+        this.listCate = res.data;
       },
-      err=>{
-        console.log(err)
+      err => {
+        console.log(err);
       }
     )
   }
-  detail(cateId:any){
+  detail(cateId: any) {
     this.cateService.getById(cateId).subscribe(
-      (res:any)=>{
-        this.dataCate =res.data;
+      (res: any) => {
+        this.dataCate = res.data;
       },
-      err=>{
+      err => {
 
       }
     )
   }
-  addnew(){
+  addnew() {
     this.reset();
   }
-  reset(){
+  reset() {
     this.dataCate = {
       createBy: '',
       updateBy: '',
@@ -67,26 +67,26 @@ export class CateProductsComponent implements OnInit {
       update_date: ''
     }
   }
-  addCate(){
+  addCate() {
     this.cateService.addCateProduct(this.dataCate, this.files).subscribe(
-      (res:any)=>{
-        alert("add success");
+      (res: any) => {
+        alert('add success');
         $('#modalAdd').modal('hide');
         this.getAll();
       },
-      err=>{
+      err => {
 
       }
     )
   }
-  update(){
+  update() {
     this.cateService.update(this.dataCate, this.files).subscribe(
-      (res:any)=>{
-        alert("update success");
+      (res: any) => {
+        alert('update success');
         $('#modalEdit').modal('hide');
         this.getAll();
       },
-      err=>{
+      err => {
 
       }
     )
@@ -96,13 +96,13 @@ export class CateProductsComponent implements OnInit {
       this.files.push(file);
     }
   }
-  delete(cateId:string){
+  delete(cateId: string) {
     this.cateService.delete(cateId).subscribe(
-      res=>{
-        alert("delete successfully...");
+      res => {
+        alert('delete successfully...');
         this.getAll();
       },
-      err=>{
+      err => {
         console.log(err)
       }
     )

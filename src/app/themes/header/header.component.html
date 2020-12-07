@@ -4,15 +4,15 @@
             <div class="header-top">
                 <ul>
                     <li>
-                        <a routerLink ="">Miến phí ship cho đơn hàng trên 500k</a>
+                        <a>Miến phí ship cho đơn hàng trên 500k</a>
                     </li>
                     <li>
-                        <a routerLink ="">Giỏ hàng</a>
+                        <a routerLink = '/cart'>Giỏ hàng</a>
                     </li>
                 </ul>
                 <ul>
                     <li>
-                        <a routerLink ="">
+                        <a routerLink>
                             Tài khoản
                             <i class="lnr lnr-chevron-down"></i>
                         </a>
@@ -36,7 +36,7 @@
             <div class="row align-items-center no-gutters">
                 <div class="col-lg-3 col-md-12">
                     <div class="logo mb-all-30">
-                        <a routerLink ="">
+                        <a routerLink>
                             <!-- <img
                                 src="../../../assets/img/logo/logo.png"
                                 alt="logo-image"
@@ -47,28 +47,15 @@
                 <!-- Categorie Search Box Start Here -->
                 <div class="col-lg-5 col-md-8 ml-auto mr-auto col-10">
                     <div class="categorie-search-box">
-                        <form action="#">
-                            <div class="form-group">
-                                <select
-                                    class="bootstrap-select"
-                                    name="poscats"
-                                >
-                                    <option value="0">Tất cả danh mục</option>
-                                    <option value="2">Arduino</option>
-                                    <option value="3">Ic</option>
-                                    <option value="4">Cords and Cables</option>
-                                    <option value="5">gps accessories</option>
-                                </select>
-                            </div>
-                            <input
+                        <input
                                 type="text"
                                 name="search"
                                 placeholder="Tìm kiếm..."
+                                [(ngModel)]='search'
                             >
-                            <button>
+                            <button (click) ="onSearch()">
                                 <i class="lnr lnr-magnifier"></i>
                             </button>
-                        </form>
                     </div>
                 </div>
                 <!-- Categorie Search Box End Here -->
@@ -77,19 +64,19 @@
                     <div class="cart-box mt-all-30">
                         <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
                             <li>
-                                <a routerLink ="/cart">
+                                <a routerLink="/cart">
                                     <i class="lnr lnr-cart"></i>
                                     <span class="my-cart">
-                                        <span class="total-pro">2</span>
+                                        <span class="total-pro">{{quantity}}</span>
                                         <span>Giỏ hàng</span>
                                     </span>
                                 </a>
-                                <ul class="ht-dropdown cart-box-width">
+                                <!-- <ul class="ht-dropdown cart-box-width">
                                     <li>
-                                        <!-- Cart Box Start -->
+
                                         <div class="single-cart-box">
                                             <div class="cart-img">
-                                                <a >
+                                                <a>
                                                     <img
                                                         src="../../../assets/img/products/1.jpg"
                                                         alt="cart-image"
@@ -99,7 +86,7 @@
                                             </div>
                                             <div class="cart-content">
                                                 <h6>
-                                                    <a routerLink ="">Printed Summer Red</a>
+                                                    <a routerLink>Printed Summer Red</a>
                                                 </h6>
                                                 <span class="cart-price">27.45</span>
                                                 <span>Size: S</span>
@@ -107,41 +94,15 @@
                                             </div>
                                             <a
                                                 class="del-icone"
-                                                routerLink =""
+                                                routerLink
                                             >
                                                 <i class="ion-close"></i>
                                             </a>
-                                        </div>
-                                        <!-- Cart Box End -->
-                                        <!-- Cart Box Start -->
-                                        <div class="single-cart-box">
-                                            <div class="cart-img">
-                                                <a routerLink ="">
-                                                    <img
-                                                        src="../../../assets/img/products/2.jpg"
-                                                        alt="cart-image"
-                                                    >
-                                                </a>
-                                                <span class="pro-quantity">1X</span>
-                                            </div>
-                                            <div class="cart-content">
-                                                <h6>
-                                                    <a routerLink ="">Printed Round Neck</a>
-                                                </h6>
-                                                <span class="cart-price">45.00</span>
-                                                <span>Size: XL</span>
-                                                <span>Color: Green</span>
-                                            </div>
-                                            <a
-                                                class="del-icone"
-                                                routerLink =""
-                                            >
-                                                <i class="ion-close"></i>
-                                            </a>
-                                        </div>
+                                        </div> -->
+
                                         <!-- Cart Box End -->
                                         <!-- Cart Footer Inner Start -->
-                                        <div class="cart-footer">
+                                        <!-- <div class="cart-footer">
                                             <ul class="price-content">
                                                 <li>
                                                     Subtotal
@@ -163,19 +124,20 @@
                                             <div class="cart-actions text-center">
                                                 <a
                                                     class="cart-checkout"
-                                                    routerLink =""
+                                                    routerLink
                                                 >
                                                     Checkout
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- Cart Footer Inner End -->
-                                    </li>
-                                </ul>
+                                    <!-- </li>
+                                </ul>-->
                             </li>
 
+
                             <li>
-                                <a routerLink ="">
+                                <a routerLink = "/login">
                                     <i class="lnr lnr-user"></i>
                                     <span class="my-cart">
                                         <span>
@@ -200,30 +162,12 @@
     <div class="header-bottom  header-sticky">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-xl-3 col-lg-4 col-md-6 vertical-menu d-none d-lg-block"></div>
-                <div class="col-xl-9 col-lg-8 col-md-12 ">
+                <div class="e-header">
                     <nav class="d-none d-lg-block">
                         <ul class="header-bottom-list d-flex">
                             <li class="active">
-                                <a routerLink="">Trang chủ</a>
+                                <a routerLink>Trang chủ</a>
                             </li>
-                            <!-- <li>
-                                <a href="shop.html">
-                                    shop
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="ht-dropdown dropdown-style-two">
-                                    <li>
-                                        <a routerLink ="/product-detail">product detail</a>
-                                    </li>
-                                    <li>
-                                        <a routerLink ="/cart">cart</a>
-                                    </li>
-                                    <li>
-                                        <a routerLink ="/checkout">checkout</a>
-                                    </li>
-                                </ul>
-                            </li> -->
                             <li>
                                 <a>
                                     Danh mục
@@ -231,20 +175,20 @@
                                 </a>
                                 <!-- Home Version Dropdown Start -->
                                 <ul class="ht-dropdown dropdown-style-two">
-                                    <li  *ngFor = 'let cate of listCate'>
-                                        <a [routerLink] = "['/'+cate.id+'/products']">{{cate.name}}</a>
+                                    <li *ngFor='let cate of listCate'>
+                                        <a [routerLink]="['/products/'+ cate.id]">{{cate.name}}</a>
                                     </li>
                                 </ul>
                                 <!-- Home Version Dropdown End -->
                             </li>
                             <li>
-                                <a routerLink ="/about" >Giới thiệu</a>
+                                <a routerLink="/about">Giới thiệu</a>
                             </li>
                             <li>
-                                <a routerLink ="/contact">Liên hệ</a>
+                                <a routerLink="/contact">Liên hệ</a>
                             </li>
                             <li>
-                                <a routerLink ="/admin/home">Quản trị</a>
+                                <a routerLink="/admin/home">Quản trị</a>
                             </li>
                         </ul>
                     </nav>
@@ -256,7 +200,6 @@
                                 style="right: 0px; left: auto; text-align: center; text-indent: 0px; font-size: 18px;"
                                 data-toggle="collapse"
                             >
-
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -314,21 +257,21 @@
                                         <!-- Mobile Menu Dropdown End -->
                                         <a
                                             class="mean-expand"
-                                            routerLink =""
+                                            routerLink
                                             style="font-size: 18px"
                                         >
                                             +
                                         </a>
                                     </li>
                                     <li>
-                                        <a routerLink ="">pages</a>
+                                        <a routerLink>pages</a>
                                         <!-- Mobile Menu Dropdown Start -->
                                         <ul style="display: none;">
                                             <li>
-                                                <a routerLink ="/signup">register</a>
+                                                <a routerLink="/signup">register</a>
                                             </li>
                                             <li>
-                                                <a routerLink ="/login">sign in</a>
+                                                <a routerLink="/login">sign in</a>
                                             </li>
                                             <li>
                                                 <a href="forgot-password.html">forgot password</a>
@@ -340,7 +283,7 @@
                                         <!-- Mobile Menu Dropdown End -->
                                         <a
                                             class="mean-expand"
-                                            routerLink =""
+                                            routerLink
                                             style="font-size: 18px"
                                         >
                                             +
@@ -357,6 +300,7 @@
                         </div>
                         <div class="mean-push"></div>
 
+
                     </div>
                 </div>
             </div>
@@ -367,6 +311,8 @@
     <!-- Header Bottom End Here -->
 </header>
 
+
 <!-- Categorie Menu & Slider Area Start Here -->
+
 
 <!-- Categorie Menu & Slider Area End Here -->

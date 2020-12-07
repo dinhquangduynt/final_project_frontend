@@ -27,7 +27,6 @@ export class ProductsComponent implements OnInit {
     homeFlg: '',
     hotFlg: '',
     id: '',
-    images: '',
     name: '',
     newPrice: '',
     oldPrice:'',
@@ -37,7 +36,7 @@ export class ProductsComponent implements OnInit {
     updateBy: '',
     update_date: '',
     viewCount: '',
-    warranty: ''
+    warranty: '',
   };
   files = [];
   isEdit = false;
@@ -74,7 +73,7 @@ export class ProductsComponent implements OnInit {
       (res: any) => {
         alert("thành công");
         // return this.listProduct;
-        this.getByCateId();      
+        this.getByCateId();
       },
       error => {
         console.log(error)
@@ -122,7 +121,6 @@ export class ProductsComponent implements OnInit {
       homeFlg: '',
       hotFlg: '',
       id: '',
-      images: '',
       name: '',
       newPrice: '',
       oldPrice: '',

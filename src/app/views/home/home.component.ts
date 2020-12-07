@@ -1,3 +1,4 @@
+import { HomeService } from './home.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  items = [];
+  listProductHot = [];
+  listProductRecomment = [];
+  listNewProduct = [];
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
+    location.reload();
+    this.getListNewProduct();
+  }
+
+  onChangePage(event){
+
+  }
+
+  getListNewProduct(){
+    this.homeService.getHotProduct().subscribe((res: any) => {
+      this.listProductHot = res.data;
+    })
   }
 
 }

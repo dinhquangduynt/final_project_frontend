@@ -11,10 +11,14 @@ export class ProductService {
   private config = new Configure();
 
   getAllProductbyCateId(cateId: string){
-    return this.httpClient.get(this.config.urlProduct.concat('/getByCateId/') + cateId)
+    return this.httpClient.get(this.config.urlProduct.concat('/getByCateId/') + cateId);
   }
 
   getProductById(productId: string){
-    return this.httpClient.get(this.config.urlProduct.concat('/getById/') + productId)
+    return this.httpClient.get(this.config.urlProduct.concat('/getById/') + productId);
+  }
+
+  getProductSemilar(){
+    return this.httpClient.get(this.config.urlProduct.concat('/getAll'));
   }
 }

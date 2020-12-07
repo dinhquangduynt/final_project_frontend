@@ -10,13 +10,16 @@ import { HeaderService } from './header.service';
 export class HeaderComponent implements OnInit {
   listCate: any;
   isShowMenu = false;
-  listItem = ['1', '2', '3', '4']
+  listItem = ['1', '2', '3', '4'];
+  search = '';
+  quantity = '';
   constructor(
     private router: Router,
     private headerService: HeaderService
     ) { }
 
   ngOnInit(): void {
+
     this.headerService.getAllCate().subscribe(
       (res: any)=>{
         this.listCate = res.data;
@@ -38,5 +41,9 @@ export class HeaderComponent implements OnInit {
   }
   onClickMenu(){
     this.isShowMenu = !this.isShowMenu;
+  }
+
+  onSearch(){
+
   }
 }

@@ -4501,3 +4501,11 @@ transition: all 0.3s ease-in 0s;
 .hideMenu {
   display: none;
 }
+
+
+.e-header{
+  width: 100%!important;
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center !important;
+}

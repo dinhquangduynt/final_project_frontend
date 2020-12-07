@@ -1,3 +1,4 @@
+import { JwPaginationComponent } from 'jw-angular-pagination';
 import { FormsModule } from '@angular/forms';
 import { ViewsRoutingModule } from './views-routing.module';
 import { FooterComponent } from './../themes/footer/footer.component';
@@ -30,7 +31,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     CartComponent,
     ContactComponent,
     AboutUsComponent,
-    CheckoutComponent],
+    CheckoutComponent,
+  ],
 
   imports: [
     CommonModule,

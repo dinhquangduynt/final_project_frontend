@@ -10,44 +10,34 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class ProductDetailComponent implements OnInit {
   public Editor = ClassicEditor;
-  detail ={
-    createBy: "",
-    updateBy: "",
-    id: "",
-    name: "",
-    alias: "",
-    categoryId:"",
-    images: "",
-    newPrice: "",
-    oldPrice: '',
-    warranty: "",
-    description: "",
-    content: "",
-    hotFlg: "",
-    homeFlg: "",
-    quantity:"",
-    status: "",
-    viewCount: "",
-    rating: "",
-    create_date: "",
-    update_date: ""
-    }
+  detail : any;
   productId: any;
-  aaaaaaaaaaaaaaaaa = "12123123";
+  listProductSemilar = [];
   currentRate = 0;
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.productId = Number(this.activatedRoute.snapshot.paramMap.get('productId'));
+    this.getProduct();
+    this.getProductSemilar();
+  }
+
+  getProduct(){
     this.productService.getProductById(this.productId).subscribe(
       (res: any) => {
         this.detail = res.data;
       },
       error => {
-        console.log(error)
+        console.log(error);
         this.detail = null;
       }
     )
+  }
+
+  getProductSemilar(){
+    this.productService.getProductSemilar().subscribe((res: any) => {
+      this.listProductSemilar = res.data;
+    })
   }
 
 }
