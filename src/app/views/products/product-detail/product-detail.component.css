@@ -1,3 +1,14 @@
 .pt-100 {
     padding-top: 20px;
 }
+.single-product .pro-img a img{
+  width: 226px;
+  height: 226px;
+}
+.actions-primary a{
+  cursor: pointer;
+}
+.owl-item a img{
+  height: 133.8px;
+  height: 133.8px;
+}

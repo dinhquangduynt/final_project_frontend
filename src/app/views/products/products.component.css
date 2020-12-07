@@ -1,3 +1,65 @@
 .h-range-filter{
   width: 100%;
 }
+.hot-product{
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 5px;
+}
+.hot-product:after{
+  content: "";
+    width: 100px;
+    border-top: 2px solid #E62E04;
+    height: 3px;
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    z-index: 999;
+}
+.hot-product a:hover{
+  color: #E62E04;
+}
+.hot-product{
+    line-height: 1.4;
+    letter-spacing: 0.1em;
+    margin-top: 45px;
+}
+.hot-product a{
+  color: black;
+  text-decoration: none;
+  font-weight: inherit;
+}
+.row-left-content{
+  border: 1px solid #e5e5e5;
+  height: 800px;
+}
+.item-hot{
+  padding : 10px 5px;
+  width: 290px;
+  border-bottom: 1px solid #e5e5e5;height: 100px;
+}
+.item-hot .product-image img{
+  width: 80px;
+  margin-right: 10px;
+  float: left;
+  height: 80px;
+}
+.item-hot .product-content {
+  padding-left: 80px;
+}
+.item-hot .product-content a{
+  margin-top: 10px;
+  color: black;
+}
+.item-hot .product-content a:hover{
+  color: #E62E04;
+}
+.item-hot .rating{
+  margin-top: 10px;
+}
+.item-hot .newPrice{
+  margin-top: 10px;
+}

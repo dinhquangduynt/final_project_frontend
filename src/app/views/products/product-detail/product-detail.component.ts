@@ -1,3 +1,4 @@
+import { CateProductsService } from './../../../admin/services/cate-products.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service';
@@ -14,7 +15,9 @@ export class ProductDetailComponent implements OnInit {
   productId: any;
   listProductSemilar = [];
   currentRate = 0;
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { }
+  cateId;
+  cateName;
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private cateService: CateProductsService) { }
 
   ngOnInit(): void {
     this.productId = Number(this.activatedRoute.snapshot.paramMap.get('productId'));
@@ -26,6 +29,15 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductById(this.productId).subscribe(
       (res: any) => {
         this.detail = res.data;
+        this.cateId = res.data.categoryId;
+        this.cateService.getById(this.cateId).subscribe(
+          (res: any) => {
+            this.cateName = res.data.name;
+          },
+          error => {
+            console.log(error);
+          }
+        )
       },
       error => {
         console.log(error);

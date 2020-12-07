@@ -2,3 +2,20 @@
 .container{
   max-width: 1200px;
 }
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 350px;
+}
+.carousel {
+  width: 70%;
+  margin: auto;
+}
+.single-product .pro-img a img{
+  height: 226px;
+  width: 226px;
+}
+.arrivals-product{
+  background: #EEEEEE;
+}

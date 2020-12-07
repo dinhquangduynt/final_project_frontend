@@ -1,4 +1,18 @@
-
+<div class="breadcrumb-area mt-30">
+    <div class="container">
+        <div class="breadcrumb">
+            <ul class="d-flex align-items-center">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="active">
+                    <a href="product.html">{{cateName}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Container End -->
+</div>
 <div class="main-shop-page pt-100 pb-100 ptb-sm-60">
     <div class="container">
         <!-- Row End -->
@@ -6,6 +20,54 @@
             <!-- Sidebar Shopping Option Start -->
             <div class="col-lg-3 order-2 order-lg-1">
                 <div class="sidebar">
+                    <div class="row row-left-header">
+                        <h2 class="hot-product">
+                            <a
+                                href="san-pham-hot"
+                                title="Mới ra mắt"
+                            >
+                                Sản phẩm hot
+                            </a>
+                        </h2>
+                    </div>
+                    <div class="row row-left-content">
+                        <div class="item-hot">
+                            <div class="product-image">
+                                <a href="">
+                                    <img src="../../../assets/images/arduino_uno_r3.jpg" alt="" >
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <a href>Arduino_Uno_R3</a>
+                                <div
+                                    _ngcontent-bsa-c114
+                                    class="rating"
+                                >
+                                    <i
+                                        _ngcontent-bsa-c114
+                                        class="fa fa-star"
+                                    ></i>
+                                    <i
+                                        _ngcontent-bsa-c114
+                                        class="fa fa-star"
+                                    ></i>
+                                    <i
+                                        _ngcontent-bsa-c114
+                                        class="fa fa-star-o"
+                                    ></i>
+                                    <i
+                                        _ngcontent-bsa-c114
+                                        class="fa fa-star-o"
+                                    ></i>
+                                    <i
+                                        _ngcontent-bsa-c114
+                                        class="fa fa-star-o"
+                                    ></i>
+                                </div>
+                                <div class="newPrice">20000</div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- <div class="electronics mb-40">
                         <h3 class="sidebar-title">Electronics</h3>
                         <div
@@ -88,7 +150,7 @@
                     <!-- Price Filter Options Start -->
                     <!-- <div class="search-filter mb-40">
                         <h3 class="sidebar-title">filter by price</h3> -->
-                        <!-- <form
+                    <!-- <form
                             action="#"
                             class="sidbar-style"
                         >
@@ -118,7 +180,7 @@
                                 readonly
                             >
                         </form> -->
-                        <!-- <label class = "h-range-filter">Min:{{ priceFilter | currency}}
+                    <!-- <label class = "h-range-filter">Min:{{ priceFilter | currency}}
                           <input
                            [(ngModel)]="priceFilter"
                             type="range"
@@ -469,7 +531,8 @@
                                             </div>
                                             Single Product End -->
 
-                                        <!-- </div>
+
+                    <!-- </div>
                                     </div>
                                     <div
                                         class="owl-item"
@@ -489,7 +552,7 @@
                             </div>
                             <div class="owl-dots disabled"></div>
                         </div>
-                    </div>  -->
+                    </div> -->
                     <!-- Product Top End -->
                     <!-- Single Banner Start -->
                     <!-- <div class="col-img">
@@ -564,7 +627,7 @@
                                         data-value="Product Name"
                                         class="option"
                                     >
-                                       Theo tên, A đến Z
+                                        Theo tên, A đến Z
                                     </li>
                                     <li
                                         data-value="Product Name"
@@ -590,6 +653,7 @@
                     </div>
                     <!-- Toolbar Short Area End -->
 
+
                     <!-- Toolbar Short Area End -->
                 </div>
                 <!-- Grid & List View End -->
@@ -602,16 +666,20 @@
                         >
                             <div class="row">
                                 <!-- Single Product Start -->
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-6" *ngFor ='let product of listProduct' >
+                                <div
+                                    class="col-lg-4 col-md-4 col-sm-6 col-6"
+                                    *ngFor='let product of listProduct'
+                                >
                                     <div class="single-product">
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
-                                            <a [routerLink] ="['/product-detail/'+product.id ]">
+                                            <a [routerLink]="['/product-detail/'+product.id ]">
                                                 <img
                                                     class="primary-img"
                                                     src="../../../assets/images/{{product.images[0]?.fileName}}"
                                                     alt="single-product"
                                                 >
+
 
                                             </a>
                                             <a
@@ -630,12 +698,12 @@
                                         <div class="pro-content">
                                             <div class="pro-info">
                                                 <h4>
-                                                    <a [routerLink] ="['/'+product.id+'/product-detail']">{{product.name}}</a>
+                                                    <a [routerLink]="['/'+product.id+'/product-detail']">{{product.name}}</a>
                                                 </h4>
                                                 <p>
-                                                  <span class="price">{{product.newPrice | currency:'VND'}}</span>
-                                                  <del class="prev-price">{{product.oldPrice | currency: 'VND'}}</del>
-                                              </p>
+                                                    <span class="price">{{product.newPrice | currency:'VND'}}</span>
+                                                    <del class="prev-price">{{product.oldPrice | currency: 'VND'}}</del>
+                                                </p>
                                                 <!-- <div class="label-product l_sale">
                                                     30
                                                     <span class="symbol-percent">%</span>
@@ -651,8 +719,7 @@
                                                         + Thêm vào giỏ hàng
                                                     </a>
                                                 </div>
-                                                <div class="actions-secondary">
-                                                </div>
+                                                <div class="actions-secondary"></div>
                                             </div>
                                         </div>
                                         <!-- Product Content End -->
@@ -668,17 +735,21 @@
                             class="tab-pane fade"
                         >
                             <!-- Single Product Start -->
-                            <div class="single-product" *ngFor ='let product of listProduct'>
+                            <div
+                                class="single-product"
+                                *ngFor='let product of listProduct'
+                            >
                                 <div class="row">
                                     <!-- Product Image Start -->
                                     <div class="col-lg-4 col-md-5 col-sm-12">
                                         <div class="pro-img">
-                                            <a [routerLink] ="['/'+product.id+'/product-detail']">
+                                            <a [routerLink]="['/'+product.id+'/product-detail']">
                                                 <img
                                                     class="primary-img"
                                                     src="../../../assets/images/{{product.images[0]?.fileName}}"
                                                     alt="single-product"
                                                 >
+
 
                                             </a>
                                             <a
@@ -699,16 +770,15 @@
                                     <div class="col-lg-8 col-md-7 col-sm-12">
                                         <div class="pro-content hot-product2">
                                             <h4>
-                                                <a [routerLink] ="['/'+product.id+'/product-detail']">{{product.name}}</a>
+                                                <a [routerLink]="['/'+product.id+'/product-detail']">{{product.name}}</a>
                                             </h4>
 
-                                          <p>
-                                            <span class="price">{{product.newPrice | currency:'VND'}}</span>
-                                            <del class="prev-price">{{product.oldPrice | currency: 'VND'}}</del>
-                                        </p>
+
                                             <p>
-                                                {{product.description}}
+                                                <span class="price">{{product.newPrice | currency:'VND'}}</span>
+                                                <del class="prev-price">{{product.oldPrice | currency: 'VND'}}</del>
                                             </p>
+                                            <p>{{product.description}}</p>
                                             <div class="pro-actions">
                                                 <div class="actions-primary">
                                                     <a
@@ -720,6 +790,7 @@
                                                     </a>
                                                 </div>
 
+
                                             </div>
                                         </div>
                                     </div>
@@ -728,6 +799,7 @@
                             </div>
                             <!-- Single Product End -->
                         </div>
+
 
                     </div>
                     <!-- Grid & List Main Area End -->
