@@ -1,53 +1,90 @@
 <div class="breadcrumb-area mt-30">
-  <div class="container">
-      <div class="breadcrumb">
-          <ul class="d-flex align-items-center">
-              <li><a href="index.html">Home</a></li>
-              <li class="active"><a href="contact.html">Contact Us</a></li>
-          </ul>
-      </div>
-  </div>
-  <!-- Container End -->
+    <div class="container">
+        <div class="breadcrumb">
+            <ul class="d-flex align-items-center">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Container End -->
 </div>
 
 <div class="contact-area ptb-100 ptb-sm-60">
-  <div class="container">
-      <h3 class="mb-20">Liên hệ với chúng tôi</h3>
-      <p class="text-capitalize mb-20">Hãy để lại thông tin chính xác để chúng tôi có thể liên hệ cho bạn sớm hơn</p>
-      <form id="contact-form" class="contact-form" action="mail.php" method="post">
-          <div class="address-wrapper row">
-              <div class="col-md-12">
-                  <div class="address-fname">
-                      <input class="form-control" type="text" name="name" placeholder="Họ và Tên">
-                  </div>
-              </div>
-              <div class="col-md-6">
-                  <div class="address-email">
-                      <input class="form-control" type="email" name="email" placeholder="Email">
-                  </div>
-              </div>
-              <div class="col-md-6">
-                  <div class="address-web">
-                      <input class="form-control" type="text" name="website" placeholder="Website">
-                  </div>
-              </div>
-              <div class="col-md-12">
-                  <div class="address-subject">
-                      <input class="form-control" type="text" name="subject" placeholder="Nội dung">
-                  </div>
-              </div>
-              <div class="col-md-12">
-                  <div class="address-textarea">
-                      <textarea name="message" class="form-control" placeholder="Tin nhắn của bạn"></textarea>
-                  </div>
-              </div>
-          </div>
-          <p class="form-message">
-          </p><div class="footer-content mail-content clearfix">
-              <div class="send-email float-md-right">
-                  <input value="Gửi" class="return-customer-btn" type="submit">
-              </div>
-          </div>
-      </form>
-  </div>
+    <div class="container">
+        <h3 class="mb-20">Liên hệ với chúng tôi</h3>
+        <p class="text-capitalize mb-20">Hãy để lại thông tin chính xác để chúng tôi có thể liên hệ cho bạn sớm hơn</p>
+        <form id="contact-form" class="contact-form" novalidate #f="ngForm">
+            <div class="address-wrapper row">
+                <div class="col-md-12">
+                    <div class="address-fname col-md-12 form-group" [ngClass]="{
+                        'has-danger': name.invalid && (name.dirty || name.touched),
+                        'has-success': name.valid && (name.dirty || name.touched)
+                   }">
+                        <input class="form-control" type="text" [(ngModel)]="dataContact.name" name="name"
+                            placeholder="Họ và Tên" required minlength="4" #name="ngModel">
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+                            <div *ngIf="name.errors.required">
+                                Name is required.
+                            </div>
+                            <div *ngIf="name.errors.minlength">
+                                Name must be at least 4 characters long.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="address-email form-group" [ngClass]="{
+                            'has-danger': email.invalid && (email.dirty || email.touched),
+                            'has-success': email.valid && (email.dirty || email.touched)
+                       }">
+                            <input class="form-control" type="email" [(ngModel)]="dataContact.email" name="email" placeholder="Email"
+                            required 
+                            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" 
+                            #email="ngModel">
+                            <div *ngIf="email.errors && (email.dirty || email.touched)" class="text-danger">
+			                    <div *ngIf="email.errors.required">Email is required</div>
+			                    <div *ngIf="email.errors.pattern">Email must contain at least the @ character</div>
+		                    </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="address-subject">
+                            <input class="form-control" type="text" [(ngModel)]="dataContact.address" name="subject"
+                                placeholder="Địa chỉ của bạn">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="address-subject" [ngClass]="{
+                            'has-danger': phone.invalid && (phone.dirty || phone.touched),
+                            'has-success': phone.valid && (phone.dirty || phone.touched)
+                       }">
+                            <input class="form-control" type="text" [(ngModel)]="dataContact.phone" name="phone"
+                                placeholder="Số điện thoại" required minlength="10" #phone="ngModel">
+                                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="text-danger">
+                                    <div *ngIf="phone.errors.required">
+                                        PhoneNumber is required.
+                                    </div>
+                                    <div *ngIf="phone.errors.minlength">
+                                        Name must be at 10 characters long.
+                                    </div>
+                                </div>   
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="address-textarea">
+                            <textarea name="message" class="form-control" [(ngModel)]="dataContact.message"
+                                placeholder="Tin nhắn của bạn"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <p class="form-message">
+                </p>
+                <div class="footer-content mail-content clearfix">
+                    <div class="send-email float-md-right">
+                        <input value="Gửi" class="return-customer-btn" [disabled]="f.invalid" type="submit" (click)="Create()">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

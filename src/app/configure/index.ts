@@ -4,5 +4,7 @@ export class Configure{
     urlProduct = this.host + '/api/product';
     urlOrder = this.host + '/api/order';
     urlFeedback = this.host + '/api/feedback';
-    urlAccount = this.host + '/api/account'
+    urlAccount = this.host + '/api/account';
+    urlContact = this.host + '/api/contact';
+    urlOrderDetail = this.host + '/api/orderDetail'
 }

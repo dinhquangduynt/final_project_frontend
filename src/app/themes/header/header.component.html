@@ -11,7 +11,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li>
+                    <li *ngIf="!isLoggedIn" >
                         <a routerLink>
                             Tài khoản
                             <i class="lnr lnr-chevron-down"></i>
@@ -23,6 +23,22 @@
                             </li>
                             <li>
                                 <a routerLink="/signup">Đăng ký</a>
+                            </li>
+                        </ul>
+                        <!-- Dropdown End -->
+                    </li>
+                    <li *ngIf="isLoggedIn" >
+                        <a routerLink>
+                            Hi {{user}}
+                            <i class="lnr lnr-chevron-down"></i>
+                        </a>
+                        <!-- Dropdown Start -->
+                        <ul class="ht-dropdown">
+                            <li>
+                                <a routerLink="/login">Profile</a>
+                            </li>
+                            <li>
+                                <a (click)="logout()">Đăng xuất</a>
                             </li>
                         </ul>
                         <!-- Dropdown End -->
@@ -67,7 +83,7 @@
                                 <a routerLink="/cart">
                                     <i class="lnr lnr-cart"></i>
                                     <span class="my-cart">
-                                        <span class="total-pro">{{quantity}}</span>
+                                        <span class="total-pro" id="count">{{count}}</span>
                                         <span>Giỏ hàng</span>
                                     </span>
                                 </a>
@@ -136,8 +152,8 @@
                             </li>
 
 
-                            <li>
-                                <a routerLink = "/login">
+                            <li *ngIf="!isLoggedIn">
+                                <a routerLink="login">
                                     <i class="lnr lnr-user"></i>
                                     <span class="my-cart">
                                         <span>
@@ -187,7 +203,7 @@
                             <li>
                                 <a routerLink="/contact">Liên hệ</a>
                             </li>
-                            <li>
+                            <li *ngIf="isAdmin">
                                 <a routerLink="/admin/home">Quản trị</a>
                             </li>
                         </ul>

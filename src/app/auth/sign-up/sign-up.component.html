@@ -1,0 +1,652 @@
+
+<header>
+    <div class="header-top-area">
+        <div class="container">
+            <div class="header-top">
+                <ul>
+                    <li>
+                        <a>Miến phí ship cho đơn hàng trên 500k</a>
+                    </li>
+                    <li>
+                        <a routerLink = '/cart'>Giỏ hàng</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li *ngIf="!isLoggedIn" >
+                        <a routerLink>
+                            Tài khoản
+                            <i class="lnr lnr-chevron-down"></i>
+                        </a>
+                        <!-- Dropdown Start -->
+                        <ul class="ht-dropdown">
+                            <li>
+                                <a routerLink="/login">Đăng nhập</a>
+                            </li>
+                            <li>
+                                <a routerLink="/signup">Đăng ký</a>
+                            </li>
+                        </ul>
+                        <!-- Dropdown End -->
+                    </li>
+                    <li *ngIf="isLoggedIn" >
+                        <a routerLink>
+                            Hi {{user}}
+                            <i class="lnr lnr-chevron-down"></i>
+                        </a>
+                        <!-- Dropdown Start -->
+                        <ul class="ht-dropdown">
+                            <li>
+                                <a routerLink="/login">Profile</a>
+                            </li>
+                            <li>
+                                <a (click)="logout()">Đăng xuất</a>
+                            </li>
+                        </ul>
+                        <!-- Dropdown End -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header-middle ptb-15">
+        <div class="container">
+            <div class="row align-items-center no-gutters">
+                <div class="col-lg-3 col-md-12">
+                    <div class="logo mb-all-30">
+                        <a routerLink>
+                            <img
+                                src="../../../assets/img/logo/logo.png"
+                                alt="logo-image"
+                            >
+                        </a>
+                    </div>
+                </div>
+                <!-- Categorie Search Box Start Here -->
+                <div class="col-lg-5 col-md-8 ml-auto mr-auto col-10">
+                    <div class="categorie-search-box">
+                        <input
+                                type="text"
+                                name="search"
+                                placeholder="Tìm kiếm..."
+                                [(ngModel)]='search'
+                            >
+                            <button (click) ="onSearch()">
+                                <i class="lnr lnr-magnifier"></i>
+                            </button>
+                    </div>
+                </div>
+                <!-- Categorie Search Box End Here -->
+                <!-- Cart Box Start Here -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="cart-box mt-all-30">
+                        <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="lnr lnr-cart"></i>
+                                    <span class="my-cart">
+                                        <span class="total-pro" id="count">{{count}}</span>
+                                        <span>Giỏ hàng</span>
+                                    </span>
+                                </a>
+                                <!-- <ul class="ht-dropdown cart-box-width">
+                                    <li>
+
+                                        <div class="single-cart-box">
+                                            <div class="cart-img">
+                                                <a>
+                                                    <img
+                                                        src="../../../assets/img/products/1.jpg"
+                                                        alt="cart-image"
+                                                    >
+                                                </a>
+                                                <span class="pro-quantity">1X</span>
+                                            </div>
+                                            <div class="cart-content">
+                                                <h6>
+                                                    <a routerLink>Printed Summer Red</a>
+                                                </h6>
+                                                <span class="cart-price">27.45</span>
+                                                <span>Size: S</span>
+                                                <span>Color: Yellow</span>
+                                            </div>
+                                            <a
+                                                class="del-icone"
+                                                routerLink
+                                            >
+                                                <i class="ion-close"></i>
+                                            </a>
+                                        </div> -->
+
+                                        <!-- Cart Box End -->
+                                        <!-- Cart Footer Inner Start -->
+                                        <!-- <div class="cart-footer">
+                                            <ul class="price-content">
+                                                <li>
+                                                    Subtotal
+                                                    <span>$57.95</span>
+                                                </li>
+                                                <li>
+                                                    Shipping
+                                                    <span>$7.00</span>
+                                                </li>
+                                                <li>
+                                                    Taxes
+                                                    <span>$0.00</span>
+                                                </li>
+                                                <li>
+                                                    Total
+                                                    <span>$64.95</span>
+                                                </li>
+                                            </ul>
+                                            <div class="cart-actions text-center">
+                                                <a
+                                                    class="cart-checkout"
+                                                    routerLink
+                                                >
+                                                    Checkout
+                                                </a>
+                                            </div>
+                                        </div> -->
+                                        <!-- Cart Footer Inner End -->
+                                    <!-- </li>
+                                </ul>-->
+                            </li>
+
+
+                            <li *ngIf="!isLoggedIn">
+                                <a routerLink="login">
+                                    <i class="lnr lnr-user"></i>
+                                    <span class="my-cart">
+                                        <span>
+                                            <strong>Đăng nhập</strong>
+                                            để
+                                        </span>
+                                        <span>tham gia</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Cart Box End Here -->
+            </div>
+            <!-- Row End -->
+        </div>
+        <!-- Container End -->
+    </div>
+    <!-- Header Middle End Here -->
+    <!-- Header Bottom Start Here -->
+    <div class="header-bottom  header-sticky">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="e-header">
+                    <nav class="d-none d-lg-block">
+                        <ul class="header-bottom-list d-flex">
+                            <li class="active">
+                                <a routerLink>Trang chủ</a>
+                            </li>
+                            <li>
+                                <a>
+                                    Danh mục
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <!-- Home Version Dropdown Start -->
+                                <ul class="ht-dropdown dropdown-style-two">
+                                    <li *ngFor='let cate of listCate'>
+                                        <a [routerLink]="['/products/'+ cate.id]">{{cate.name}}</a>
+                                    </li>
+                                </ul>
+                                <!-- Home Version Dropdown End -->
+                            </li>
+                            <li>
+                                <a routerLink="/about">Giới thiệu</a>
+                            </li>
+                            <li>
+                                <a routerLink="/contact">Liên hệ</a>
+                            </li>
+                            <li *ngIf="isAdmin">
+                                <a routerLink="/admin/home">Quản trị</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu d-block d-lg-none mean-container">
+                        <div class="mean-bar">
+                            <a
+                                href="#nav"
+                                class="meanmenu-reveal"
+                                style="right: 0px; left: auto; text-align: center; text-indent: 0px; font-size: 18px;"
+                                data-toggle="collapse"
+                            >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                            <nav
+                                id="nav"
+                                class="mean-nav collapse"
+                            >
+                                <ul>
+                                    <!-- class="{{ isShowMenu ? 'showMenu' : 'hideMenu' }}" -->
+                                    <li>
+                                        <a href="index.html">home</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop.html">Categories</a>
+                                        <!-- Mobile Menu Dropdown Start -->
+                                        <ul
+                                            id="nav_1"
+                                            class="collapse"
+                                        >
+                                            <li>
+                                                <a href="product.html">product details</a>
+                                            </li>
+                                            <li>
+                                                <a href="compare.html">compare</a>
+                                            </li>
+                                            <li>
+                                                <a href="cart.html">cart</a>
+                                            </li>
+                                            <li>
+                                                <a href="checkout.html">checkout</a>
+                                            </li>
+                                            <li>
+                                                <a href="wishlist.html">wishlist</a>
+                                            </li>
+                                        </ul>
+                                        <!-- Mobile Menu Dropdown End -->
+                                        <a
+                                            class="mean-expand"
+                                            href="#nav_1"
+                                            style="font-size: 18px"
+                                            data-toggle="collapse"
+                                        >
+                                            +
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">Blog</a>
+                                        <!-- Mobile Menu Dropdown Start -->
+                                        <ul style="display: none;">
+                                            <li>
+                                                <a href="single-blog.html">blog details</a>
+                                            </li>
+                                        </ul>
+                                        <!-- Mobile Menu Dropdown End -->
+                                        <a
+                                            class="mean-expand"
+                                            routerLink
+                                            style="font-size: 18px"
+                                        >
+                                            +
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink>pages</a>
+                                        <!-- Mobile Menu Dropdown Start -->
+                                        <ul style="display: none;">
+                                            <li>
+                                                <a routerLink="/signup">register</a>
+                                            </li>
+                                            <li>
+                                                <a routerLink="/login">sign in</a>
+                                            </li>
+                                            <li>
+                                                <a href="forgot-password.html">forgot password</a>
+                                            </li>
+                                            <li>
+                                                <a href="404.html">404</a>
+                                            </li>
+                                        </ul>
+                                        <!-- Mobile Menu Dropdown End -->
+                                        <a
+                                            class="mean-expand"
+                                            routerLink
+                                            style="font-size: 18px"
+                                        >
+                                            +
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">about us</a>
+                                    </li>
+                                    <li class="mean-last">
+                                        <a href="contact.html">contact us</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="mean-push"></div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- Row End -->
+        </div>
+        <!-- Container End -->
+    </div>
+    <!-- Header Bottom End Here -->
+</header>
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-area mt-30">
+  <div class="container">
+      <div class="breadcrumb">
+          <ul class="d-flex align-items-center">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a routerLink ='/signup'>Register</a></li>
+          </ul>
+      </div>
+  </div>
+  <!-- Container End -->
+</div>
+<!-- Breadcrumb End -->
+<!-- Register Account Start -->
+<div class="register-account ptb-100 ptb-sm-60">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="register-title">
+                  <h3 class="mb-10">Đăng ký</h3>
+                  <p class="mb-10">Nếu đã có tài khoản, mời bạn đăng nhập</p>
+              </div>
+          </div>
+      </div>
+      <!-- Row End -->+
+      <div class="row">
+          <div class="col-sm-12">
+              <form class="form-register" action="#">
+                  <fieldset>
+                      <legend>Thông tin chi tiết</legend>
+                      <div class="form-group d-md-flex align-items-md-center">
+                          <label class="control-label col-md-2" for="f-name"><span class="require">*</span>Họ và tên</label>
+                          <div class="col-md-10 form-group" [ngClass]="{
+                            'has-danger': name.invalid && (name.dirty || name.touched),
+                            'has-success': name.valid && (name.dirty || name.touched)
+                       }">
+                              <input type="text" class="form-control" name="name" [(ngModel)]="data.fullname" id="f-name" placeholder="First Name" required  minlength="4" #name="ngModel">
+                              <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+                                <div *ngIf="name.errors.required">
+                                    Name is required.
+                                </div>
+                                <div *ngIf="name.errors.minlength">
+                                    Name must be at least 4 characters long.
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group d-md-flex align-items-md-center">
+                        <label class="control-label col-md-2" for="number"><span class="require">*</span>Ngáy sinh</label>
+                        <div class="col-md-10 form-group" [ngClass]="{
+                            'has-danger': birthday.invalid && (birthday.dirty || birthday.touched),
+                            'has-success': birthday.valid && (birthday.dirty || birthday.touched)
+                       }">
+                            <input type="date" class="form-control" name="birthday" [(ngModel)]="data.birthday" id="number" placeholder="Ngày sinh" required #birthday="ngModel">
+                            <div *ngIf="birthday.invalid && (birthday.dirty || birthday.touched)" class="text-danger">
+                                <div *ngIf="birthday.errors.required">
+                                    Birthday is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="form-group d-md-flex align-items-md-center">
+                          <label class="control-label col-md-2" for="l-name"><span class="require">*</span>Địa chỉ</label>
+                          <div class="col-md-10 form-gourp" [ngClass]="{
+                            'has-danger': address.invalid && (address.dirty || address.touched),
+                            'has-success': address.valid && (address.dirty || address.touched)
+                       }">
+                              <input type="text" class="form-control" name="address" [(ngModel)]="data.address" id="l-name" placeholder="Địa chỉ" required #address="ngModel">
+                              <div *ngIf="address.invalid && (address.dirty || address.touched)" class="text-danger">
+                                <div *ngIf="address.errors.required">
+                                    Address is required.
+                                </div>
+                            </div> 
+                          </div>
+                      </div>
+                      <div class="form-group d-md-flex align-items-md-center">
+                        <label class="control-label col-md-2" for="l-name"><span class="require">*</span>Số điện thoại</label>
+                        <div class="col-md-10 form-group" [ngClass]="{
+                            'has-danger': phone.invalid && (phone.dirty || phone.touched),
+                            'has-success': phone.valid && (phone.dirty || phone.touched)
+                       }">
+                            <input type="text" class="form-control" name="phone" [(ngModel)]="data.phoneNumber" id="l-name" placeholder="Số điện thoại" required length="10" #phone="ngModel">
+                            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="text-danger">
+                                <div *ngIf="phone.errors.required">
+                                    Phone is required.
+                                </div>
+                                <div *ngIf="phone.errors.length">
+                                    Phone must be at 10 characters long.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="form-group d-md-flex align-items-md-center">
+                          <label class="control-label col-md-2" for="email"><span class="require">*</span>Địa chỉ Email</label>
+                          <div class="col-md-10 form-group" [ngClass]="{
+                            'has-danger': email.invalid && (email.dirty || email.touched),
+                            'has-success': email.valid && (email.dirty || email.touched)
+                       }">
+                              <input type="email" class="form-control" name="email" [(ngModel)]="data.email" id="email" placeholder="Nhập địa chỉ Email..." required
+                              pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+                              #email="ngModel">
+                              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                                <div *ngIf="email.errors.required">
+                                    Name is required.
+                                </div>
+                                <div *ngIf="email.errors.pattern">
+                                    Email must be .
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group d-md-flex align-items-md-center">
+                        <label class="control-label col-md-2" for="number"><span class="require">*</span>Tên đăng nhập</label>
+                        <div class="col-md-10 form-group" [ngClass]="{
+                            'has-danger': username.invalid && (username.dirty || username.touched),
+                            'has-success': username.valid && (username.dirty || username.touched)
+                       }">
+                            <input type="email" class="form-control" name="username" [(ngModel)]="data.userName" id="number" placeholder="Tên đăng nhập" required minlength="6" #username="ngModel">
+                            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+                                <div *ngIf="username.errors.required">
+                                    Username is required.
+                                </div>
+                                <div *ngIf="username.errors.minlength">
+                                    Username must be at least 6 characters long.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </fieldset>
+                  <fieldset>
+                      <legend>Mật khẩu của bạn</legend>
+                      <div class="form-group d-md-flex align-items-md-center">
+                          <label class="control-label col-md-2" for="pwd"><span class="require">*</span>mật khẩu:</label>
+                          <div class="col-md-10 form-group" [ngClass]="{
+                            'has-danger': pass.invalid && (pass.dirty || pass.touched),
+                            'has-success': pass.valid && (pass.dirty || pass.touched)
+                       }">
+                              <input type="password" class="form-control" name="pass" [(ngModel)]="data.password" id="pwd" placeholder="Mật khẩu" required minlength="6" #pass="ngModel">
+                              <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="text-danger">
+                                <div *ngIf="pass.errors.required">
+                                    Password is required.
+                                </div>
+                                <div *ngIf="pass.errors.minlength">
+                                    Password must be at 6 characters long.
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group d-md-flex align-items-md-center">
+                          <label class="control-label col-md-2" for="pwd-confirm"><span class="require">*</span>Xác nhận mật khẩu</label>
+                          <div class="col-md-10">
+                              <input ngValidateEqual="pass" type="password" class="form-control" name="pass2" id="pwd-confirm" [(ngModel)]="matchPass" placeholder="Xác nhận mật khẩu" patch required #pass2="ngModel">
+                              <div *ngIf="pass2.invalid && (pass2.dirty || pass2.touched)" class="text-danger">
+                                <div *ngIf="pass2.errors.required">
+                                    Pass match is required.
+                                </div>
+                                <div *ngIf="pass2.errors?.notEqual && pass.valid">
+                                    Password is not match!
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                  </fieldset>
+                  <div class="terms">
+                      <div class="float-md-right">
+                          <!-- <span>I have read and agree to the <a href="#" class="agree"><b>Privacy Policy</b></a></span> -->
+                          <!-- <input type="checkbox" name="agree" value="1"> &nbsp; -->
+                          <input type="submit" value="Continue" class="return-customer-btn" (click)="register()">
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+      <!-- Row End -->
+  </div>
+  <!-- Container End -->
+</div>
+<!-- Register Account End -->
+     <!-- Footer Area Start Here -->
+<footer class="off-white-bg2 pt-95 bdr-top pt-sm-55">
+        <!-- Footer Top Start -->
+        <div class="footer-top">
+            <div class="container">
+                <!-- Signup Newsletter Start -->
+                <!-- <div class="row mb-60">
+                     <div class="col-xl-7 col-lg-7 ml-auto mr-auto col-md-8">
+                        <div class="news-desc text-center mb-30">
+                             <h3>Sign Up For Newsletters</h3>
+                             <p>Be the First to Know. Sign up for newsletter today</p>
+                         </div>
+                         <div class="newsletter-box">
+                             <form action="#">
+                                  <input class="subscribe" placeholder="your email address" name="email" id="subscribe" type="text">
+                                  <button type="submit" class="submit">subscribe!</button>
+                             </form>
+                         </div>
+                     </div>
+                </div> -->
+                <!-- Signup-Newsletter End -->
+                <div class="row">
+                    <!-- Single Footer Start -->
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="single-footer mb-sm-40">
+                            <h3 class="footer-title">Information</h3>
+                            <div class="footer-content">
+                                <ul class="footer-list">
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="contact.html">Terms & Conditions</a></li>
+                                    <li><a href="login.html">FAQs</a></li>
+                                    <li><a href="login.html">Return Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Start -->
+                    <!-- Single Footer Start -->
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="single-footer mb-sm-40">
+                            <h3 class="footer-title">Customer Service</h3>
+                            <div class="footer-content">
+                                <ul class="footer-list">
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                    <li><a href="#">Gift Certificates</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Start -->
+                    <!-- Single Footer Start -->
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="single-footer mb-sm-40">
+                            <h3 class="footer-title">Extras</h3>
+                            <div class="footer-content">
+                                <ul class="footer-list">
+                                    <li><a href="#">Newsletter</a></li>
+                                    <li><a href="#">Brands</a></li>
+                                    <li><a href="#">Gift Certificates</a></li>
+                                    <li><a href="#">Affiliate</a></li>
+                                    <li><a href="#">Specials</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Start -->
+                    <!-- Single Footer Start -->
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="single-footer mb-sm-40">
+                            <h3 class="footer-title">My Account</h3>
+                            <div class="footer-content">
+                                <ul class="footer-list">
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">My Account</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="#">Newsletter</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Start -->
+                    <!-- Single Footer Start -->
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer mb-sm-40">
+                            <h3 class="footer-title">My Account</h3>
+                            <div class="footer-content">
+                                <ul class="footer-list address-content">
+                                    <li><i class="lnr lnr-map-marker"></i> Address: K81/01 Ngô Thì Nhậm, Đà Nẵng.</li>
+                                    <li><i class="lnr lnr-envelope"></i><a href="#"> mail Us: dinhquangduynt@gmail.com </a></li>
+                                    <li>
+                                        <i class="lnr lnr-phone-handset"></i> Phone: (+84) 977694163)
+                                    </li>
+                                </ul>
+                                <div class="payment mt-25 bdr-top pt-30">
+                                    <a href="#"><img class="img" src="../../../assets/img/payment/1.png" alt="payment-image"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Start -->
+                </div>
+                <!-- Row End -->
+            </div>
+            <!-- Container End -->
+        </div>
+        <!-- Footer Top End -->
+        <!-- Footer Middle Start -->
+        <div class="footer-middle text-center">
+            <div class="container">
+                <div class="footer-middle-content pt-20 pb-30">
+                        <ul class="social-footer">
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><img src="../../../assets/img/icon/social-img1.png" alt="google play"></a></li>
+                            <li><a href="#"><img src="../../../assets/img/icon/social-img2.png" alt="app store"></a></li>
+                        </ul>
+                </div>
+            </div>
+            <!-- Container End -->
+        </div>
+        <!-- Footer Middle End -->
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom pb-30">
+            <div class="container">
+  
+                 <div class="copyright-text text-center">
+                    <p>Copyright © 2020 <a target="_blank" href="#">Mini Shop</a> All Rights Reserved.</p>
+                 </div>
+            </div>
+            <!-- Container End -->
+        </div>
+        <!-- Footer Bottom End -->
+</footer>
+  

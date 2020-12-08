@@ -16,3 +16,21 @@
 .ptb-100 {
   padding: 0px 0 !important;
 }
+input{
+  margin-bottom: 0 !important;
+}
+.col-md-12{
+  margin-bottom: 20px;
+}
+.text-danger{
+  margin-top: 0.25rem;
+}
+.footer-content{
+  margin-left: 28px;;
+}
+.has-danger .form-control {
+border-color: #d9534f;
+}
+.has-success .form-control {
+border-color: #5cb85c;
+}

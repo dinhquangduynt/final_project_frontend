@@ -6,8 +6,10 @@ import { Configure } from 'src/app/configure';
   providedIn: 'root'
 })
 export class HeaderService {
-
-  constructor(private httpClient: HttpClient) { }
+  count = 0;
+  constructor(private httpClient: HttpClient) { 
+    this.count = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')).length : 0;
+  }
   private config = new Configure();
 
   getAllCate(){

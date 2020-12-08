@@ -14,10 +14,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { CateProductsComponent } from './cate-products/cate-products.component';
+import { AccountManagementComponent } from './account-management/account-management.component';
+import { ContactManagementComponent } from './contact-management/contact-management.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, ProductsComponent, OrderManagementComponent, StatisticsComponent, HomeComponent, HeaderComponent, SidebarComponent, CateProductsComponent],
+  declarations: [AdminComponent, ProductsComponent, OrderManagementComponent, StatisticsComponent, HomeComponent, HeaderComponent, SidebarComponent, CateProductsComponent, AccountManagementComponent, ContactManagementComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

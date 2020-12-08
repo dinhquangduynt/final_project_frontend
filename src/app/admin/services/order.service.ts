@@ -13,6 +13,9 @@ export class OrderService {
   getAll(){
     return this.httpClient.get(this.config.urlOrder.concat('/getAll'))
   }
+  getById(orderId){
+    return this.httpClient.get(this.config.urlOrder.concat('/getOrderById/') + orderId)
+  }
   getOrderDetailById(orderId:any){
     return this.httpClient.get(this.config.urlOrder.concat('/getOrderDetailById/') + orderId)
   }

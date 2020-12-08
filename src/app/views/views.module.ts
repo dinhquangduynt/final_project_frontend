@@ -1,13 +1,11 @@
 import { JwPaginationComponent } from 'jw-angular-pagination';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewsRoutingModule } from './views-routing.module';
 import { FooterComponent } from './../themes/footer/footer.component';
 import { HeaderComponent } from './../themes/header/header.component';
 import { ViewsComponent } from './views.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SignInComponent } from './auth/sign-in/sign-in.component';
-import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { ProductsComponent } from './products/products.component';
 import { HomeComponent } from './home/home.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
@@ -20,9 +18,6 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 @NgModule({
   declarations: [
     ViewsComponent,
-    SignInComponent,
-    SignUpComponent,
-
     HeaderComponent,
     FooterComponent,
     ProductsComponent,
@@ -38,7 +33,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     CommonModule,
     ViewsRoutingModule,
     FormsModule,
-    CKEditorModule
+    CKEditorModule,
+    ReactiveFormsModule
   ]
 })
 export class ViewsModule { }

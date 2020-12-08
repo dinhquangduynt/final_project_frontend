@@ -32,8 +32,10 @@
     "chartjs-plugin-datalabels": "^0.7.0",
     "jw-angular-pagination": "^1.2.0",
     "ng-chartjs": "^0.2.1",
+    "ng-validate-equal": "^1.0.4",
     "ng2-charts": "^2.4.2",
     "rxjs": "~6.5.4",
+    "sweetalert2": "^10.12.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

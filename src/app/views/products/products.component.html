@@ -31,14 +31,14 @@
                         </h2>
                     </div>
                     <div class="row row-left-content">
-                        <div class="item-hot">
+                        <div class="item-hot" *ngFor= 'let hot of listHot'>
                             <div class="product-image">
-                                <a href="">
-                                    <img src="../../../assets/images/arduino_uno_r3.jpg" alt="" >
+                                <a [routerLink]="['/product-detail/' + hot.id]">
+                                    <img src="../../../assets/images/{{hot.images[0].fileName}}" alt="" >
                                 </a>
                             </div>
                             <div class="product-content">
-                                <a href>Arduino_Uno_R3</a>
+                                <a href>{{hot.name}}</a>
                                 <div
                                     _ngcontent-bsa-c114
                                     class="rating"
@@ -64,7 +64,7 @@
                                         class="fa fa-star-o"
                                     ></i>
                                 </div>
-                                <div class="newPrice">20000</div>
+                                <div class="newPrice">{{hot.newPrice}}</div>
                             </div>
                         </div>
                     </div>
@@ -679,8 +679,7 @@
                                                     src="../../../assets/images/{{product.images[0]?.fileName}}"
                                                     alt="single-product"
                                                 >
-
-
+                                                <img class="secondary-img" src="../../../assets/images/{{product.images[1]?.fileName}}" alt="single-product">
                                             </a>
                                             <a
                                                 href="#"
@@ -712,9 +711,10 @@
                                             <div class="pro-actions">
                                                 <div class="actions-primary">
                                                     <a
-                                                        href="cart.html"
+                                                        (click)="addtocart(product.id)"
                                                         title
                                                         data-original-title="Thêm vào giỏ hàng"
+                                                        class="addcart"
                                                     >
                                                         + Thêm vào giỏ hàng
                                                     </a>
@@ -743,7 +743,7 @@
                                     <!-- Product Image Start -->
                                     <div class="col-lg-4 col-md-5 col-sm-12">
                                         <div class="pro-img">
-                                            <a [routerLink]="['/'+product.id+'/product-detail']">
+                                            <a [routerLink]="['/product-detail/'+product.id ]">
                                                 <img
                                                     class="primary-img"
                                                     src="../../../assets/images/{{product.images[0]?.fileName}}"
@@ -770,7 +770,7 @@
                                     <div class="col-lg-8 col-md-7 col-sm-12">
                                         <div class="pro-content hot-product2">
                                             <h4>
-                                                <a [routerLink]="['/'+product.id+'/product-detail']">{{product.name}}</a>
+                                                <a [routerLink]="['/product-detail/'+product.id ]">{{product.name}}</a>
                                             </h4>
 
 
@@ -782,7 +782,8 @@
                                             <div class="pro-actions">
                                                 <div class="actions-primary">
                                                     <a
-                                                        href="cart.html"
+                                                        (click)="addtocart(product.id)"
+                                                        class="addcart"
                                                         title
                                                         data-original-title="Thêm vào giỏ hàng"
                                                     >

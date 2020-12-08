@@ -11,8 +11,8 @@ export class SignInService {
 
   login(data:any){
     const param = new HttpParams()
-    .set('username', data.username)
+    .set('userName', data.userName)
     .set('password', data.password);
-    return this.httpClient.post(this.config.urlAccount.concat('/login'), {params: param});
+    return this.httpClient.post(this.config.urlAccount.concat('/login'), param);
   }
 }

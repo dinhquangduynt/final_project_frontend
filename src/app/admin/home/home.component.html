@@ -9,7 +9,7 @@
         </div>
         <div>
             <span>Tiền bán hàng</span><br>
-            <span>200.000.000 VND</span>
+            <span>{{totalPriceToDay | currency : 'VND'}} VND</span>
         </div>
     </div>
     <div class="item item2">
@@ -17,8 +17,8 @@
             <i class="fa fa-shopping-cart"></i>
         </div>
         <div>
-            <span>Số đơn hàng : 6</span><br>
-            <span>Số sản phẩm : 20</span>
+            <span>Số đơn hàng : {{quantityOrderToday}}</span><br>
+            <span>Số sản phẩm : {{quantityProductToDay}}</span>
         </div>
     </div>
     <div class="item item3">
@@ -26,7 +26,7 @@
             <i class="fa fa-money"></i>
         </div>
         <div>
-            <span>Hàng nhập vào</span><br>
+            <span>Liên hệ hôm nay</span><br>
             <span>200.000.000 VND</span>
         </div>
     </div>
@@ -35,39 +35,95 @@
             <i class="fa fa-money"></i>
         </div>
         <div>
-            <span>Tiền bán hàng</span><br>
+            <span>Đơn hàng đang chờ xử lý</span><br>
             <span>200.000.000 VND</span>
         </div>
     </div>
 </div>
 <div class="div-chart">
-    <h4><i class="fa fa-bar-chart-o"></i>Thống kê ngày hôm nay</h4>
     <div class="row">
         <div class="col-6">
-                <div class="chart-wrapper">
+            <div class="div-chart">
+                <h4><i class="fa fa-bar-chart-o"></i>Thống kê tháng</h4>
+                <div class="chart-wrapper chart">
                     <canvas baseChart 
                     [datasets]="barChartData"
                     [labels]="barChartLabels"
                     [options]="barChartOptions"
-                    [colors] = "barChartColors"
                     [plugins]="barChartPlugins"
+                    [colors] = "barChartColors"
                     [legend]="barChartLegend"
                     [chartType]="barChartType">
                   </canvas>
                 </div>
+            </div>
         </div>
         <div class="col-6">
-            <div class="chart-wrapper">
-                <canvas baseChart 
-                [datasets]="barChartData"
-                [labels]="barChartLabels"
-                [options]="barChartOptions"
-                [colors] = "barChartColors"
-                [plugins]="barChartPlugins"
-                [legend]="barChartLegend"
-                [chartType]="barChartType">
-              </canvas>
+            <div class="div-chart">
+                <h4><i class="fa fa-bar-chart-o"></i>Thống kê Quý</h4>
+                <div class="chart-wrapper chart">
+                    <canvas baseChart 
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [colors] = "barChartColors"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType">
+                  </canvas>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div class="div-banner">
+    <h2><i class="fa fa-image"></i>Quản lý banner</h2>     
+    <div class="col-md-12" style="padding-bottom: 20px;">
+        <ngb-carousel>
+            <ng-template *ngFor="let slider of sliders" ngbSlide>
+                <img
+                    [src]="slider.imagePath"
+                    alt="Random first slide"
+                    class="img-fluid mx-auto d-block"
+                    width="100%"
+                />
+            </ng-template>
+        </ngb-carousel>
+    </div>
+    <a href="" type="button" class="btn-add" data-toggle="modal" data-target="#modalEdit" (click)="addNew()">
+        <i class="fa fa-check"></i>
+        Thay đổi
+      </a>
+</div>
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle">Thay đổi banner quảng cáo</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body popup">
+            <form novalidate>
+                <div class="form-group">
+                    <label>Hình ảnh</label>
+                    <div class="images">
+                      <!-- <span>{{dataProduct.images}}</span> -->
+                      <span>
+                        <img src="../../../assets/images/adapter.jpg" alt="">
+                        <img src="../../../assets/images/adruini_pro_3.3.png" alt="">
+                        <img src="../../../assets/images/ap.png" alt="">
+                      </span>
+                    </div>
+                    <input type="file" class="form-control" #fileInput multiple>
+                  </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary">Thay đối</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -21,4 +21,7 @@ export class ProductService {
   getProductSemilar(){
     return this.httpClient.get(this.config.urlProduct.concat('/getAll'));
   }
+  getAll(){
+    return this.httpClient.get(this.config.urlProduct.concat('/getAll'))
+  }
 }

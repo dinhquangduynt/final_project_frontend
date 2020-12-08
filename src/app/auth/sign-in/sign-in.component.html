@@ -1,0 +1,545 @@
+<header>
+    <div class="header-top-area">
+        <div class="container">
+            <div class="header-top">
+                <ul>
+                    <li>
+                        <a>Miến phí ship cho đơn hàng trên 500k</a>
+                    </li>
+                    <li>
+                        <a routerLink = '/cart'>Giỏ hàng</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li *ngIf="!isLoggedIn" >
+                        <a routerLink>
+                            Tài khoản
+                            <i class="lnr lnr-chevron-down"></i>
+                        </a>
+                        <!-- Dropdown Start -->
+                        <ul class="ht-dropdown">
+                            <li>
+                                <a routerLink="/login">Đăng nhập</a>
+                            </li>
+                            <li>
+                                <a routerLink="/signup">Đăng ký</a>
+                            </li>
+                        </ul>
+                        <!-- Dropdown End -->
+                    </li>
+                    <li *ngIf="isLoggedIn" >
+                        <a routerLink>
+                            Hi {{user}}
+                            <i class="lnr lnr-chevron-down"></i>
+                        </a>
+                        <!-- Dropdown Start -->
+                        <ul class="ht-dropdown">
+                            <li>
+                                <a routerLink="/login">Profile</a>
+                            </li>
+                            <li>
+                                <a (click)="logout()">Đăng xuất</a>
+                            </li>
+                        </ul>
+                        <!-- Dropdown End -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header-middle ptb-15">
+        <div class="container">
+            <div class="row align-items-center no-gutters">
+                <div class="col-lg-3 col-md-12">
+                    <div class="logo mb-all-30">
+                        <a routerLink>
+                            <img
+                                src="../../../assets/img/logo/logo.png"
+                                alt="logo-image"
+                            >
+                        </a>
+                    </div>
+                </div>
+                <!-- Categorie Search Box Start Here -->
+                <div class="col-lg-5 col-md-8 ml-auto mr-auto col-10">
+                    <div class="categorie-search-box">
+                        <input
+                                type="text"
+                                name="search"
+                                placeholder="Tìm kiếm..."
+                                [(ngModel)]='search'
+                            >
+                            <button (click) ="onSearch()">
+                                <i class="lnr lnr-magnifier"></i>
+                            </button>
+                    </div>
+                </div>
+                <!-- Categorie Search Box End Here -->
+                <!-- Cart Box Start Here -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="cart-box mt-all-30">
+                        <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
+                            <li>
+                                <a routerLink="/cart">
+                                    <i class="lnr lnr-cart"></i>
+                                    <span class="my-cart">
+                                        <span class="total-pro" id="count">{{count}}</span>
+                                        <span>Giỏ hàng</span>
+                                    </span>
+                                </a>
+                                <!-- <ul class="ht-dropdown cart-box-width">
+                                    <li>
+
+                                        <div class="single-cart-box">
+                                            <div class="cart-img">
+                                                <a>
+                                                    <img
+                                                        src="../../../assets/img/products/1.jpg"
+                                                        alt="cart-image"
+                                                    >
+                                                </a>
+                                                <span class="pro-quantity">1X</span>
+                                            </div>
+                                            <div class="cart-content">
+                                                <h6>
+                                                    <a routerLink>Printed Summer Red</a>
+                                                </h6>
+                                                <span class="cart-price">27.45</span>
+                                                <span>Size: S</span>
+                                                <span>Color: Yellow</span>
+                                            </div>
+                                            <a
+                                                class="del-icone"
+                                                routerLink
+                                            >
+                                                <i class="ion-close"></i>
+                                            </a>
+                                        </div> -->
+
+                                        <!-- Cart Box End -->
+                                        <!-- Cart Footer Inner Start -->
+                                        <!-- <div class="cart-footer">
+                                            <ul class="price-content">
+                                                <li>
+                                                    Subtotal
+                                                    <span>$57.95</span>
+                                                </li>
+                                                <li>
+                                                    Shipping
+                                                    <span>$7.00</span>
+                                                </li>
+                                                <li>
+                                                    Taxes
+                                                    <span>$0.00</span>
+                                                </li>
+                                                <li>
+                                                    Total
+                                                    <span>$64.95</span>
+                                                </li>
+                                            </ul>
+                                            <div class="cart-actions text-center">
+                                                <a
+                                                    class="cart-checkout"
+                                                    routerLink
+                                                >
+                                                    Checkout
+                                                </a>
+                                            </div>
+                                        </div> -->
+                                        <!-- Cart Footer Inner End -->
+                                    <!-- </li>
+                                </ul>-->
+                            </li>
+
+
+                            <li *ngIf="!isLoggedIn">
+                                <a routerLink="login">
+                                    <i class="lnr lnr-user"></i>
+                                    <span class="my-cart">
+                                        <span>
+                                            <strong>Đăng nhập</strong>
+                                            để
+                                        </span>
+                                        <span>tham gia</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Cart Box End Here -->
+            </div>
+            <!-- Row End -->
+        </div>
+        <!-- Container End -->
+    </div>
+    <!-- Header Middle End Here -->
+    <!-- Header Bottom Start Here -->
+    <div class="header-bottom  header-sticky">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="e-header">
+                    <nav class="d-none d-lg-block">
+                        <ul class="header-bottom-list d-flex">
+                            <li class="active">
+                                <a routerLink>Trang chủ</a>
+                            </li>
+                            <li>
+                                <a>
+                                    Danh mục
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <!-- Home Version Dropdown Start -->
+                                <ul class="ht-dropdown dropdown-style-two">
+                                    <li *ngFor='let cate of listCate'>
+                                        <a [routerLink]="['/products/'+ cate.id]">{{cate.name}}</a>
+                                    </li>
+                                </ul>
+                                <!-- Home Version Dropdown End -->
+                            </li>
+                            <li>
+                                <a routerLink="/about">Giới thiệu</a>
+                            </li>
+                            <li>
+                                <a routerLink="/contact">Liên hệ</a>
+                            </li>
+                            <li *ngIf="isAdmin">
+                                <a routerLink="/admin/home">Quản trị</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu d-block d-lg-none mean-container">
+                        <div class="mean-bar">
+                            <a
+                                href="#nav"
+                                class="meanmenu-reveal"
+                                style="right: 0px; left: auto; text-align: center; text-indent: 0px; font-size: 18px;"
+                                data-toggle="collapse"
+                            >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                            <nav
+                                id="nav"
+                                class="mean-nav collapse"
+                            >
+                                <ul>
+                                    <!-- class="{{ isShowMenu ? 'showMenu' : 'hideMenu' }}" -->
+                                    <li>
+                                        <a href="index.html">home</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop.html">Categories</a>
+                                        <!-- Mobile Menu Dropdown Start -->
+                                        <ul
+                                            id="nav_1"
+                                            class="collapse"
+                                        >
+                                            <li>
+                                                <a href="product.html">product details</a>
+                                            </li>
+                                            <li>
+                                                <a href="compare.html">compare</a>
+                                            </li>
+                                            <li>
+                                                <a href="cart.html">cart</a>
+                                            </li>
+                                            <li>
+                                                <a href="checkout.html">checkout</a>
+                                            </li>
+                                            <li>
+                                                <a href="wishlist.html">wishlist</a>
+                                            </li>
+                                        </ul>
+                                        <!-- Mobile Menu Dropdown End -->
+                                        <a
+                                            class="mean-expand"
+                                            href="#nav_1"
+                                            style="font-size: 18px"
+                                            data-toggle="collapse"
+                                        >
+                                            +
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">Blog</a>
+                                        <!-- Mobile Menu Dropdown Start -->
+                                        <ul style="display: none;">
+                                            <li>
+                                                <a href="single-blog.html">blog details</a>
+                                            </li>
+                                        </ul>
+                                        <!-- Mobile Menu Dropdown End -->
+                                        <a
+                                            class="mean-expand"
+                                            routerLink
+                                            style="font-size: 18px"
+                                        >
+                                            +
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink>pages</a>
+                                        <!-- Mobile Menu Dropdown Start -->
+                                        <ul style="display: none;">
+                                            <li>
+                                                <a routerLink="/signup">register</a>
+                                            </li>
+                                            <li>
+                                                <a routerLink="/login">sign in</a>
+                                            </li>
+                                            <li>
+                                                <a href="forgot-password.html">forgot password</a>
+                                            </li>
+                                            <li>
+                                                <a href="404.html">404</a>
+                                            </li>
+                                        </ul>
+                                        <!-- Mobile Menu Dropdown End -->
+                                        <a
+                                            class="mean-expand"
+                                            routerLink
+                                            style="font-size: 18px"
+                                        >
+                                            +
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">about us</a>
+                                    </li>
+                                    <li class="mean-last">
+                                        <a href="contact.html">contact us</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="mean-push"></div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- Row End -->
+        </div>
+        <!-- Container End -->
+    </div>
+    <!-- Header Bottom End Here -->
+</header>
+
+
+<!-- Categorie Menu & Slider Area Start Here -->
+
+
+<!-- Categorie Menu & Slider Area End Here -->
+
+
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-area mt-30">
+  <div class="container">
+      <div class="breadcrumb">
+          <ul class="d-flex align-items-center">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="register.html">account</a></li>
+              <li class="active"><a href="contact.html">login</a></li>
+          </ul>
+      </div>
+  </div>
+  <!-- Container End -->
+</div>
+<div class="log-in ptb-100 ptb-sm-60">
+  <div class="container">
+      <div class="row">
+          <!-- New Customer Start -->
+          <div class="col-md-6">
+              <div class="well mb-sm-30">
+                  <div class="new-customer">
+                      <h3 class="custom-title">Tài khoản mới</h3>
+                      <p class="mtb-10"><strong>Đăng ký</strong></p>
+                      <p>Bằng cách tạo một tài khoản, bạn sẽ có thể mua sắm nhanh hơn, cập nhật trạng thái đơn hàng và theo dõi các đơn hàng bạn đã thực hiện trước đó</p>
+                      <a class="customer-btn" href="register.html">Tiếp tục</a>
+                  </div>
+              </div>
+          </div>
+          <!-- New Customer End -->
+          <!-- Returning Customer Start -->
+          <div class="col-md-6">
+              <div class="well">
+                  <div class="return-customer">
+                      <h3 class="mb-10 custom-title">Đăng nhâp</h3>
+                      <p class="mb-10"><strong>Tôi đã có tài khoản</strong></p>
+                      <form action="#">
+                          <div class="form-group" [ngClass]="{
+                            'has-danger': name.invalid && (name.dirty || name.touched),
+                            'has-success': name.valid && (name.dirty || name.touched)
+                       }">
+                              <label>Tên đăng nhập</label>
+                              <input type="text" name="name" [(ngModel)]="data.userName" placeholder="Tên đăng nhập..." id="input-email" class="form-control" required #name="ngModel">
+                              <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+                                <div *ngIf="name.errors.required">
+                                    Name is required.
+                                </div>
+                            </div>                           
+                        </div>
+                          <div class="form-group">
+                              <label>mật khẩu</label>
+                              <input type="text" name="pass" [(ngModel)]="data.password" placeholder="Mật khẩu ..." id="input-password" class="form-control">
+                          </div>
+                          <p class="lost-password"><a href="forgot-password.html">Quên mật khẩu?</a></p>
+                          <input type="submit" value="Đăng nhập" class="return-customer-btn" (click)="login()">
+                      </form>
+                  </div>
+              </div>
+          </div>
+          <!-- Returning Customer End -->
+      </div>
+      <!-- Row End -->
+  </div>
+  <!-- Container End -->
+</div>
+<!-- LogIn Page End -->
+     <!-- Footer Area Start Here -->
+     <footer class="off-white-bg2 pt-95 bdr-top pt-sm-55">
+        <!-- Footer Top Start -->
+        <div class="footer-top">
+            <div class="container">
+                <!-- Signup Newsletter Start -->
+                <!-- <div class="row mb-60">
+                     <div class="col-xl-7 col-lg-7 ml-auto mr-auto col-md-8">
+                        <div class="news-desc text-center mb-30">
+                             <h3>Sign Up For Newsletters</h3>
+                             <p>Be the First to Know. Sign up for newsletter today</p>
+                         </div>
+                         <div class="newsletter-box">
+                             <form action="#">
+                                  <input class="subscribe" placeholder="your email address" name="email" id="subscribe" type="text">
+                                  <button type="submit" class="submit">subscribe!</button>
+                             </form>
+                         </div>
+                     </div>
+                </div> -->
+                <!-- Signup-Newsletter End -->
+                <div class="row">
+                    <!-- Single Footer Start -->
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="single-footer mb-sm-40">
+                            <h3 class="footer-title">Information</h3>
+                            <div class="footer-content">
+                                <ul class="footer-list">
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="contact.html">Terms & Conditions</a></li>
+                                    <li><a href="login.html">FAQs</a></li>
+                                    <li><a href="login.html">Return Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Start -->
+                    <!-- Single Footer Start -->
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="single-footer mb-sm-40">
+                            <h3 class="footer-title">Customer Service</h3>
+                            <div class="footer-content">
+                                <ul class="footer-list">
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                    <li><a href="#">Gift Certificates</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Start -->
+                    <!-- Single Footer Start -->
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="single-footer mb-sm-40">
+                            <h3 class="footer-title">Extras</h3>
+                            <div class="footer-content">
+                                <ul class="footer-list">
+                                    <li><a href="#">Newsletter</a></li>
+                                    <li><a href="#">Brands</a></li>
+                                    <li><a href="#">Gift Certificates</a></li>
+                                    <li><a href="#">Affiliate</a></li>
+                                    <li><a href="#">Specials</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Start -->
+                    <!-- Single Footer Start -->
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="single-footer mb-sm-40">
+                            <h3 class="footer-title">My Account</h3>
+                            <div class="footer-content">
+                                <ul class="footer-list">
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">My Account</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="#">Newsletter</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Start -->
+                    <!-- Single Footer Start -->
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer mb-sm-40">
+                            <h3 class="footer-title">My Account</h3>
+                            <div class="footer-content">
+                                <ul class="footer-list address-content">
+                                    <li><i class="lnr lnr-map-marker"></i> Address: K81/01 Ngô Thì Nhậm, Đà Nẵng.</li>
+                                    <li><i class="lnr lnr-envelope"></i><a href="#"> mail Us: dinhquangduynt@gmail.com </a></li>
+                                    <li>
+                                        <i class="lnr lnr-phone-handset"></i> Phone: (+84) 977694163)
+                                    </li>
+                                </ul>
+                                <div class="payment mt-25 bdr-top pt-30">
+                                    <a href="#"><img class="img" src="../../../assets/img/payment/1.png" alt="payment-image"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Start -->
+                </div>
+                <!-- Row End -->
+            </div>
+            <!-- Container End -->
+        </div>
+        <!-- Footer Top End -->
+        <!-- Footer Middle Start -->
+        <div class="footer-middle text-center">
+            <div class="container">
+                <div class="footer-middle-content pt-20 pb-30">
+                        <ul class="social-footer">
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><img src="../../../assets/img/icon/social-img1.png" alt="google play"></a></li>
+                            <li><a href="#"><img src="../../../assets/img/icon/social-img2.png" alt="app store"></a></li>
+                        </ul>
+                </div>
+            </div>
+            <!-- Container End -->
+        </div>
+        <!-- Footer Middle End -->
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom pb-30">
+            <div class="container">
+  
+                 <div class="copyright-text text-center">
+                    <p>Copyright © 2020 <a target="_blank" href="#">Mini Shop</a> All Rights Reserved.</p>
+                 </div>
+            </div>
+            <!-- Container End -->
+        </div>
+        <!-- Footer Bottom End -->
+    </footer>
+  

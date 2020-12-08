@@ -25,6 +25,10 @@ a:focus {
   text-decoration: none
 }
 
+.invalid {
+  border: 1px solid #E62E04;
+}
+
 h4 a:hover {
   color: #E62E04;
 }

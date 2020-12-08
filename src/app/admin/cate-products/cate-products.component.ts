@@ -43,6 +43,7 @@ export class CateProductsComponent implements OnInit {
   detail(cateId: any) {
     this.cateService.getById(cateId).subscribe(
       (res: any) => {
+        this.files = []
         this.dataCate = res.data;
       },
       err => {
