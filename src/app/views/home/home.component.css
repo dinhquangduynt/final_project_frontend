@@ -19,3 +19,17 @@
 .arrivals-product{
   background: #EEEEEE;
 }
+
+.carousel-inner{
+  width: 96.5%!important;
+  margin: auto !important;
+  margin-bottom: 5px !important;
+}
+
+.hot-deal-products{
+  padding-top: 10px;
+}
+
+.cusor{
+  cursor: pointer;
+}

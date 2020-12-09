@@ -14,7 +14,7 @@ export class ProductDetailComponent implements OnInit {
   detail : any;
   productId: any;
   listProductSemilar = [];
-  currentRate = 0;
+  currentRate = 3.5;
   cateId;
   cateName;
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private cateService: CateProductsService) { }

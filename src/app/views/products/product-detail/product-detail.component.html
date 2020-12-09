@@ -108,11 +108,7 @@
                         <h3 class="product-header">{{detail.name}}</h3>
                         <div class="rating-summary fix mtb-10">
                             <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
+                              <ngb-rating class="rate" [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
                             </div>
                             <div class="rating-feedback">
                                 <a href="#">(1 đánh giá)</a>
@@ -271,17 +267,18 @@
                                 <h2>Dinh Quang Duy</h2>
                             </div>
                             <h4 class="review-mini-title"></h4>
-                            <ul class="review-list">
-                                <li>
+                            <!-- <ul class="review-list"> -->
+                                <!-- <li>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star-o"></i>
                                     <label>Posted on 20/11/2020</label>
-                                </li>
+                                </li> -->
                                 <!-- Single Review List End -->
-                            </ul>
+                            <!-- </ul> -->
+                            <ngb-rating [max]="5" [(rate)]="currentRate"></ngb-rating>
                         </div>
                         <!-- Reviews End -->
                     </div>

@@ -14,6 +14,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ViewsRoutingModule,
     FormsModule,
     CKEditorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ]
 })
 export class ViewsModule { }

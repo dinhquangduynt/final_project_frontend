@@ -617,7 +617,9 @@ display: none;
 .header-bottom-list > li {
   position: relative;
 }
-
+.header-bottom-list > li:active {
+  color: #E62E04;
+}
 /* header bottom dropdown menu css start */
 .header-bottom-list > li > a,
 .header-bottom-list > li > ul.ht-dropdown li a {
@@ -4515,3 +4517,5 @@ transition: all 0.3s ease-in 0s;
 .header-bottom-list li a{
   cursor: pointer;
 }
+
+
