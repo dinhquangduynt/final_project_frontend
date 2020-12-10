@@ -1,3 +1,4 @@
+import { pipeFormat } from './../common/pipeFormat';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewsRoutingModule } from './views-routing.module';
@@ -27,7 +28,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CartComponent,
     ContactComponent,
     AboutUsComponent,
-    CheckoutComponent,
+    CheckoutComponent
   ],
 
   imports: [

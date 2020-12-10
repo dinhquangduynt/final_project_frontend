@@ -34,3 +34,10 @@ border-color: #d9534f;
 .has-success .form-control {
 border-color: #5cb85c;
 }
+
+.e-header{
+  width: 100%!important;
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center !important;
+}

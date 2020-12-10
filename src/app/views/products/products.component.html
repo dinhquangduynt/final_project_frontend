@@ -13,7 +13,7 @@
     </div>
     <!-- Container End -->
 </div>
-<div class="main-shop-page pt-100 pb-100 ptb-sm-60">
+<div class="main-shop-page pt-10  ptb-sm-60">
     <div class="container">
         <!-- Row End -->
         <div class="row">
@@ -598,15 +598,14 @@
                             <label>Sắp xếp theo:</label>
                             <select
                                 class="sorter wide"
-                                style="display: none;"
+                                style="display: none; width: 160px;"
                             >
-                                <option value="Position">Có liên quan</option>
-                                <option value="Product Name">Theo tên, A đến Z</option>
-                                <option value="Product Name">Theo tên, Z đến A</option>
-                                <option value="Price">Giá thấp đến cao</option>
+                                <option value="0">Có liên quan</option>
+                                <option value="1">Theo tên, A đến Z</option>
+                                <option value="2">Theo tên, Z đến A</option>
+                                <option value="3">Giá thấp đến cao</option>
                                 <option
-                                    value="Price"
-                                    selected
+                                    value="4"
                                 >
                                     Giá cao đến thấp
                                 </option>
@@ -614,36 +613,36 @@
                             <div
                                 class="nice-select sorter wide"
                                 tabindex="0"
+                                style="width: 160px;"
                             >
                                 <span class="current">Giá cao đến thấp</span>
                                 <ul class="list">
-                                    <li
-                                        data-value="Position"
-                                        class="option"
-                                    >
-                                        Có liên quan
-                                    </li>
+
                                     <li
                                         data-value="Product Name"
                                         class="option"
+                                        (click)="onChangeNameASC()"
                                     >
                                         Theo tên, A đến Z
                                     </li>
                                     <li
                                         data-value="Product Name"
                                         class="option"
+                                        (click)="onChangeNameDESC()"
                                     >
                                         Theo tên, Z đến A
                                     </li>
                                     <li
                                         data-value="Price"
                                         class="option"
+                                        (click)="onChangePriceASC()"
                                     >
                                         Giá thấp đến cao
                                     </li>
                                     <li
                                         data-value="Price"
                                         class="option selected"
+                                        (click)="onChangePriceDESC()"
                                     >
                                         Giá cao đến thấp
                                     </li>

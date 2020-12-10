@@ -1,7 +1,7 @@
 import { SignInService } from './sign-in.service';
 import { logging } from 'protractor';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TokenStorageService } from 'src/app/auth_service/token-storage.service';
 import { HeaderComponent } from 'src/app/themes/header/header.component';
 import { HeaderService } from 'src/app/themes/header/header.service';
@@ -23,6 +23,7 @@ export class SignInComponent extends HeaderComponent implements OnInit{
   }
 
   ngOnInit(): void {
+
   }
 
   login(){
@@ -34,7 +35,6 @@ export class SignInComponent extends HeaderComponent implements OnInit{
         this.tokenStorageService.saveUser(res);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        alert("Đăng nhập thành công")
         this.router.navigateByUrl('/');
       },
       error=>{

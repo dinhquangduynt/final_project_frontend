@@ -1,3 +1,4 @@
+import { pipeFormat } from './common/pipeFormat';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
 import { AccountService } from 'src/app/auth/account.service';
 import { SignInService } from 'src/app/auth/sign-in/sign-in.service';
 import { TokenStorageService } from 'src/app/auth_service/token-storage.service';
@@ -26,9 +26,9 @@ export class HeaderComponent implements OnInit {
     public headerService: HeaderService,
     public tokenStorageService: TokenStorageService,
     public loginService: SignInService,
-    public accountService: AccountService
-    ) 
-    { 
+    public accountService: AccountService,
+    )
+    {
 
     }
 
@@ -55,8 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   login(){
-    // console.log('loss');
-    // this.router.navigate(['/signin']);
+
 
   }
   onClickMenu(){

@@ -20,6 +20,8 @@ export class ProductsComponent implements OnInit {
   priceFilter = 100;
   constructor( private activatedRoute: ActivatedRoute, private productService: ProductService, private cateService: CateProductsService, private headerService: HeaderService) { }
   listHot = [];
+
+  keySearch = ''
   ngOnInit(): void {
     this.params = this.activatedRoute.params.subscribe(params => {
       this.cateId = params['cateId'];
@@ -49,7 +51,7 @@ export class ProductsComponent implements OnInit {
           if (e.hotFlg == 1) {
             this.listHot.push(e);
           }
-          
+
         });
         console.log(this.listHot)
       },
@@ -74,7 +76,23 @@ export class ProductsComponent implements OnInit {
       this.listCart.push(data);
       this.headerService.count = this.headerService.count + 1;
       document.getElementById('count').innerText = (this.headerService.count).toString();
-    }    
+    }
     localStorage.setItem('cart',JSON.stringify(this.listCart));
   }
+
+  onChangeNameASC(){
+    this.listProduct.sort((p1,p2) => p1.name < p2.name ? 1 : -1);
+  }
+
+  onChangeNameDESC(){
+    this.listProduct.sort((p1,p2) => p1.name > p2.name ? 1 : -1);
+  }
+
+  onChangePriceDESC(){
+    this.listProduct.sort((p1,p2) => p1.price > p2.price ? 1 : -1);
+  }
+  onChangePriceASC(){
+    this.listProduct.sort((p1,p2) => p1.price < p2.price ? 1 : -1);
+  }
+
 }

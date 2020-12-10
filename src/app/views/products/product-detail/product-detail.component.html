@@ -16,7 +16,7 @@
     </div>
     <!-- Container End -->
 </div>
-<div class="main-product-thumbnail ptb-100 ptb-sm-60">
+<div class="main-product-thumbnail ptb-10 ptb-sm-60">
     <div class="container">
         <div class="thumb-bg">
             <div class="row">
@@ -118,7 +118,7 @@
                         <div class="pro-price mtb-30">
                             <p class="d-flex align-items-center">
                                 <span class="prev-price">{{detail.oldPrice}}</span>
-                                <span class="price">{{detail.newPrice | currency : 'VND'}} VND</span>
+                                <span class="price">{{detail.newPrice | currency:'VND'}} VND</span>
                                 <span class="saving-price">Tiết kiệm 8%</span>
                             </p>
                         </div>
@@ -236,7 +236,7 @@
 </div>
 
 <!-- description -->
-<div class="thumnail-desc pb-100 pb-sm-60">
+<div class="thumnail-desc pb-10 pb-sm-60">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -267,18 +267,7 @@
                                 <h2>Dinh Quang Duy</h2>
                             </div>
                             <h4 class="review-mini-title"></h4>
-                            <!-- <ul class="review-list"> -->
-                                <!-- <li>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <label>Posted on 20/11/2020</label>
-                                </li> -->
-                                <!-- Single Review List End -->
-                            <!-- </ul> -->
-                            <ngb-rating [max]="5" [(rate)]="currentRate"></ngb-rating>
+                            <ngb-rating class="rate" [max]="5" [(rate)]="currentRate"></ngb-rating>
                         </div>
                         <!-- Reviews End -->
                     </div>
@@ -291,10 +280,10 @@
     <!-- Container End -->
 </div>
 
-<div class="hot-deal-products off-white-bg pt-100 pb-90 pt-sm-60 pb-sm-50">
+<div class="hot-deal-products off-white-bg pt-sm-60 pb-sm-50">
     <div class="container" style="min-width: 1200px;">
         <!-- Product Title Start -->
-        <div class="post-title pb-30">
+        <div class="post-title">
             <h2>Sản phẩm liên quan</h2>
         </div>
         <!-- Product Title End -->
