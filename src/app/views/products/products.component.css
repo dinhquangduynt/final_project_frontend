@@ -2,6 +2,12 @@
   width: 100%;
 }
 
+.rate{
+  color: rgb(253, 216, 53);
+  font-size: 25px;
+}
+
+
 .hot-product {
   margin: 0;
   color: #333;

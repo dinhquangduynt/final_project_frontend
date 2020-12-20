@@ -1,4 +1,4 @@
-import { pipeFormat } from './common/pipeFormat';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -26,7 +26,7 @@ import { ValidateEqualModule } from 'ng-validate-equal';
     ReactiveFormsModule,
     ValidateEqualModule
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule, authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

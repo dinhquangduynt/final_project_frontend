@@ -45,7 +45,7 @@
                                               class="owl-stage"
                                               style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1340px;"
                                           >
-                                          <ng-container *ngFor="let item of listProductHot" >
+                                          <ng-container *ngFor="let item of listProductRecomment" >
                                               <div
                                                   class="owl-item active"
                                                   style="width: 226px; margin-right: 10px;"
@@ -57,11 +57,13 @@
                                                           <div class="pro-img">
                                                               <a  [routerLink] = "['/product-detail/'+item.id]">
                                                                   <img
+
                                                                       class="primary-img"
                                                                       src="../../../assets/images/{{item?.images[0]?.fileName}}"
                                                                       alt="single-product"
                                                                   >
                                                                   <img
+
                                                                       class="secondary-img"
                                                                       src="../../../assets/images/{{item?.images[0]?.fileName}}"
                                                                       alt="single-product"
@@ -86,15 +88,15 @@
                                                                       <a >{{item.name}}</a>
                                                                   </h4>
                                                                   <p>
-                                                                      <span class="price">{{item.newPrice | currency:'VND'}}</span>
-                                                                      <del class="prev-price">{{item.oldPrice | currency: 'VND'}}</del>
+                                                                      <span class="price">{{item.newPrice| pipeFormat}}</span>
+                                                                      <del class="prev-price">{{item.oldPrice| pipeFormat}}</del>
                                                                   </p>
                                                                   <!-- <div class="label-product l_sale">
                                                                       20
                                                                       <span class="symbol-percent">%</span>
                                                                   </div> -->
                                                               </div>
-                                                              <div class="pro-actions">
+                                                              <div class="pro-actions" (click) = "addToCart(item.id)">
                                                                   <div class="actions-primary cusor">
                                                                       <a
                                                                           title
@@ -172,11 +174,13 @@
                                                         <div class="pro-img">
                                                             <a  [routerLink] = "['/product-detail/'+item.id]">
                                                                 <img
+
                                                                     class="primary-img"
                                                                     src="../../../assets/images/{{item?.images[0]?.fileName}}"
                                                                     alt="single-product"
                                                                 >
                                                                 <img
+
                                                                     class="secondary-img"
                                                                     src="../../../assets/images/{{item?.images[0]?.fileName}}"
                                                                     alt="single-product"
@@ -201,15 +205,15 @@
                                                                     <a >{{item.name}}</a>
                                                                 </h4>
                                                                 <p>
-                                                                    <span class="price">{{item.newPrice | currency:'VND'}}</span>
-                                                                    <del class="prev-price">{{item.oldPrice | currency: 'VND'}}</del>
+                                                                    <span class="price">{{item.newPrice| pipeFormat}}</span>
+                                                                    <del class="prev-price">{{item.oldPrice| pipeFormat}}</del>
                                                                 </p>
                                                                 <!-- <div class="label-product l_sale">
                                                                     20
                                                                     <span class="symbol-percent">%</span>
                                                                 </div> -->
                                                             </div>
-                                                            <div class="pro-actions">
+                                                            <div class="pro-actions" (click) = "addToCart(item.id)">
                                                                 <div class="actions-primary cusor">
                                                                     <a
 
@@ -306,7 +310,7 @@
                                 class="owl-stage"
                                 style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1400px;"
                             >
-                            <ng-container *ngFor="let item of listProductHot" >
+                            <ng-container *ngFor="let item of listNewProduct" >
                                 <div
                                     class="owl-item active"
                                     style="width: 226px; margin-right: 10px;"
@@ -318,11 +322,13 @@
                                             <div class="pro-img">
                                                 <a  [routerLink] = "['/product-detail/'+item.id]">
                                                     <img
+
                                                         class="primary-img"
                                                         src="../../../assets/images/{{item?.images[0]?.fileName}}"
                                                         alt="single-product"
                                                     >
                                                     <img
+
                                                         class="secondary-img"
                                                         src="../../../assets/images/{{item?.images[0]?.fileName}}"
                                                         alt="single-product"
@@ -347,15 +353,15 @@
                                                         <a >{{item.name}}</a>
                                                     </h4>
                                                     <p>
-                                                        <span class="price">{{item.newPrice | currency:'VND'}}</span>
-                                                        <del class="prev-price">{{item.oldPrice | currency: 'VND'}}</del>
+                                                        <span class="price">{{item.newPrice| pipeFormat}}</span>
+                                                        <del class="prev-price">{{item.oldPrice| pipeFormat}}</del>
                                                     </p>
                                                     <!-- <div class="label-product l_sale">
                                                         20
                                                         <span class="symbol-percent">%</span>
                                                     </div> -->
                                                 </div>
-                                                <div class="pro-actions">
+                                                <div class="pro-actions" (click) = "addToCart(item.id)">
                                                     <div class="actions-primary cusor">
                                                         <a
 

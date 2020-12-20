@@ -25,30 +25,11 @@
                     <!-- Thumbnail Large Image start -->
                     <div class="tab-content">
                         <div id="thumb1" class="tab-pane fade show active">
-                            <a data-fancybox="images" href="../../../../assets/img/products/35.jpg">
-                                <img src="../../../../assets/images/{{detail.images[0]?.fileName}}" alt="product-view">
+                            <a data-fancybox="images" href="../../../../assets/images/{{detail.images[1]?.fileName}}">
+                                <img src="../../../../assets/images/{{detail.images[1]?.fileName}}" alt="product-view">
                             </a>
                         </div>
-                        <!-- <div id="thumb2" class="tab-pane fade">
-                            <a data-fancybox="images" href="../../../../assets/img/products\13.jpg">
-                                <img src="../../../../assets/img/products\13.jpg" alt="product-view">
-                            </a>
-                        </div>
-                        <div id="thumb3" class="tab-pane fade">
-                            <a data-fancybox="images" href="../../../../assets/img/products\15.jpg">
-                                <img src="../../../../assets/img/products\15.jpg" alt="product-view">
-                            </a>
-                        </div>
-                        <div id="thumb4" class="tab-pane fade">
-                            <a data-fancybox="images" href="../../../../assets/img/products\4.jpg">
-                                <img src="../../../../assets/img/products\4.jpg" alt="product-view">
-                            </a>
-                        </div>
-                        <div id="thumb5" class="tab-pane fade">
-                            <a data-fancybox="images" href="../../../../assets/img/products\5.jpg">
-                                <img src="../../../../assets/img/products\5.jpg" alt="product-view">
-                            </a>
-                        </div> -->
+
                     </div>
                     <!-- Thumbnail Large Image End -->
                     <!-- Thumbnail Image End -->
@@ -58,44 +39,25 @@
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
                                     style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 780px;">
-                                    <div class="owl-item active" style="width: 140.833px; margin-right: 15px;">
-                                        <a class="active" data-toggle="tab" href="#thumb1">
-                                            <img src="../../../../assets/images/{{detail.images[0]?.fileName}}"
-                                                alt="product-thumbnail">
-                                        </a>
-                                    </div>
-                                    <div class="owl-item active" style="width: 140.833px; margin-right: 15px;">
-                                        <a data-toggle="tab" href="#thumb2">
-                                            <img src="../../../../assets/images/arduino_uno_r3.jpg"
-                                                alt="product-thumbnail">
-                                        </a>
-                                    </div>
-                                    <div class="owl-item active" style="width: 140.833px; margin-right: 15px;">
-                                        <a data-toggle="tab" href="#thumb3">
-                                            <img src="../../../../assets/images/arduino_sensor_shield_v5.0.jpg"
-                                                alt="product-thumbnail">
-                                        </a>
-                                    </div>
-                                    <div class="owl-item active" style="width: 140.833px; margin-right: 15px;">
-                                        <a data-toggle="tab" href="#thumb4">
-                                            <img src="../../../../assets/img/products\4.jpg" alt="product-thumbnail">
-                                        </a>
-                                    </div>
-                                    <div class="owl-item" style="width: 140.833px; margin-right: 15px;">
-                                        <a data-toggle="tab" href="#thumb5">
-                                            <img src="../../../../assets/img/products\5.jpg" alt="product-thumbnail">
-                                        </a>
-                                    </div>
+                                    <ng-container *ngFor="let item of detail.images" >
+                                      <div class="owl-item active" style="width: 140.833px; margin-right: 15px;">
+                                          <a class="active" data-toggle="tab" href="#thumb1">
+                                              <img src="../../../../assets/images/{{item.fileName}}"
+                                                  alt="product-thumbnail">
+                                          </a>
+                                      </div>
+                                    </ng-container>
+
                                 </div>
                             </div>
-                            <div class="owl-nav">
+                            <!-- <div class="owl-nav">
                                 <div class="owl-prev disabled">
                                     <i class="lnr lnr-arrow-left"></i>
                                 </div>
                                 <div class="owl-next">
                                     <i class="lnr lnr-arrow-right"></i>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="owl-dots disabled"></div>
                         </div>
                     </div>
@@ -108,22 +70,21 @@
                         <h3 class="product-header">{{detail.name}}</h3>
                         <div class="rating-summary fix mtb-10">
                             <div class="rating">
-                              <ngb-rating class="rate" [max]="5" [(rate)]="currentRate" [readonly]="true"></ngb-rating>
+                              <ngb-rating class="rate" [max]="5" [(rate)]="detail.rating" [readonly]="true"></ngb-rating>
                             </div>
                             <div class="rating-feedback">
-                                <a href="#">(1 đánh giá)</a>
-                                <a href="#">Thêm đánh giá của bạn</a>
+                                <a>{{countRated}} đánh giá</a>
                             </div>
                         </div>
                         <div class="pro-price mtb-30">
                             <p class="d-flex align-items-center">
-                                <span class="prev-price">{{detail.oldPrice}}</span>
-                                <span class="price">{{detail.newPrice | currency:'VND'}} VND</span>
-                                <span class="saving-price">Tiết kiệm 8%</span>
+                                <span class="prev-price">{{detail.oldPrice| pipeFormat}}</span>
+                                <span class="price">{{detail.newPrice| pipeFormat}}</span>
+                                <!-- <span class="saving-price" *ngIf="detail.newPrice < detail.oldPrice" >Giảm đến {{math.round(100 - (detail.newPrice/detail.oldPrice)*100) }} %</span> -->
                             </p>
                         </div>
                         <p class="mb-20 pro-desc-details">
-                            {{detail.description}}
+                            Số lượng: {{detail.quantity}}
                         </p>
                         <!-- <div class="product-size mb-20 clearfix">
                             <label>Size</label>
@@ -181,9 +142,9 @@
                         </div> -->
                         <div class="box-quantity d-flex hot-product2">
                             <form action="#">
-                                <input class="quantity mr-15" type="number" min="1" value="1">
+                                <input class="quantity mr-15" type="number" min="1" value="1" [(ngModel)] ="quantityOrder">
                             </form>
-                            <div class="pro-actions">
+                            <div class="pro-actions" (click)="addtocart(detail.id)">
                                 <div class="actions-primary">
                                     <a title data-original-title="Add to Cart">
                                         + Thêm vào giỏ hàng
@@ -204,22 +165,22 @@
                             <ul class="d-flex">
                                 <li>Chia sẻ</li>
                                 <li>
-                                    <a href="#">
+                                    <a href="https://www.facebook.com/">
                                         <i class="fa fa-facebook" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <i class="fa fa-twitter" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <i class="fa fa-google-plus-official" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <i class="fa fa-pinterest-p" aria-hidden="true"></i>
                                     </a>
                                 </li>
@@ -262,13 +223,19 @@
                     </div>
                     <div id="review" class="tab-pane fade">
                         <!-- Reviews Start -->
-                        <div class="review border-default universal-padding">
-                            <div class="group-title">
-                                <h2>Dinh Quang Duy</h2>
-                            </div>
-                            <h4 class="review-mini-title"></h4>
-                            <ngb-rating class="rate" [max]="5" [(rate)]="currentRate"></ngb-rating>
-                        </div>
+                        <ng-container *ngIf="feedbacks.length == 0" >
+                          <span>Chưa có đánh giá</span>
+                        </ng-container>
+                        <ng-container *ngFor="let item of feedbacks" >
+
+                          <div class="review border-default universal-padding">
+                              <div class="group-title">
+                                  <h2>{{item.customer_name}}</h2>
+                              </div>
+                              <p class="review-mini-title">{{item.message}}</p>
+                              <ngb-rating class="rate" [max]="5" [(rate)]="item.rate" [readonly]="true"></ngb-rating>
+                          </div>
+                        </ng-container>
                         <!-- Reviews End -->
                     </div>
                 </div>
@@ -280,7 +247,7 @@
     <!-- Container End -->
 </div>
 
-<div class="hot-deal-products off-white-bg pt-sm-60 pb-sm-50">
+<div class="hot-deal-products off-white-bg pt-sm-60 pt-20 pb-sm-50">
     <div class="container" style="min-width: 1200px;">
         <!-- Product Title Start -->
         <div class="post-title">
@@ -301,21 +268,21 @@
                           <div class="single-product">
                               <!-- Product Image Start -->
                               <div class="pro-img">
-                                  <a href="product.html">
+                                  <a (click)=clickData(item.id)>
                                       <img class="primary-img" src="../../../../assets/images/{{item.images[0]?.fileName}}" alt="single-product">
 
                                   </a>
-                                  <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title=""
+                                  <a  class="quick_view" data-toggle="modal" data-target="#myModal" title=""
                                       data-original-title="Quick View"><i class="lnr lnr-magnifier"></i></a>
                               </div>
                               <!-- Product Image End -->
                               <!-- Product Content Start -->
                               <div class="pro-content">
                                   <div class="pro-info">
-                                      <h4><a >{{item.name}}</a></h4>
-                                      <p><span class="price">{{item.newPrice}}</span></p>
+                                      <h4><a >{{item.name| pipeFormat}}</a></h4>
+                                      <p><span class="price">{{item.newPrice| pipeFormat}}</span></p>
                                   </div>
-                                  <div class="pro-actions">
+                                  <div class="pro-actions" (click)="addtocart(item.id)">
                                       <div class="actions-primary">
                                           <a title="" data-original-title="Add to Cart" type="button"> + Thêm vào giỏ hàng</a>
                                       </div>
@@ -329,10 +296,10 @@
 
                 </div>
             </div>
-            <div class="owl-nav">
+            <!-- <div class="owl-nav">
                 <div class="owl-prev disabled"><i class="lnr lnr-arrow-left"></i></div>
                 <div class="owl-next"><i class="lnr lnr-arrow-right"></i></div>
-            </div>
+            </div> -->
             <div class="owl-dots disabled"></div>
         </div>
         <!-- Hot Deal Product Active End -->

@@ -28,7 +28,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CartComponent,
     ContactComponent,
     AboutUsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    pipeFormat
   ],
 
   imports: [

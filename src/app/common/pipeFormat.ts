@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class pipeFormat implements PipeTransform {
   transform(value: any, ...args: any[]): any {
-    return value + 'VND';
+    return value + ' VND';
   }
 }

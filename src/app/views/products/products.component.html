@@ -31,7 +31,7 @@
                         </h2>
                     </div>
                     <div class="row row-left-content">
-                        <div class="item-hot" *ngFor= 'let hot of listHot'>
+                        <div class="item-hot" *ngFor= 'let hot of productRecommend'>
                             <div class="product-image">
                                 <a [routerLink]="['/product-detail/' + hot.id]">
                                     <img src="../../../assets/images/{{hot.images[0].fileName}}" alt="" >
@@ -43,28 +43,9 @@
                                     _ngcontent-bsa-c114
                                     class="rating"
                                 >
-                                    <i
-                                        _ngcontent-bsa-c114
-                                        class="fa fa-star"
-                                    ></i>
-                                    <i
-                                        _ngcontent-bsa-c114
-                                        class="fa fa-star"
-                                    ></i>
-                                    <i
-                                        _ngcontent-bsa-c114
-                                        class="fa fa-star-o"
-                                    ></i>
-                                    <i
-                                        _ngcontent-bsa-c114
-                                        class="fa fa-star-o"
-                                    ></i>
-                                    <i
-                                        _ngcontent-bsa-c114
-                                        class="fa fa-star-o"
-                                    ></i>
+                                <ngb-rating class="rate" [max]="5" [(rate)]="hot.rating" [readonly]="true"></ngb-rating>
                                 </div>
-                                <div class="newPrice">{{hot.newPrice}}</div>
+                                <div class="newPrice">{{hot.newPrice| pipeFormat}}</div>
                             </div>
                         </div>
                     </div>
@@ -674,11 +655,12 @@
                                         <div class="pro-img">
                                             <a [routerLink]="['/product-detail/'+product.id ]">
                                                 <img
+
                                                     class="primary-img"
                                                     src="../../../assets/images/{{product.images[0]?.fileName}}"
                                                     alt="single-product"
                                                 >
-                                                <img class="secondary-img" src="../../../assets/images/{{product.images[1]?.fileName}}" alt="single-product">
+                                                <img   class="secondary-img" src="../../../assets/images/{{product.images[1]?.fileName}}" alt="single-product">
                                             </a>
                                             <a
                                                 href="#"
@@ -699,8 +681,8 @@
                                                     <a [routerLink]="['/'+product.id+'/product-detail']">{{product.name}}</a>
                                                 </h4>
                                                 <p>
-                                                    <span class="price">{{product.newPrice | currency:'VND'}}</span>
-                                                    <del class="prev-price">{{product.oldPrice | currency: 'VND'}}</del>
+                                                    <span class="price">{{product.newPrice | pipeFormat}}</span>
+                                                    <del class="prev-price">{{product.oldPrice| pipeFormat}}</del>
                                                 </p>
                                                 <!-- <div class="label-product l_sale">
                                                     30
@@ -744,6 +726,7 @@
                                         <div class="pro-img">
                                             <a [routerLink]="['/product-detail/'+product.id ]">
                                                 <img
+
                                                     class="primary-img"
                                                     src="../../../assets/images/{{product.images[0]?.fileName}}"
                                                     alt="single-product"
@@ -774,8 +757,8 @@
 
 
                                             <p>
-                                                <span class="price">{{product.newPrice | currency:'VND'}}</span>
-                                                <del class="prev-price">{{product.oldPrice | currency: 'VND'}}</del>
+                                                <span class="price">{{product.newPrice| pipeFormat}}</span>
+                                                <del class="prev-price">{{product.oldPrice| pipeFormat}}</del>
                                             </p>
                                             <p>{{product.description}}</p>
                                             <div class="pro-actions">

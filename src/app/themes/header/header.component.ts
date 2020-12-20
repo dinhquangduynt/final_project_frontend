@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   isAdmin =false;
   user: any;
   username: any;
-  count;
+  count = 0;
   constructor(
     public router: Router,
     public headerService: HeaderService,

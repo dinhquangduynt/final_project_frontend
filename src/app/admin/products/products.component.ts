@@ -51,7 +51,7 @@ export class ProductsComponent implements OnInit {
       this.cateId = params['cateId'];
       this.productService.getByCateId(this.cateId).subscribe(
         (res: any) => {
-          this.listProduct = res.data;
+          this.listProduct = res.data.products;
         },
         error => {
         }
@@ -61,7 +61,7 @@ export class ProductsComponent implements OnInit {
   detailProduct(productId: any) {
     this.productService.getByProductId(productId).subscribe(
       (res: any) => {
-        this.dataProduct = res.data;
+        this.dataProduct = res.data.products;
       },
       error => {
         console.log(error)
@@ -113,7 +113,7 @@ export class ProductsComponent implements OnInit {
   resetData(){
     this.dataProduct = {
       alias: '',
-      categoryId: '1',
+      categoryId: this.cateId,
       content: '',
       createBy: '',
       create_date: '',

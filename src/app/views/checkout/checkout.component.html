@@ -19,110 +19,32 @@
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="checkbox-form mb-sm-40">
-                    <h3>Billing Details</h3>
+                    <h3>Nhập thông tin</h3>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="country-select clearfix mb-30">
+                            <!-- <div class="country-select clearfix mb-30">
                                 <label>
-                                    Country
+                                    Nhập họ
                                     <span class="required">*</span>
                                 </label>
-                                <select
-                                    class="wide"
-                                    style="display: none;"
-                                >
-                                    <option value="volvo">Bangladesh</option>
-                                    <option value="saab">Algeria</option>
-                                    <option value="mercedes">Afghanistan</option>
-                                    <option value="audi">Ghana</option>
-                                    <option value="audi2">Albania</option>
-                                    <option value="audi3">Bahrain</option>
-                                    <option value="audi4">Colombia</option>
-                                    <option value="audi5">Dominican Republic</option>
-                                </select>
-                                <div
-                                    class="nice-select wide"
-                                    tabindex="0"
-                                >
-                                    <span class="current">Bangladesh</span>
-                                    <ul class="list">
-                                        <li
-                                            data-value="volvo"
-                                            class="option selected"
-                                        >
-                                            Bangladesh
-                                        </li>
-                                        <li
-                                            data-value="saab"
-                                            class="option"
-                                        >
-                                            Algeria
-                                        </li>
-                                        <li
-                                            data-value="mercedes"
-                                            class="option"
-                                        >
-                                            Afghanistan
-                                        </li>
-                                        <li
-                                            data-value="audi"
-                                            class="option"
-                                        >
-                                            Ghana
-                                        </li>
-                                        <li
-                                            data-value="audi2"
-                                            class="option"
-                                        >
-                                            Albania
-                                        </li>
-                                        <li
-                                            data-value="audi3"
-                                            class="option"
-                                        >
-                                            Bahrain
-                                        </li>
-                                        <li
-                                            data-value="audi4"
-                                            class="option"
-                                        >
-                                            Colombia
-                                        </li>
-                                        <li
-                                            data-value="audi5"
-                                            class="option"
-                                        >
-                                            Dominican Republic
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="checkout-form-list mb-sm-30">
-                                <label>
-                                    First Name
-                                    <span class="required">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder
-                                >
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="checkout-form-list mb-30">
-                                <label>
-                                    Last Name
-                                    <span class="required">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder
-                                >
-                            </div>
+
+                            </div> -->
                         </div>
                         <div class="col-md-12">
+                            <div class="checkout-form-list mtb-30">
+                                <label>
+                                    Nhập tên
+                                    <span class="required">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Họ và tên"
+                                    name="name"
+                                    [(ngModel)] = "dataOrder.customerName"
+                                >
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-12">
                             <div class="checkout-form-list mb-30">
                                 <label>Company Name</label>
                                 <input
@@ -130,40 +52,31 @@
                                     placeholder
                                 >
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="checkout-form-list">
-                                <label>
-                                    Address
-                                    <span class="required">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Street address"
-                                >
-                            </div>
-                        </div>
-                        <div class="col-md-12">
+                        </div> -->
+
+                        <!-- <div class="col-md-12">
                             <div class="checkout-form-list mtb-30">
                                 <input
                                     type="text"
                                     placeholder="Apartment, suite, unit etc. (optional)"
                                 >
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-12">
                             <div class="checkout-form-list mb-30">
                                 <label>
-                                    Town / City
+                                    Số điện thoại
                                     <span class="required">*</span>
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Town / City"
+                                    placeholder="Số điện thoại"
+                                    name="phone"
+                                    [(ngModel)] = "dataOrder.customerPhone"
                                 >
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="checkout-form-list mb-30">
                                 <label>
                                     State / County
@@ -174,8 +87,8 @@
                                     placeholder
                                 >
                             </div>
-                        </div>
-                        <div class="col-md-6">
+                        </div> -->
+                        <!-- <div class="col-md-6">
                             <div class="checkout-form-list mb-30">
                                 <label>
                                     Postcode / Zip
@@ -186,20 +99,72 @@
                                     placeholder="Postcode / Zip"
                                 >
                             </div>
-                        </div>
-                        <div class="col-md-6">
+                        </div> -->
+                        <div class="col-md-12">
                             <div class="checkout-form-list mb-30">
                                 <label>
-                                    Email Address
+                                    Email
                                     <span class="required">*</span>
                                 </label>
                                 <input
                                     type="email"
-                                    placeholder
+                                    placeholder="Email"
+                                    name="email"
+                                    [(ngModel)] = "dataOrder.customerEmail"
                                 >
                             </div>
                         </div>
-                        <div class="col-md-6">
+
+                        <!-- <div class="col-md-12">
+                            <div class="checkout-form-list mb-30">
+                                <label>
+                                    Tỉnh/Thành Phố
+                                    <span class="required">*</span>
+                                </label>
+                                <select class="form-control">
+                                    <option value="">Chọn Tỉnh</option>
+                                </select>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="col-md-12">
+                          <div class="checkout-form-list mb-30">
+                            <label>
+                                Quận/Huyện
+                                <span class="required">*</span>
+                            </label>
+                            <select class="form-control">
+                                <option value="">Chọn Huyện</option>
+                            </select>
+                        </div>
+
+                        <div class="checkout-form-list mb-30">
+                          <label>
+                              Xã/Phường
+                              <span class="required">*</span>
+                          </label>
+                          <select class="form-control">
+                              <option value="">aaaaaaaaa</option>
+                          </select>
+                      </div> -->
+
+                        <!-- </div> -->
+                        <div class="col-md-12">
+                          <div class="checkout-form-list mtb-30">
+                              <label>
+                                  Địa chỉ
+                                  <span class="required">*</span>
+                              </label>
+                              <input
+                                  type="text"
+                                  placeholder="Địa chỉ"
+                                  name="address"
+                                  [(ngModel)] = "dataOrder.customerAddress"
+                              >
+                          </div>
+                      </div>
+                        <div class="row"></div>
+                        <!-- <div class="col-md-6">
                             <div class="checkout-form-list mb-30">
                                 <label>
                                     Phone
@@ -210,248 +175,20 @@
                                     placeholder="Postcode / Zip"
                                 >
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="checkout-form-list create-acc mb-30">
-                                <input
-                                    id="cbox"
-                                    type="checkbox"
-                                >
-                                <label>Create an account?</label>
-                            </div>
-                            <div
-                                id="cbox_info"
-                                class="checkout-form-list create-accounts mb-25"
-                                style="display: none;"
-                            >
-                                <p class="mb-10">
-                                    Create an account by entering the information below. If you are a returning customer please login at the top of the page.
-                                </p>
-                                <label>
-                                    Account password
-                                    <span class="required">*</span>
-                                </label>
-                                <input
-                                    type="password"
-                                    placeholder="password"
-                                >
-                            </div>
-                        </div>
+                        </div> -->
+
                     </div>
                     <div class="different-address">
-                        <div class="ship-different-title">
-                            <h3>
-                                <label>Ship to a different address?</label>
-                                <input
-                                    id="ship-box"
-                                    type="checkbox"
-                                    (change) = "selectCheckBox()"
-                                >
-                            </h3>
-                        </div>
-                        <div
-                           *ngIf="isShow"
-                        >
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="country-select clearfix mb-30">
-                                        <label>
-                                            Country
-                                            <span class="required">*</span>
-                                        </label>
-                                        <select
-                                            class="wide"
-                                        >
-                                            <option value="volvo">Viet Nam</option>
-                                            <option value="saab">Algeria</option>
-                                            <option value="mercedes">Afghanistan</option>
-                                            <option value="audi">Ghana</option>
-                                            <option value="audi2">Albania</option>
-                                            <option value="audi3">Bahrain</option>
-                                            <option value="audi4">Colombia</option>
-                                            <option value="audi5">Dominican Republic</option>
-                                        </select>
-                                        <div
-                                            class="nice-select wide"
-                                            tabindex="0"
-                                        >
-                                            <span class="current">Bangladesh</span>
-                                            <ul class="list">
-                                                <li
-                                                    data-value="volvo"
-                                                    class="option selected"
-                                                >
-                                                    Bangladesh
-                                                </li>
-                                                <li
-                                                    data-value="saab"
-                                                    class="option"
-                                                >
-                                                    Algeria
-                                                </li>
-                                                <li
-                                                    data-value="mercedes"
-                                                    class="option"
-                                                >
-                                                    Afghanistan
-                                                </li>
-                                                <li
-                                                    data-value="audi"
-                                                    class="option"
-                                                >
-                                                    Ghana
-                                                </li>
-                                                <li
-                                                    data-value="audi2"
-                                                    class="option"
-                                                >
-                                                    Albania
-                                                </li>
-                                                <li
-                                                    data-value="audi3"
-                                                    class="option"
-                                                >
-                                                    Bahrain
-                                                </li>
-                                                <li
-                                                    data-value="audi4"
-                                                    class="option"
-                                                >
-                                                    Colombia
-                                                </li>
-                                                <li
-                                                    data-value="audi5"
-                                                    class="option"
-                                                >
-                                                    Dominican Republic
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>
-                                            First Name
-                                            <span class="required">*</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>
-                                            Last Name
-                                            <span class="required">*</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>Company Name</label>
-                                        <input
-                                            type="text"
-                                            placeholder
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>
-                                            Address
-                                            <span class="required">*</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder="Street address"
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list mb-30">
-                                        <input
-                                            type="text"
-                                            placeholder="Apartment, suite, unit etc. (optional)"
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>
-                                            Town / City
-                                            <span class="required">*</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder="Town / City"
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>
-                                            State / County
-                                            <span class="required">*</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>
-                                            Postcode / Zip
-                                            <span class="required">*</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder="Postcode / Zip"
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>
-                                            Email Address
-                                            <span class="required">*</span>
-                                        </label>
-                                        <input
-                                            type="email"
-                                            placeholder
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-30">
-                                        <label>
-                                            Phone
-                                            <span class="required">*</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder="Postcode / Zip"
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="order-notes">
                             <div class="checkout-form-list">
-                                <label>Order Notes</label>
+                                <label>Thông tin bổ sung</label>
                                 <textarea
                                     id="checkout-mess"
                                     cols="30"
                                     rows="10"
-                                    placeholder="Notes about your order, e.g. special notes for delivery."
+                                    placeholder="Ghi chú thời gian hay địa chỉ nhận hàng chi tiết hơn."
+                                    name="orther"
+                                    [(ngModel)] = "dataOrder.customerMassage"
                                 ></textarea>
                             </div>
                         </div>
@@ -460,46 +197,41 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="your-order">
-                    <h3>Your order</h3>
+                    <h3>Đơn hàng của bạn</h3>
                     <div class="your-order-table table-responsive">
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="product-name">Product</th>
-                                    <th class="product-total">Total</th>
+                                    <th class="product-name">Sản phẩm</th>
+                                    <th class="product-total">Giá</th>
                                 </tr>
                             </thead>
                             <tbody>
+                              <ng-container *ngFor="let item of dataOrder.orderDetails" >
+
                                 <tr class="cart_item">
                                     <td class="product-name">
-                                        Vestibulum suscipit
-                                        <span class="product-quantity">× 1</span>
+                                        {{item.name}}
+                                        <span class="product-quantity">× {{item.quantity}}</span>
                                     </td>
                                     <td class="product-total">
-                                        <span class="amount">£165.00</span>
+                                        <span class="amount">{{item.totalPrice | pipeFormat}}</span>
                                     </td>
                                 </tr>
-                                <tr class="cart_item">
-                                    <td class="product-name">
-                                        Vestibulum dictum magna
-                                        <span class="product-quantity">× 1</span>
-                                    </td>
-                                    <td class="product-total">
-                                        <span class="amount">50.000</span>
-                                    </td>
-                                </tr>
+                              </ng-container>
+
                             </tbody>
                             <tfoot>
                                 <tr class="cart-subtotal">
-                                    <th>Cart Subtotal</th>
+                                    <th>Tạm tính</th>
                                     <td>
-                                        <span class="amount">215.000</span>
+                                        <span class="amount">{{dataOrder.totalPrice | pipeFormat}}</span>
                                     </td>
                                 </tr>
                                 <tr class="order-total">
-                                    <th>Order Total</th>
+                                    <th>Thành tiền</th>
                                     <td>
-                                        <span class=" total amount">265.000</span>
+                                        <span class=" total amount">{{dataOrder.totalPrice | pipeFormat}}</span>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -513,6 +245,7 @@
                                     id="headingone"
                                 >
                                     <h5 class="mb-0">
+                                      <input type="radio" checked="isClickShioCOD" style="margin-left: 10px;">
                                         <button
                                             class="btn btn-link"
                                             data-toggle="collapse"
@@ -520,7 +253,7 @@
                                             aria-expanded="true"
                                             aria-controls="collapseOne"
                                         >
-                                            Direct Bank Transfer
+                                            Trả tiền khi nhận hàng
                                         </button>
                                     </h5>
                                 </div>
@@ -532,13 +265,14 @@
                                     data-parent="#accordion"
                                 >
                                     <div class="card-body">
-                                        <p>
-                                            Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.
-                                        </p>
+                                      <p>THANH TOÁN KHI NHẬN HÀNG (C.O.D), đơn giản, tiện lợi! Chưa bao gồm phí giao hàng</p>
+                                      <p>+ Phí Giao Hàng:</p>
+                                      <p>► Đà Nẵng: Giao hàng ngay trong nội thành, phí ship từ 20.000đ đến 30.000đ/đơn hàng (tùy khu vực)</p>
+                                      <p>► Ship TOÀN QUỐC: 50.000đ/đơn hàng, bất kể số lượng.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <!-- <div class="card">
                                 <div
                                     class="card-header"
                                     id="headingtwo"
@@ -567,21 +301,23 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="card">
                                 <div
                                     class="card-header"
                                     id="headingthree"
                                 >
                                     <h5 class="mb-0">
+                                      <input type="radio" disabled style="margin-left: 10px;">
                                         <button
                                             class="btn btn-link collapsed"
-                                            data-toggle="collapse"
+
+                                        >
+                                        <!-- data-toggle="collapse"
                                             data-target="#collapseThree"
                                             aria-expanded="false"
-                                            aria-controls="collapseThree"
-                                        >
-                                            PayPal
+                                            aria-controls="collapseThree" -->
+                                            Thanh toán online
                                         </button>
                                     </h5>
                                 </div>
@@ -593,10 +329,27 @@
                                 >
                                     <div class="card-body">
                                         <p>
-                                            Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.
+                                            Thanh toán thông qua cổng thanh toán paypal
                                         </p>
                                     </div>
                                 </div>
+                            </div>
+
+                             <div class="">
+                                <div
+                                    class=""
+                                    id="headingtwo"
+                                >
+                                    <h5 class="mb-0 wc-proceed-to-checkout">
+                                        <button
+                                            class="btn btn-link"
+                                            (click)="addOrder()"
+                                        >
+                                            Đặt hàng
+                                        </button>
+                                    </h5>
+                                </div>
+
                             </div>
                         </div>
                     </div>

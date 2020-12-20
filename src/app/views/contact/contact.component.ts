@@ -32,18 +32,36 @@ export class ContactComponent implements OnInit {
       }
     ]
   }
+
+  isSend = false;
   ngOnInit(): void {
-    
+
   }
   Create() {
     this.contactService.create(this.dataContact).subscribe(
       (res: any) => {
-        alert('đã gửi thành công')
+        this.isSend = true;
+        this.resetForm();
       },
       err => {
         console.log(err)
       }
     )
+  }
+
+  resetForm(){
+    this.dataContact = {
+      id: '',
+      name: '',
+      address: '',
+      email: '',
+      phone: '',
+      message: '',
+      updateBy: '',
+      update_date: '',
+      createBy: '',
+      create_date: ''
+    }
   }
 
 }

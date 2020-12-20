@@ -11,7 +11,7 @@
     margin-top: 56px;
     margin-left: 235px;
     padding: 15px;
-   
+
 
 }
 .collapsed {
@@ -32,7 +32,7 @@ section{
     background-color: rgb(247,247,249);
     background-size: cover;
     overflow: auto;
-    height: 570px;
+    height: 900px;
 }
 .main-container::-webkit-scrollbar {
     width: 7px !important;

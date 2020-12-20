@@ -1,3 +1,4 @@
+import { HeaderService } from './../../../themes/header/header.service';
 import { CateProductsService } from './../../../admin/services/cate-products.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -11,25 +12,31 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class ProductDetailComponent implements OnInit {
   public Editor = ClassicEditor;
-  detail : any;
+  detail: any;
   productId: any;
   listProductSemilar = [];
   currentRate = 3.5;
   cateId;
   cateName;
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private cateService: CateProductsService) { }
+  math = Math;
+  countRated = 0;
+  quantityOrder = 1;
+  feedbacks = [];
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private cateService: CateProductsService, private headerService: HeaderService) { }
 
   ngOnInit(): void {
-    this.productId = Number(this.activatedRoute.snapshot.paramMap.get('productId'));
     this.getProduct();
-    this.getProductSemilar();
   }
 
-  getProduct(){
+  getProduct() {
+    this.productId = Number(this.activatedRoute.snapshot.paramMap.get('productId'));
     this.productService.getProductById(this.productId).subscribe(
       (res: any) => {
-        this.detail = res.data;
+        this.detail = res.data.product;
         this.cateId = res.data.categoryId;
+        this.listProductSemilar = res.data.productsRecommend;
+        this.countRated = res.data.countRated;
+        this.feedbacks = res.data.feedbacks;
         this.cateService.getById(this.cateId).subscribe(
           (res: any) => {
             this.cateName = res.data.name;
@@ -45,11 +52,26 @@ export class ProductDetailComponent implements OnInit {
       }
     )
   }
+  listCart = [];
+  addtocart(id) {
+    if (localStorage.getItem('cart')) {
+      this.listCart = JSON.parse(localStorage.getItem('cart'));
+    }
+    const data = {
+      id: id,
+      quantity: this.quantityOrder
+    }
+    if (!this.listCart.includes(this.listCart.find(res => res.id === id))) {
+      this.listCart.push(data);
+      this.headerService.count = this.headerService.count + 1;
+      document.getElementById('count').innerText = (this.headerService.count).toString();
+    }
+    localStorage.setItem('cart', JSON.stringify(this.listCart));
+  }
 
-  getProductSemilar(){
-    this.productService.getProductSemilar().subscribe((res: any) => {
-      this.listProductSemilar = res.data;
-    })
+  clickData(id){
+    this.productId = id;
+    this.getProduct();
   }
 
 }

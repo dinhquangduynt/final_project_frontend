@@ -1,3 +1,4 @@
+import { HeaderService } from './../../themes/header/header.service';
 import { HomeService } from './home.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   listProductHot = [];
   listProductRecomment = [];
   listNewProduct = [];
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private headerService: HeaderService) { }
 
   ngOnInit(): void {
     this.getListNewProduct();
@@ -24,8 +25,28 @@ export class HomeComponent implements OnInit {
 
   getListNewProduct(){
     this.homeService.getHotProduct().subscribe((res: any) => {
-      this.listProductHot = res.data;
+      this.listProductHot = res.data.hotProducts;
+      this.listProductRecomment = res.data.productsRecommend;
+      this.listNewProduct = res.data.newProducts;
     })
+  }
+
+  listCart = [];
+
+  addToCart(productId){
+    if(localStorage.getItem('cart')){
+      this.listCart = JSON.parse(localStorage.getItem('cart'));
+    }
+    const data = {
+      id : productId,
+      quantity: 1
+    }
+    if(!this.listCart.includes(this.listCart.find(res => res.id === productId))){
+      this.listCart.push(data);
+      this.headerService.count = this.headerService.count + 1;
+      document.getElementById('count').innerText = (this.headerService.count).toString();
+    }
+    localStorage.setItem('cart',JSON.stringify(this.listCart));
   }
 
 }

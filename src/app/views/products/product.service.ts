@@ -18,9 +18,6 @@ export class ProductService {
     return this.httpClient.get(this.config.urlProduct.concat('/getById/') + productId);
   }
 
-  getProductSemilar(){
-    return this.httpClient.get(this.config.urlProduct.concat('/getAll'));
-  }
   getAll(){
     return this.httpClient.get(this.config.urlProduct.concat('/getAll'))
   }

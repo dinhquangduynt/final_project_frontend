@@ -1,0 +1,37 @@
+.mtb-30 {
+  margin: 16px 0 !important;
+}
+.checkout-form-list input[type="text"], .checkout-form-list input[type="password"], .checkout-form-list input[type="email"] {
+  background: #ffffff none repeat scroll 0 0;
+  border: 1px solid #ebebeb;
+  border-radius: 0;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.075);
+  height: 46px !important;
+  padding: 0 0 0 10px;
+  width: 100%;
+}
+.mb-30 {
+  margin-bottom: 14px !important;
+}
+.wc-proceed-to-checkout-custom {
+  clear: both;
+  display: block;
+}
+
+.wc-proceed-to-checkout button {
+  background: #222222 !important;
+  color: #fff!important;
+  display: inline-block!important;
+  font-size: 14px!important;
+  font-weight: 700!important;
+  height: 50px!important;
+  line-height: 50px!important;
+  margin-top: 20px!important;
+  padding: 0 30px!important;
+  text-transform: none!important;
+  border-radius: 4px!important;
+}
+.wc-proceed-to-checkout button:hover {
+  background: #e62e04 none repeat scroll 0 0!important;
+    color: #fff!important;
+  }

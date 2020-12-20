@@ -29,26 +29,19 @@
                               </tr>
                           </thead>
                           <tbody>
+                            <ng-container *ngFor="let item of cart.cartDetails" >
+
                               <tr>
                                   <td class="product-thumbnail">
-                                      <a href="#"><img src="../../../assets/images/arduino_uno_r3.jpg" alt="cart-image"></a>
+                                      <a><img src=".../../../assets/images/{{item.images[0].filename}}" alt="cart-image"></a>
                                   </td>
-                                  <td class="product-name"><a href="#">Arduino-Uno-R3</a></td>
-                                  <td class="product-price"><span class="amount">120.000 VND</span></td>
-                                  <td class="product-quantity"><input type="number" value="1"></td>
-                                  <td class="product-subtotal">120.000 VND</td>
-                                  <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+                                  <td class="product-name"><a >{{item.name}}</a></td>
+                                  <td class="product-price"><span class="amount">{{item.newPrice| pipeFormat}}</span></td>
+                                  <td class="product-quantity"><input (change)="onchangeQuantity(item.id)" type="number" min="1" max="{{item.quantity}}" name="quatityInput" [(ngModel)]="item.quantityInput"></td>
+                                  <td class="product-subtotal">{{item.totalPrice | pipeFormat}}</td>
+                                  <td class="product-remove" (click)="removeItem(item.id)"> <a><i class="fa fa-times" aria-hidden="true"></i></a></td>
                               </tr>
-                              <tr>
-                                  <td class="product-thumbnail">
-                                      <a href="#"><img src="../../../assets/images/arduino_mega_protoshield_v3.0_medium.jpg" alt="cart-image"></a>
-                                  </td>
-                                  <td class="product-name"><a href="#">Arduino-Mega-Protoshield</a></td>
-                                  <td class="product-price"><span class="amount">150.000 VND</span></td>
-                                  <td class="product-quantity"><input type="number" value="2"></td>
-                                  <td class="product-subtotal">300.000 VND</td>
-                                  <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                              </tr>
+                            </ng-container>
                           </tbody>
                       </table>
                   </div>
@@ -57,7 +50,7 @@
                      <!-- Cart Button Start -->
                       <div class="col-md-8 col-sm-12">
                           <div class="buttons-cart">
-                              <input type="submit" value="Cập nhật giỏ hàng">
+                              <!-- <input type="submit" value="Cập nhật giỏ hàng"> -->
                               <a href="#">Tiếp tục mua hàng</a>
                           </div>
                       </div>
@@ -71,18 +64,18 @@
                                   <tbody>
                                       <tr class="cart-subtotal">
                                           <th>Tạm tính</th>
-                                          <td><span class="amount">420.000 VND</span></td>
+                                          <td><span class="amount">{{cart.cartTotal}}₫</span></td>
                                       </tr>
                                       <tr class="order-total">
                                           <th>Tổng cộng</th>
                                           <td>
-                                              <strong><span class="amount">420.000 VND</span></strong>
+                                              <strong><span class="amount">{{cart.cartTotal}}₫</span></strong>
                                           </td>
                                       </tr>
                                   </tbody>
                               </table>
                               <div class="wc-proceed-to-checkout">
-                                  <a routerLink = '/checkout'>Thanh toán</a>
+                                  <button (click)="onSubmit()">Thanh toán</button>
                               </div>
                           </div>
                       </div>

@@ -18,6 +18,7 @@ export class ProductsComponent implements OnInit {
   params:any;
   cateName;
   priceFilter = 100;
+  productRecommend = [];
   constructor( private activatedRoute: ActivatedRoute, private productService: ProductService, private cateService: CateProductsService, private headerService: HeaderService) { }
   listHot = [];
 
@@ -27,36 +28,18 @@ export class ProductsComponent implements OnInit {
       this.cateId = params['cateId'];
       this.productService.getAllProductbyCateId(this.cateId).subscribe(
         (res: any)=>{
-          this.listProduct = res.data;
+          this.listProduct = res.data.products;
+          this.productRecommend = res.data.productsRecommend;
         },
         error=>{
-          console.log(error)
         }
       )
     })
-    this.getAll();
     this.cateService.getById(this.cateId).subscribe(
       (res: any) => {
         this.cateName = res.data.name;
       },
       error => {
-        console.log(error);
-      }
-    )
-  }
-  getAll(){
-    this.productService.getAll().subscribe(
-      (res:any)=>{
-        res.data.forEach(e => {
-          if (e.hotFlg == 1) {
-            this.listHot.push(e);
-          }
-
-        });
-        console.log(this.listHot)
-      },
-      error=>{
-        console.log(error)
       }
     )
   }
@@ -70,7 +53,7 @@ export class ProductsComponent implements OnInit {
     }
     const data = {
       id : productId,
-      // quantity: parseInt(this.quantityInput)
+     quantity: 1
     }
     if(!this.listCart.includes(this.listCart.find(res => res.id === productId))){
       this.listCart.push(data);

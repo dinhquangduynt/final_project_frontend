@@ -20,10 +20,14 @@ export class SignUpComponent extends HeaderComponent implements OnInit {
     address: '',
     phoneNumber: '',
     userName: '',
-    password: ''
+    password: '',
+    roles:[{
+      idRole: '2',
+      role: 'ROLE_USER'
+    }]
   }
   matchPass;
-  
+
   // constructor(private accountService: AccountService, private tokenService:TokenStorageService,private router: Router) { }
 
   ngOnInit(): void {
