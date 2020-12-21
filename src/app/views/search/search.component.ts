@@ -3,6 +3,7 @@ import { CateProductsService } from './../../admin/services/cate-products.servic
 import { ProductService } from './../products/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { DataTransferService } from './data-transfer.service';
 
 @Component({
   selector: 'app-search',
@@ -17,30 +18,38 @@ export class SearchComponent implements OnInit {
   cateName;
   priceFilter = 100;
   productRecommend = [];
-  constructor( private activatedRoute: ActivatedRoute, private productService: ProductService, private cateService: CateProductsService, private headerService: HeaderService) { }
+  listSearch;
+  searchText;
+  isNull;
+  constructor( private activatedRoute: ActivatedRoute, private productService: ProductService, private cateService: CateProductsService, private headerService: HeaderService, private transferService: DataTransferService) { }
   listHot = [];
 
   keySearch = ''
 
   ngOnInit(): void {
-    this.params = this.activatedRoute.params.subscribe(params => {
-      this.cateId = params['cateId'];
-      this.productService.getAllProductbyCateId(this.cateId).subscribe(
-        (res: any)=>{
-          this.listProduct = res.data.products;
-          this.productRecommend = res.data.productsRecommend;
+    this.transferService.getMessage().subscribe((res:any)=>{
+      this.searchText = res;
+    });
+    if(this.searchText !== '' && this.searchText !== undefined){
+      this.productService.getAll().subscribe(
+        (res:any)=>{
+          res.data.forEach(e => {
+            this.listSearch = res.data.filter((rs)=> {
+              return rs.name.toLowerCase().includes(this.searchText.toLowerCase())
+            })
+          });
+          if (this.listSearch.length === 0) {
+            this.isNull=true;
+          }
         },
         error=>{
+          console.error(error)
         }
       )
-    })
-    this.cateService.getById(this.cateId).subscribe(
-      (res: any) => {
-        this.cateName = res.data.name;
-      },
-      error => {
-      }
-    )
+    }  
+    else {
+      this.isNull = true;
+    } 
   }
   onChangePage(event){
 
