@@ -78,7 +78,7 @@
                         </div>
                         <div class="pro-price mtb-30">
                             <p class="d-flex align-items-center">
-                                <span class="prev-price">{{detail.oldPrice| pipeFormat}}</span>
+                                <!-- <span class="prev-price">{{detail.oldPrice| pipeFormat}}</span> -->
                                 <span class="price">{{detail.newPrice| pipeFormat}}</span>
                                 <!-- <span class="saving-price" *ngIf="detail.newPrice < detail.oldPrice" >Giảm đến {{math.round(100 - (detail.newPrice/detail.oldPrice)*100) }} %</span> -->
                             </p>
@@ -215,13 +215,27 @@
                 </ul>
                 <!-- Product Thumbnail Tab Content Start -->
                 <div class="tab-content thumb-content border-default">
+
                     <div id="dtail" class="tab-pane fade active show">
                         <p>
                             <!-- {{detail.content}} -->
                             <ckeditor [(ngModel)]="detail.content" name="content"></ckeditor>
                         </p>
                     </div>
+
                     <div id="review" class="tab-pane fade">
+                      <ng-container *ngIf="isLogin" >
+                        <span>Đăng nhập để đánh giá</span>
+                      </ng-container>
+                        <ng-container *ngIf="!isLogin">
+                          <div class="review border-default universal-padding">
+                              <div class="group-title">
+                                  <h2>Đánh giá của bạn</h2>
+                                  <p class="review-mini-title"></p>
+                                  <ngb-rating class="rate" [max]="5" [(rate)]="rate" [readonly]="false"></ngb-rating>
+                              </div>
+                          </div>
+                        </ng-container>
                         <!-- Reviews Start -->
                         <ng-container *ngIf="feedbacks.length == 0" >
                           <span>Chưa có đánh giá</span>

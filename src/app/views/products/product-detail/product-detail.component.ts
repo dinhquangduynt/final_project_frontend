@@ -12,7 +12,29 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class ProductDetailComponent implements OnInit {
   public Editor = ClassicEditor;
-  detail: any;
+  detail = {
+    alias: '',
+    categoryId: '',
+    content: '',
+    createBy: '',
+    create_date: '',
+    description: '',
+    homeFlg: '',
+    hotFlg: '',
+    id: '',
+    images: [],
+    name: '',
+    newPrice: '',
+    oldPrice: '',
+    price: '',
+    quantity: '',
+    rating: '',
+    status: '',
+    updateBy: '',
+    update_date: '',
+    viewCount: '',
+    warranty: ''
+  }
   productId: any;
   listProductSemilar = [];
   currentRate = 3.5;
@@ -22,6 +44,8 @@ export class ProductDetailComponent implements OnInit {
   countRated = 0;
   quantityOrder = 1;
   feedbacks = [];
+  rate = 0;
+  isLogin = false;
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private cateService: CateProductsService, private headerService: HeaderService) { }
 
   ngOnInit(): void {
@@ -33,7 +57,7 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductById(this.productId).subscribe(
       (res: any) => {
         this.detail = res.data.product;
-        this.cateId = res.data.categoryId;
+        this.cateId = res.data.product.categoryId;
         this.listProductSemilar = res.data.productsRecommend;
         this.countRated = res.data.countRated;
         this.feedbacks = res.data.feedbacks;
@@ -69,7 +93,7 @@ export class ProductDetailComponent implements OnInit {
     localStorage.setItem('cart', JSON.stringify(this.listCart));
   }
 
-  clickData(id){
+  clickData(id) {
     this.productId = id;
     this.getProduct();
   }

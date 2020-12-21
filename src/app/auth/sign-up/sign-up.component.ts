@@ -22,8 +22,8 @@ export class SignUpComponent extends HeaderComponent implements OnInit {
     userName: '',
     password: '',
     roles:[{
-      idRole: '2',
-      role: 'ROLE_USER'
+      idRole: 2,
+      role: 'cc'
     }]
   }
   matchPass;
@@ -33,6 +33,10 @@ export class SignUpComponent extends HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   register(){
+    this.data.roles = [{
+      idRole: 2,
+      role: 'cc'
+    }]
     this.accountService.create(this.data).subscribe(
       (res:any)=>{
         alert('đăng ký thành công')

@@ -41,6 +41,9 @@ export class CartComponent implements OnInit {
           index++;
         }
       });
+
+      console.log(this.cart);
+
     })
   }
   QuantityChange

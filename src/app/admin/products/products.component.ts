@@ -51,6 +51,7 @@ export class ProductsComponent implements OnInit {
       this.cateId = params['cateId'];
       this.productService.getByCateId(this.cateId).subscribe(
         (res: any) => {
+
           this.listProduct = res.data.products;
         },
         error => {
@@ -61,7 +62,8 @@ export class ProductsComponent implements OnInit {
   detailProduct(productId: any) {
     this.productService.getByProductId(productId).subscribe(
       (res: any) => {
-        this.dataProduct = res.data.products;
+        console.log(res);
+        this.dataProduct = res.data.product;
       },
       error => {
         console.log(error)

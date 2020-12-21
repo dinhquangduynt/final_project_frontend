@@ -16,6 +16,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ContactComponent,
     AboutUsComponent,
     CheckoutComponent,
-    pipeFormat
+    pipeFormat,
+    SearchComponent
   ],
 
   imports: [
