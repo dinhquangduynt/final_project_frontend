@@ -21,7 +21,6 @@ export class SignInComponent extends HeaderComponent implements OnInit{
     userName: '',
     password: '',
   }
-
   ngOnInit(): void {
 
   }
@@ -35,13 +34,13 @@ export class SignInComponent extends HeaderComponent implements OnInit{
         this.tokenStorageService.saveUser(res);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        this.toastr.success("Đăng nhập thành công")
         this.router.navigateByUrl('/');
       },
       error=>{
         this.errorMessage = error.message;
         this.isLoginFailed = true;
-        alert("Sai thông tin tài khoản hoặc mật khẩu")
-        location.reload();
+        this.toastr.error("Sai thông tin tài khoản hoặc mật khẩu")
       }
     )
   }

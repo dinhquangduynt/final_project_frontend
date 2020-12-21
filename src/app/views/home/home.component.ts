@@ -1,6 +1,7 @@
 import { HeaderService } from './../../themes/header/header.service';
 import { HomeService } from './home.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   listProductHot = [];
   listProductRecomment = [];
   listNewProduct = [];
-  constructor(private homeService: HomeService, private headerService: HeaderService) { }
+  constructor(private homeService: HomeService, private headerService: HeaderService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getListNewProduct();
@@ -46,6 +47,7 @@ export class HomeComponent implements OnInit {
       this.headerService.count = this.headerService.count + 1;
       document.getElementById('count').innerText = (this.headerService.count).toString();
     }
+    this.toastr.success("Thêm thành công sản phẩm vào giỏ hàng")
     localStorage.setItem('cart',JSON.stringify(this.listCart));
   }
 

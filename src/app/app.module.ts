@@ -10,6 +10,8 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidateEqualModule } from 'ng-validate-equal';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,10 @@ import { ValidateEqualModule } from 'ng-validate-equal';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ValidateEqualModule
+    ValidateEqualModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+
   ],
   providers: [HttpClientModule, authInterceptorProviders],
   bootstrap: [AppComponent]

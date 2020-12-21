@@ -3,6 +3,8 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { error } from 'protractor';
 import { ProductsService } from '../services/products.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 declare var jQuery: any;
 declare var $: any;
 
@@ -41,7 +43,8 @@ export class ProductsComponent implements OnInit {
   files = [];
   isEdit = false;
   productId:any;
-  constructor(private activatedRoute: ActivatedRoute, private productService: ProductsService) { }
+  searchText;
+  constructor(private activatedRoute: ActivatedRoute, private productService: ProductsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getByCateId();
@@ -71,20 +74,43 @@ export class ProductsComponent implements OnInit {
     )
   }
   deleteProduct(productId: string) {
-    this.productService.deleteProduct(productId).subscribe(
-      (res: any) => {
-        alert("thành công");
-        // return this.listProduct;
-        this.getByCateId();
-      },
-      error => {
-        console.log(error)
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa không?',
+      text: "Bạn sẽ không thể hoàn tác!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Xóa!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productService.deleteProduct(productId).subscribe(
+            (res:any)=>{
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+              this.getByCateId()
+            },
+            err=>{
+              console.log(err)
+            }
+          )
       }
-    )
+      else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Type product is safe',
+          'error'
+        )
+      }
+    })
   }
   save() {
     if(this.isEdit){
       this.productService.updateProduct(this.dataProduct, this.files).subscribe(res => {
+        this.toastr.success('Cập nhật thành công')
         this.getByCateId()
         $('#modalEdit').modal('hide');
       }, err => {
@@ -92,6 +118,7 @@ export class ProductsComponent implements OnInit {
       })
     } else {
       this.productService.addProduct(this.dataProduct, this.files).subscribe(res => {
+        this.toastr.success('Thêm thành công')
         this.getByCateId()
         $('#modalEdit').modal('hide');
       }, err => {

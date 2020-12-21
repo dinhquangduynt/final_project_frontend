@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { HeaderService } from 'src/app/themes/header/header.service';
 import { error } from 'protractor';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products',
@@ -19,7 +20,7 @@ export class ProductsComponent implements OnInit {
   cateName;
   priceFilter = 100;
   productRecommend = [];
-  constructor( private activatedRoute: ActivatedRoute, private productService: ProductService, private cateService: CateProductsService, private headerService: HeaderService) { }
+  constructor( private activatedRoute: ActivatedRoute, private productService: ProductService, private cateService: CateProductsService, private headerService: HeaderService, private toastr: ToastrService) { }
   listHot = [];
 
   keySearch = ''
@@ -60,6 +61,7 @@ export class ProductsComponent implements OnInit {
       this.headerService.count = this.headerService.count + 1;
       document.getElementById('count').innerText = (this.headerService.count).toString();
     }
+    this.toastr.success("Thêm thành công sản phẩm vào giỏ hàng")
     localStorage.setItem('cart',JSON.stringify(this.listCart));
   }
 

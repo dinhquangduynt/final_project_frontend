@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { AccountManagementService } from '../services/account-management.service';
 declare  var $ : any;
@@ -11,9 +12,10 @@ export class AccountManagementComponent implements OnInit {
   [x: string]: any;
   listAcc;
   isEdit =false;
- 
-  
-  constructor(private accountService: AccountManagementService) { }
+  searchText;
+  constructor(private accountService: AccountManagementService,
+              private toastr: ToastrService
+  ) { }
  
   
   dataAcc = {
@@ -96,7 +98,7 @@ export class AccountManagementComponent implements OnInit {
     this.dataAcc.roles[0].name = this.dataAcc.roles[0].id=='1' ? 'user' : 'admin' 
     if(this.isEdit){
       this.accountService.update(this.dataAcc).subscribe(res => {
-        alert("done");
+        this.toastr.success('Cập nhật thành công')
         this.getAll();
         $('#modalEdit').modal('hide');
       }, err => {
@@ -104,6 +106,7 @@ export class AccountManagementComponent implements OnInit {
       })
     } else {
       this.accountService.create(this.dataAcc).subscribe(res => {
+        this.toastr.success('Thêm thành công')
         this.getAll();
         $('#modalEdit').modal('hide');
       }, err => {

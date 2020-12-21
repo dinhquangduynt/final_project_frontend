@@ -8,6 +8,7 @@ import { ViewsComponent } from './views.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
        { path: 'cart', component: CartComponent },
        { path: 'about', component: AboutUsComponent },
        { path: 'contact', component: ContactComponent },
-       { path: 'checkout', component: CheckoutComponent }
+       { path: 'checkout', component: CheckoutComponent },
+       { path: 'profile', component: ProfileComponent}
     ]
   },
 ];

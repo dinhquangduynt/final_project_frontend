@@ -11,6 +11,7 @@ h3{
 }
 .table-container{
     padding-bottom: 30px;
+    margin-top: 70px;
 }
 thead{
     background-color: rgb(248,248,248);
@@ -38,4 +39,16 @@ td ul li{
     display: inline-block;
     padding-right: 5px;
     list-style-type: none;
+}
+.search{
+    float: right;
+    border-radius: 50px;
+    width: 100%;
+    max-width: 300px;
+    background-color: darkgray;
+    border: 1px solid darkgray;
+    outline: none;
+    padding-left: 10px;
+    color: rgb(108, 105, 105);
+    height: 30px;
 }

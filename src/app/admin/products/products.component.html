@@ -5,7 +5,7 @@
       <button class="btn btn-add" data-toggle="modal" data-target="#modalEdit" (click)="addNew()"><i class="fa fa-check"></i>Thêm sản
         phẩm</button>
       <div class="right">
-        <input type="search" class="search" placeholder="Tìm kiếm sản phẩm">
+        <input type="search" class="search" placeholder="Tìm kiếm sản phẩm" [(ngModel)]="searchText">
         <label for="">filter by: </label>
         <select name="" id="">
           <option value="">all</option>
@@ -26,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor = "let product of listProduct ; let i = index">
+          <tr *ngFor = "let product of listProduct | filter:searchText; let i = index">
             <th scope="row">{{i+1}}</th>
             <td style="width: 200px;">{{product.name}}</td>
             <td><img src="../../../assets/images/{{product.images[0].fileName}}" alt=""></td>

@@ -7,7 +7,7 @@
             <i class="fa fa-check"></i>
             Thêm danh mục
         </a>
-          <input type="search" class="search" placeholder="Tìm kiếm danh mục">
+          <input type="search" class="search" placeholder="Tìm kiếm danh mục" [(ngModel)]="searchText">
     </div>
     <div class="table-container">
         <table class="table">
@@ -21,7 +21,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor = 'let cate of listCate; let i = index'>
+              <tr *ngFor = 'let cate of listCate | filter:searchText; let i = index'>
                 <td scope="row">{{i+1}}</td>
                 <td>{{cate.name}}</td>
                 <td>{{cate.description}}</td>
@@ -109,7 +109,7 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -127,4 +127,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

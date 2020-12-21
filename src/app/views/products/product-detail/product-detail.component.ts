@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-detail',
@@ -46,7 +47,7 @@ export class ProductDetailComponent implements OnInit {
   feedbacks = [];
   rate = 0;
   isLogin = false;
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private cateService: CateProductsService, private headerService: HeaderService) { }
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private cateService: CateProductsService, private headerService: HeaderService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getProduct();
@@ -90,6 +91,7 @@ export class ProductDetailComponent implements OnInit {
       this.headerService.count = this.headerService.count + 1;
       document.getElementById('count').innerText = (this.headerService.count).toString();
     }
+    this.toastr.success("Thêm thành công sản phẩm vào giỏ hàng")
     localStorage.setItem('cart', JSON.stringify(this.listCart));
   }
 

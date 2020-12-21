@@ -16,6 +16,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { CateProductsComponent } from './cate-products/cate-products.component';
 import { AccountManagementComponent } from './account-management/account-management.component';
 import { ContactManagementComponent } from './contact-management/contact-management.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -29,6 +32,8 @@ import { ContactManagementComponent } from './contact-management/contact-managem
     FormsModule,
     ReactiveFormsModule,
     CKEditorModule,
+    Ng2SearchPipeModule,
+    ToastrModule.forRoot()
   ]
 })
 export class AdminModule { }

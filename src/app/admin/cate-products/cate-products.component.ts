@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 import { CateProductsService } from '../services/cate-products.service';
 declare var jQuery: any;
 declare var $: any;
@@ -12,6 +14,7 @@ export class CateProductsComponent implements OnInit {
   listCate: any;
   cateId: any;
   files = [];
+  searchText;
   dataCate = {
     createBy: '',
     updateBy: '',
@@ -25,7 +28,7 @@ export class CateProductsComponent implements OnInit {
     update_date: ''
   }
 
-  constructor(private cateService: CateProductsService) { }
+  constructor(private cateService: CateProductsService, private toastr: ToastrService) { }
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   ngOnInit(): void {
     this.getAll();
@@ -71,8 +74,9 @@ export class CateProductsComponent implements OnInit {
   addCate() {
     this.cateService.addCateProduct(this.dataCate, this.files).subscribe(
       (res: any) => {
-        alert('add success');
+        
         $('#modalAdd').modal('hide');
+        this.toastr.success("Thêm thành công")
         this.getAll();
       },
       err => {
@@ -83,7 +87,7 @@ export class CateProductsComponent implements OnInit {
   update() {
     this.cateService.update(this.dataCate, this.files).subscribe(
       (res: any) => {
-        alert('update success');
+        this.toastr.success("Cập nhật thành công")
         $('#modalEdit').modal('hide');
         this.getAll();
       },
@@ -98,14 +102,37 @@ export class CateProductsComponent implements OnInit {
     }
   }
   delete(cateId: string) {
-    this.cateService.delete(cateId).subscribe(
-      res => {
-        alert('delete successfully...');
-        this.getAll();
-      },
-      err => {
-        console.log(err)
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa không?',
+      text: "Bạn sẽ không thể hoàn tác!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Xóa!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cateService.delete(cateId).subscribe(
+            (res:any)=>{
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+              this.getAll()
+            },
+            err=>{
+              console.log(err)
+            }
+          )
       }
-    )
+      else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Type product is safe',
+          'error'
+        )
+      }
+    })
   }
 }

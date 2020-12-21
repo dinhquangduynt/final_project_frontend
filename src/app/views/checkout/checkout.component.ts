@@ -2,6 +2,7 @@ import { CheckoutService } from './checkout.service';
 import { ProductService } from './../products/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout',
@@ -60,14 +61,46 @@ export class CheckoutComponent implements OnInit {
     this.dataOrder.orderDetails.forEach(res =>{
       delete res['name']
     })
-    this.checkoutService.addOrder(this.dataOrder).subscribe(res => {
-      localStorage.removeItem('order');
-      localStorage.removeItem('cart');
-      this.router.navigateByUrl("/")
-
-    }, err => {
-      console.log(err);
-
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn gửi email này không?',
+      text: "Bạn sẽ không thể hoàn tác!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Gửi'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.checkoutService.addOrder(this.dataOrder).subscribe(
+          (res: any) => {
+            Swal.fire(
+              'Đã gửi',
+              'Email của bạn đã được gửi',
+              'success'
+            ).then((result) =>{
+              if (result.isConfirmed){
+                localStorage.removeItem('order');
+                localStorage.removeItem('cart');
+                this.router.navigateByUrl("/")
+              }           
+            })
+            
+          },
+          err => {
+            console.log(err)
+          }
+        )
+      }
     })
+
+    // this.checkoutService.addOrder(this.dataOrder).subscribe(res => {
+    //   localStorage.removeItem('order');
+    //   localStorage.removeItem('cart');
+    //   // this.router.navigateByUrl("/")
+
+    // }, err => {
+    //   console.log(err);
+
+    // })
   }
 }

@@ -29,6 +29,6 @@ export class OrderService {
     return this.httpClient.post(this.config.urlOrder.concat('/add'), data)
   }
   updateOrder(data){
-    return this.httpClient.put(this.config.urlOrder.concat('/update'), data)
+    return this.httpClient.put(this.config.urlOrder.concat('/update') , data)
   }
 }

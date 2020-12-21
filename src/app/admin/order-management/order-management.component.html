@@ -1,5 +1,11 @@
 <div class="container">
     <h3>Đơn hàng</h3>
+    <div class="div2">
+      <!-- <form class="search" action="" style="float: right;"> -->
+        <input type="search" [(ngModel)]="searchText" class="search" placeholder="Tìm kiếm đơn hàng">
+        <!-- <i class="fa fa-search"></i> -->
+      <!-- </form> -->
+  </div>
     <div class="table-container">
         <table class="table">
             <thead class="thead">
@@ -8,33 +14,75 @@
                 <th scope="col">Tên khách hàng</th>
                 <th>Địa chỉ</th>
                 <th>Số điện thoại</th>
-                <th>Hình thức thanh toán</th>
                 <th>Trạng thái thanh toán</th>
-                <th scope="col">mã sản phẩm</th>
+                <th scope="col">Tổng tiền</th>
                 <th scope="col">Ngày mua</th>
                 <th>Trạng thái</th>
                 <th>Thao tác</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor = 'let order of listOrder; let i = index'>
+              <tr *ngFor = 'let order of listOrder | filter:searchText; let i = index'>
                 <td scope="row">{{i+1}}</td>
                 <td>{{order.customerName}}</td>
                 <td>{{order.customerAddress}}</td>
                 <td>{{order.customerPhone}}</td>
-                <td>{{order.paymentMethod}}</td>
                 <td>{{order.paymentStatus}}</td>
+                <td>{{order.totalPrice}}</td>
                 <td>{{order.createDate}}</td>
                 <td>{{order.Status}}</td>
                 <td>
                     <ul>
-                        <li><a  type="button" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-w fa-info"></i></a></li>
-                        <li><a  type="button"data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></a></li>
-                        <!-- <li><a href="" type="button" class="btn-list"><i class="fa fa-th-list"></i></a></li> -->
+                        <li><a  type="button" (click)="updateStatus(order.id)"><i class="fa fa-w fa-check"></i></a></li>
+                        <li><a  type="button" (click)="delete(order.id)"><i class="fa fa-trash"></i></a></li>
                     </ul>
                 </td>
               </tr>
             </tbody>
           </table>
+    </div>
+    <div class="order-check">
+      <h3>Đơn hàng đã giao</h3>
+    <div class="div2">
+      <!-- <form class="search" action="" style="float: right;"> -->
+        <input type="search" [(ngModel)]="searchText2" class="search" placeholder="Tìm kiếm đơn hàng">
+        <!-- <i class="fa fa-search"></i> -->
+      <!-- </form> -->
+  </div>
+    <div class="table-container">
+        <table class="table">
+            <thead class="thead">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên khách hàng</th>
+                <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
+                <th>Trạng thái thanh toán</th>
+                <th scope="col">Tổng tiền</th>
+                <th scope="col">Ngày mua</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = 'let order of listOrderChecked | filter:searchText2; let i = index'>
+                <td scope="row">{{i+1}}</td>
+                <td>{{order.customerName}}</td>
+                <td>{{order.customerAddress}}</td>
+                <td>{{order.customerPhone}}</td>
+                <td>{{order.paymentStatus}}</td>
+                <td>{{order.totalPrice}}</td>
+                <td>{{order.createDate}}</td>
+                <td>{{order.Status}}</td>
+                <td>
+                    <ul>
+                        <li><a  type="button" ><i class="fa fa-w fa-check"></i></a></li>
+                        <li><a  type="button" (click)="delete(order.id)"><i class="fa fa-trash"></i></a></li>
+                    </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
     </div>
 </div>

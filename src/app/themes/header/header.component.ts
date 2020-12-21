@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/auth/account.service';
 import { SignInService } from 'src/app/auth/sign-in/sign-in.service';
 import { TokenStorageService } from 'src/app/auth_service/token-storage.service';
@@ -27,6 +28,7 @@ export class HeaderComponent implements OnInit {
     public tokenStorageService: TokenStorageService,
     public loginService: SignInService,
     public accountService: AccountService,
+    public toastr: ToastrService
     )
     {
 

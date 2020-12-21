@@ -1,47 +1,85 @@
 <div class="container">
-    <div class="caption">
-      <h2>Danh sách liên hệ khách hàng</h2>
+  <div class="caption">
+    <h2>Danh sách liên hệ khách hàng</h2>
   </div>
   <div class="div2" style="margin-bottom: 60px;">
-      <!-- <a href="" type="button" class="btn-add" data-toggle="modal" data-target="#modalAdd">
+    <!-- <a href="" type="button" class="btn-add" data-toggle="modal" data-target="#modalAdd">
           <i class="fa fa-check"></i>
           Thêm danh mục
       </a> -->
-      <!-- <form class="search" action="" style="float: right;"> -->
-        <input type="search" class="search" placeholder="Tìm kiếm danh mục">
-        <!-- <i class="fa fa-search"></i> -->
-      <!-- </form> -->
+    <!-- <form class="search" action="" style="float: right;"> -->
+    <input type="search" class="search" placeholder="Tìm kiếm danh mục" [(ngModel)]="searchText">
+    <!-- <i class="fa fa-search"></i> -->
+    <!-- </form> -->
   </div>
   <div>
-      <table class="table">
-          <thead class="thead">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Tên Khách hàng</th>
-              <th scope="col">Địa chỉ</th>
-              <th scope="col">Số điện thoại</th>
-              <th scope="">email</th>
-              <th>Nội dung</th>
-              <th scope="col">Chức năng</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor = 'let contact of listContact; let i=index '>
-              <th scope="row">{{i+1}}</th>
-              <td>{{contact.name}}</td>
-              <td>{{contact.address}}</td>
-              <td>{{contact.phone}}</td>
-              <td>{{contact.email}}</td>
-              <td>{{contact.message}}</td>
-              <td>
-                  <ul>
-                      <li><a  type="button" class="btn-reply"><i class="fa fa-reply"></i></a></li>
-                      <li><a  type="button" class="btn-delete" (click)="delete(contact.id)"><i class="fa fa-trash-o"></i></a></li>
-                      <!-- <li><a  type="button" class="btn-delete" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-th-list"></i>Hủy đơn</a></li> -->
-                  </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tên Khách hàng</th>
+          <th scope="col">Địa chỉ</th>
+          <th scope="col">Số điện thoại</th>
+          <th scope="">email</th>
+          <th>Nội dung</th>
+          <th scope="col">Chức năng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let contact of listContact | filter:searchText; let i=index '>
+          <th scope="row">{{i+1}}</th>
+          <td>{{contact.name}}</td>
+          <td>{{contact.address}}</td>
+          <td>{{contact.phone}}</td>
+          <td>{{contact.email}}</td>
+          <td>{{contact.message}}</td>
+          <td>
+            <ul>
+              <li><a type="button" class="btn-reply" (click)="reply(contact.email)" data-toggle="modal" data-target="#modalReply"><i class="fa fa-reply"></i></a></li>
+              <li><a type="button" class="btn-delete" (click)="delete(contact.id)"><i class="fa fa-trash-o"></i></a>
+              </li>
+              <!-- <li><a  type="button" class="btn-delete" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-th-list"></i>Hủy đơn</a></li> -->
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
+<div class="modal fade" id="modalReply" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle">Thêm sản phẩm</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form novalidate>
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="dataContact.username">
+          </div>
+          <div class="form-group">
+            <label>Send to</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="dataContact.email">
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" class="form-control" name="subject" [(ngModel)]="dataContact.subject">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <ckeditor [editor]="Editor" [(ngModel)]="dataContact.message" name="message"></ckeditor>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" (click)="Send()">Gửi</button>
+      </div>
+    </div>
   </div>
+</div>
